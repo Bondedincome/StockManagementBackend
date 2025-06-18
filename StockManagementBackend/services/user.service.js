@@ -8,9 +8,9 @@ const getAllUsersService = async () => {
 	});
 };
 
-const getOneUserService = async (id) => {
+const getOneUserService = async (userId) => {
 	return await prisma.user.findUnique({
-		where: { userId: parseInt(id) },
+		where: { userId },
 		include: { role: true, ownedProducts: true },
 	});
 };
