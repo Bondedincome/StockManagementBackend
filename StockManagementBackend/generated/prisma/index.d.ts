@@ -1746,55 +1746,48 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
-    userId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    roleId: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    userId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    roleId: number | null
-  }
-
   export type UserMinAggregateOutputType = {
-    userId: number | null
-    name: string | null
+    userId: string | null
+    firstName: string | null
+    surName: string | null
+    lastName: string | null
+    profilePictureUrl: string | null
     email: string | null
     password: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
     isDeleted: boolean | null
-    roleId: number | null
+    roleId: string | null
   }
 
   export type UserMaxAggregateOutputType = {
-    userId: number | null
-    name: string | null
+    userId: string | null
+    firstName: string | null
+    surName: string | null
+    lastName: string | null
+    profilePictureUrl: string | null
     email: string | null
     password: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
     isDeleted: boolean | null
-    roleId: number | null
+    roleId: string | null
   }
 
   export type UserCountAggregateOutputType = {
     userId: number
-    name: number
+    firstName: number
+    surName: number
+    lastName: number
+    profilePictureUrl: number
     email: number
     password: number
     createdAt: number
@@ -1807,23 +1800,12 @@ export namespace Prisma {
   }
 
 
-  export type UserAvgAggregateInputType = {
-    userId?: true
-    createdBy?: true
-    deletedBy?: true
-    roleId?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    userId?: true
-    createdBy?: true
-    deletedBy?: true
-    roleId?: true
-  }
-
   export type UserMinAggregateInputType = {
     userId?: true
-    name?: true
+    firstName?: true
+    surName?: true
+    lastName?: true
+    profilePictureUrl?: true
     email?: true
     password?: true
     createdAt?: true
@@ -1836,7 +1818,10 @@ export namespace Prisma {
 
   export type UserMaxAggregateInputType = {
     userId?: true
-    name?: true
+    firstName?: true
+    surName?: true
+    lastName?: true
+    profilePictureUrl?: true
     email?: true
     password?: true
     createdAt?: true
@@ -1849,7 +1834,10 @@ export namespace Prisma {
 
   export type UserCountAggregateInputType = {
     userId?: true
-    name?: true
+    firstName?: true
+    surName?: true
+    lastName?: true
+    profilePictureUrl?: true
     email?: true
     password?: true
     createdAt?: true
@@ -1899,18 +1887,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1941,26 +1917,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    userId: number
-    name: string
+    userId: string
+    firstName: string
+    surName: string | null
+    lastName: string
+    profilePictureUrl: string | null
     email: string
     password: string
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
     isDeleted: boolean
-    roleId: number
+    roleId: string
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1981,7 +1956,10 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
-    name?: boolean
+    firstName?: boolean
+    surName?: boolean
+    lastName?: boolean
+    profilePictureUrl?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
@@ -2015,7 +1993,10 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
-    name?: boolean
+    firstName?: boolean
+    surName?: boolean
+    lastName?: boolean
+    profilePictureUrl?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
@@ -2029,7 +2010,10 @@ export namespace Prisma {
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
-    name?: boolean
+    firstName?: boolean
+    surName?: boolean
+    lastName?: boolean
+    profilePictureUrl?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
@@ -2043,7 +2027,10 @@ export namespace Prisma {
 
   export type UserSelectScalar = {
     userId?: boolean
-    name?: boolean
+    firstName?: boolean
+    surName?: boolean
+    lastName?: boolean
+    profilePictureUrl?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
@@ -2054,7 +2041,7 @@ export namespace Prisma {
     roleId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "name" | "email" | "password" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "isDeleted" | "roleId", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "firstName" | "surName" | "lastName" | "profilePictureUrl" | "email" | "password" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "isDeleted" | "roleId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdRoles?: boolean | User$createdRolesArgs<ExtArgs>
     deletedRoles?: boolean | User$deletedRolesArgs<ExtArgs>
@@ -2110,16 +2097,19 @@ export namespace Prisma {
       ownedProducts: Prisma.$ProductPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      userId: number
-      name: string
+      userId: string
+      firstName: string
+      surName: string | null
+      lastName: string
+      profilePictureUrl: string | null
       email: string
       password: string
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
       isDeleted: boolean
-      roleId: number
+      roleId: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2563,16 +2553,19 @@ export namespace Prisma {
    * Fields of the User model
    */
   interface UserFieldRefs {
-    readonly userId: FieldRef<"User", 'Int'>
-    readonly name: FieldRef<"User", 'String'>
+    readonly userId: FieldRef<"User", 'String'>
+    readonly firstName: FieldRef<"User", 'String'>
+    readonly surName: FieldRef<"User", 'String'>
+    readonly lastName: FieldRef<"User", 'String'>
+    readonly profilePictureUrl: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly deletedAt: FieldRef<"User", 'DateTime'>
-    readonly createdBy: FieldRef<"User", 'Int'>
-    readonly deletedBy: FieldRef<"User", 'Int'>
+    readonly createdBy: FieldRef<"User", 'String'>
+    readonly deletedBy: FieldRef<"User", 'String'>
     readonly isDeleted: FieldRef<"User", 'Boolean'>
-    readonly roleId: FieldRef<"User", 'Int'>
+    readonly roleId: FieldRef<"User", 'String'>
   }
     
 
@@ -3449,48 +3442,34 @@ export namespace Prisma {
 
   export type AggregateRole = {
     _count: RoleCountAggregateOutputType | null
-    _avg: RoleAvgAggregateOutputType | null
-    _sum: RoleSumAggregateOutputType | null
     _min: RoleMinAggregateOutputType | null
     _max: RoleMaxAggregateOutputType | null
   }
 
-  export type RoleAvgAggregateOutputType = {
-    roleId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-  }
-
-  export type RoleSumAggregateOutputType = {
-    roleId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-  }
-
   export type RoleMinAggregateOutputType = {
-    roleId: number | null
+    roleId: string | null
     roleType: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
+    isAdmin: boolean | null
   }
 
   export type RoleMaxAggregateOutputType = {
-    roleId: number | null
+    roleId: string | null
     roleType: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
+    isAdmin: boolean | null
   }
 
   export type RoleCountAggregateOutputType = {
@@ -3503,23 +3482,10 @@ export namespace Prisma {
     updatedBy: number
     updatedAt: number
     isDeleted: number
+    isAdmin: number
     _all: number
   }
 
-
-  export type RoleAvgAggregateInputType = {
-    roleId?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-  }
-
-  export type RoleSumAggregateInputType = {
-    roleId?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-  }
 
   export type RoleMinAggregateInputType = {
     roleId?: true
@@ -3531,6 +3497,7 @@ export namespace Prisma {
     updatedBy?: true
     updatedAt?: true
     isDeleted?: true
+    isAdmin?: true
   }
 
   export type RoleMaxAggregateInputType = {
@@ -3543,6 +3510,7 @@ export namespace Prisma {
     updatedBy?: true
     updatedAt?: true
     isDeleted?: true
+    isAdmin?: true
   }
 
   export type RoleCountAggregateInputType = {
@@ -3555,6 +3523,7 @@ export namespace Prisma {
     updatedBy?: true
     updatedAt?: true
     isDeleted?: true
+    isAdmin?: true
     _all?: true
   }
 
@@ -3596,18 +3565,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: RoleAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: RoleSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: RoleMinAggregateInputType
@@ -3638,25 +3595,22 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: RoleCountAggregateInputType | true
-    _avg?: RoleAvgAggregateInputType
-    _sum?: RoleSumAggregateInputType
     _min?: RoleMinAggregateInputType
     _max?: RoleMaxAggregateInputType
   }
 
   export type RoleGroupByOutputType = {
-    roleId: number
+    roleId: string
     roleType: string
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
+    isAdmin: boolean
     _count: RoleCountAggregateOutputType | null
-    _avg: RoleAvgAggregateOutputType | null
-    _sum: RoleSumAggregateOutputType | null
     _min: RoleMinAggregateOutputType | null
     _max: RoleMaxAggregateOutputType | null
   }
@@ -3685,6 +3639,7 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: boolean | Role$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Role$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Role$updatedByUserArgs<ExtArgs>
@@ -3702,6 +3657,7 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: boolean | Role$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Role$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Role$updatedByUserArgs<ExtArgs>
@@ -3717,6 +3673,7 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: boolean | Role$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Role$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Role$updatedByUserArgs<ExtArgs>
@@ -3732,9 +3689,10 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    isAdmin?: boolean
   }
 
-  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"roleId" | "roleType" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted", ExtArgs["result"]["role"]>
+  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"roleId" | "roleType" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted" | "isAdmin", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdByUser?: boolean | Role$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Role$deletedByUserArgs<ExtArgs>
@@ -3762,15 +3720,16 @@ export namespace Prisma {
       users: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      roleId: number
+      roleId: string
       roleType: string
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
-      updatedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
+      isAdmin: boolean
     }, ExtArgs["result"]["role"]>
     composites: {}
   }
@@ -4198,15 +4157,16 @@ export namespace Prisma {
    * Fields of the Role model
    */
   interface RoleFieldRefs {
-    readonly roleId: FieldRef<"Role", 'Int'>
+    readonly roleId: FieldRef<"Role", 'String'>
     readonly roleType: FieldRef<"Role", 'String'>
     readonly createdAt: FieldRef<"Role", 'DateTime'>
     readonly deletedAt: FieldRef<"Role", 'DateTime'>
-    readonly createdBy: FieldRef<"Role", 'Int'>
-    readonly deletedBy: FieldRef<"Role", 'Int'>
-    readonly updatedBy: FieldRef<"Role", 'Int'>
+    readonly createdBy: FieldRef<"Role", 'String'>
+    readonly deletedBy: FieldRef<"Role", 'String'>
+    readonly updatedBy: FieldRef<"Role", 'String'>
     readonly updatedAt: FieldRef<"Role", 'DateTime'>
     readonly isDeleted: FieldRef<"Role", 'Boolean'>
+    readonly isAdmin: FieldRef<"Role", 'Boolean'>
   }
     
 
@@ -4715,29 +4675,19 @@ export namespace Prisma {
   }
 
   export type ProductAvgAggregateOutputType = {
-    productId: number | null
     quantity: number | null
     price: number | null
     costPrice: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    userId: number | null
   }
 
   export type ProductSumAggregateOutputType = {
-    productId: number | null
     quantity: number | null
     price: number | null
     costPrice: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    userId: number | null
   }
 
   export type ProductMinAggregateOutputType = {
-    productId: number | null
+    productId: string | null
     imageUrl: string | null
     description: string | null
     category: string | null
@@ -4748,16 +4698,16 @@ export namespace Prisma {
     costPrice: number | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    userId: number | null
+    userId: string | null
   }
 
   export type ProductMaxAggregateOutputType = {
-    productId: number | null
+    productId: string | null
     imageUrl: string | null
     description: string | null
     category: string | null
@@ -4768,12 +4718,12 @@ export namespace Prisma {
     costPrice: number | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    userId: number | null
+    userId: string | null
   }
 
   export type ProductCountAggregateOutputType = {
@@ -4799,25 +4749,15 @@ export namespace Prisma {
 
 
   export type ProductAvgAggregateInputType = {
-    productId?: true
     quantity?: true
     price?: true
     costPrice?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    userId?: true
   }
 
   export type ProductSumAggregateInputType = {
-    productId?: true
     quantity?: true
     price?: true
     costPrice?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    userId?: true
   }
 
   export type ProductMinAggregateInputType = {
@@ -4968,7 +4908,7 @@ export namespace Prisma {
   }
 
   export type ProductGroupByOutputType = {
-    productId: number
+    productId: string
     imageUrl: string
     description: string
     category: string
@@ -4979,12 +4919,12 @@ export namespace Prisma {
     costPrice: number
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
-    userId: number
+    userId: string
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
     _sum: ProductSumAggregateOutputType | null
@@ -5135,7 +5075,7 @@ export namespace Prisma {
       productSale: Prisma.$ProductSalePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      productId: number
+      productId: string
       imageUrl: string
       description: string
       category: string
@@ -5146,12 +5086,12 @@ export namespace Prisma {
       costPrice: number
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
-      updatedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
-      userId: number
+      userId: string
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -5581,7 +5521,7 @@ export namespace Prisma {
    * Fields of the Product model
    */
   interface ProductFieldRefs {
-    readonly productId: FieldRef<"Product", 'Int'>
+    readonly productId: FieldRef<"Product", 'String'>
     readonly imageUrl: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
     readonly category: FieldRef<"Product", 'String'>
@@ -5592,12 +5532,12 @@ export namespace Prisma {
     readonly costPrice: FieldRef<"Product", 'Float'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly deletedAt: FieldRef<"Product", 'DateTime'>
-    readonly createdBy: FieldRef<"Product", 'Int'>
-    readonly deletedBy: FieldRef<"Product", 'Int'>
-    readonly updatedBy: FieldRef<"Product", 'Int'>
+    readonly createdBy: FieldRef<"Product", 'String'>
+    readonly deletedBy: FieldRef<"Product", 'String'>
+    readonly updatedBy: FieldRef<"Product", 'String'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
     readonly isDeleted: FieldRef<"Product", 'Boolean'>
-    readonly userId: FieldRef<"Product", 'Int'>
+    readonly userId: FieldRef<"Product", 'String'>
   }
     
 
@@ -6123,44 +6063,28 @@ export namespace Prisma {
 
   export type AggregateSale = {
     _count: SaleCountAggregateOutputType | null
-    _avg: SaleAvgAggregateOutputType | null
-    _sum: SaleSumAggregateOutputType | null
     _min: SaleMinAggregateOutputType | null
     _max: SaleMaxAggregateOutputType | null
   }
 
-  export type SaleAvgAggregateOutputType = {
-    saleId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-  }
-
-  export type SaleSumAggregateOutputType = {
-    saleId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-  }
-
   export type SaleMinAggregateOutputType = {
-    saleId: number | null
+    saleId: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
   }
 
   export type SaleMaxAggregateOutputType = {
-    saleId: number | null
+    saleId: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
   }
@@ -6177,20 +6101,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type SaleAvgAggregateInputType = {
-    saleId?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-  }
-
-  export type SaleSumAggregateInputType = {
-    saleId?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-  }
 
   export type SaleMinAggregateInputType = {
     saleId?: true
@@ -6264,18 +6174,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: SaleAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: SaleSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: SaleMinAggregateInputType
@@ -6306,24 +6204,20 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: SaleCountAggregateInputType | true
-    _avg?: SaleAvgAggregateInputType
-    _sum?: SaleSumAggregateInputType
     _min?: SaleMinAggregateInputType
     _max?: SaleMaxAggregateInputType
   }
 
   export type SaleGroupByOutputType = {
-    saleId: number
+    saleId: string
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
     _count: SaleCountAggregateOutputType | null
-    _avg: SaleAvgAggregateOutputType | null
-    _sum: SaleSumAggregateOutputType | null
     _min: SaleMinAggregateOutputType | null
     _max: SaleMaxAggregateOutputType | null
   }
@@ -6425,12 +6319,12 @@ export namespace Prisma {
       productSale: Prisma.$ProductSalePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      saleId: number
+      saleId: string
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
-      updatedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
     }, ExtArgs["result"]["sale"]>
@@ -6860,12 +6754,12 @@ export namespace Prisma {
    * Fields of the Sale model
    */
   interface SaleFieldRefs {
-    readonly saleId: FieldRef<"Sale", 'Int'>
+    readonly saleId: FieldRef<"Sale", 'String'>
     readonly createdAt: FieldRef<"Sale", 'DateTime'>
     readonly deletedAt: FieldRef<"Sale", 'DateTime'>
-    readonly createdBy: FieldRef<"Sale", 'Int'>
-    readonly deletedBy: FieldRef<"Sale", 'Int'>
-    readonly updatedBy: FieldRef<"Sale", 'Int'>
+    readonly createdBy: FieldRef<"Sale", 'String'>
+    readonly deletedBy: FieldRef<"Sale", 'String'>
+    readonly updatedBy: FieldRef<"Sale", 'String'>
     readonly updatedAt: FieldRef<"Sale", 'DateTime'>
     readonly isDeleted: FieldRef<"Sale", 'Boolean'>
   }
@@ -7369,50 +7263,32 @@ export namespace Prisma {
 
   export type AggregatePurchase = {
     _count: PurchaseCountAggregateOutputType | null
-    _avg: PurchaseAvgAggregateOutputType | null
-    _sum: PurchaseSumAggregateOutputType | null
     _min: PurchaseMinAggregateOutputType | null
     _max: PurchaseMaxAggregateOutputType | null
   }
 
-  export type PurchaseAvgAggregateOutputType = {
-    purchaseId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    productId: number | null
-  }
-
-  export type PurchaseSumAggregateOutputType = {
-    purchaseId: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    productId: number | null
-  }
-
   export type PurchaseMinAggregateOutputType = {
-    purchaseId: number | null
+    purchaseId: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    productId: number | null
+    productId: string | null
   }
 
   export type PurchaseMaxAggregateOutputType = {
-    purchaseId: number | null
+    purchaseId: string | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    productId: number | null
+    productId: string | null
   }
 
   export type PurchaseCountAggregateOutputType = {
@@ -7428,22 +7304,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type PurchaseAvgAggregateInputType = {
-    purchaseId?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    productId?: true
-  }
-
-  export type PurchaseSumAggregateInputType = {
-    purchaseId?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    productId?: true
-  }
 
   export type PurchaseMinAggregateInputType = {
     purchaseId?: true
@@ -7520,18 +7380,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: PurchaseAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: PurchaseSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: PurchaseMinAggregateInputType
@@ -7562,25 +7410,21 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: PurchaseCountAggregateInputType | true
-    _avg?: PurchaseAvgAggregateInputType
-    _sum?: PurchaseSumAggregateInputType
     _min?: PurchaseMinAggregateInputType
     _max?: PurchaseMaxAggregateInputType
   }
 
   export type PurchaseGroupByOutputType = {
-    purchaseId: number
+    purchaseId: string
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
-    productId: number
+    productId: string
     _count: PurchaseCountAggregateOutputType | null
-    _avg: PurchaseAvgAggregateOutputType | null
-    _sum: PurchaseSumAggregateOutputType | null
     _min: PurchaseMinAggregateOutputType | null
     _max: PurchaseMaxAggregateOutputType | null
   }
@@ -7686,15 +7530,15 @@ export namespace Prisma {
       productPurchase: Prisma.$ProductPurchasePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      purchaseId: number
+      purchaseId: string
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
-      updatedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
-      productId: number
+      productId: string
     }, ExtArgs["result"]["purchase"]>
     composites: {}
   }
@@ -8122,15 +7966,15 @@ export namespace Prisma {
    * Fields of the Purchase model
    */
   interface PurchaseFieldRefs {
-    readonly purchaseId: FieldRef<"Purchase", 'Int'>
+    readonly purchaseId: FieldRef<"Purchase", 'String'>
     readonly createdAt: FieldRef<"Purchase", 'DateTime'>
     readonly deletedAt: FieldRef<"Purchase", 'DateTime'>
-    readonly createdBy: FieldRef<"Purchase", 'Int'>
-    readonly deletedBy: FieldRef<"Purchase", 'Int'>
-    readonly updatedBy: FieldRef<"Purchase", 'Int'>
+    readonly createdBy: FieldRef<"Purchase", 'String'>
+    readonly deletedBy: FieldRef<"Purchase", 'String'>
+    readonly updatedBy: FieldRef<"Purchase", 'String'>
     readonly updatedAt: FieldRef<"Purchase", 'DateTime'>
     readonly isDeleted: FieldRef<"Purchase", 'Boolean'>
-    readonly productId: FieldRef<"Purchase", 'Int'>
+    readonly productId: FieldRef<"Purchase", 'String'>
   }
     
 
@@ -8639,55 +8483,43 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseAvgAggregateOutputType = {
-    productPurchaseId: number | null
     purchasePrice: number | null
     purchaseQuantity: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    productId: number | null
-    purchaseId: number | null
   }
 
   export type ProductPurchaseSumAggregateOutputType = {
-    productPurchaseId: number | null
     purchasePrice: number | null
     purchaseQuantity: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    productId: number | null
-    purchaseId: number | null
   }
 
   export type ProductPurchaseMinAggregateOutputType = {
-    productPurchaseId: number | null
+    productPurchaseId: string | null
     purchasePrice: number | null
     purchaseQuantity: number | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    productId: number | null
-    purchaseId: number | null
+    productId: string | null
+    purchaseId: string | null
   }
 
   export type ProductPurchaseMaxAggregateOutputType = {
-    productPurchaseId: number | null
+    productPurchaseId: string | null
     purchasePrice: number | null
     purchaseQuantity: number | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    productId: number | null
-    purchaseId: number | null
+    productId: string | null
+    purchaseId: string | null
   }
 
   export type ProductPurchaseCountAggregateOutputType = {
@@ -8708,25 +8540,13 @@ export namespace Prisma {
 
 
   export type ProductPurchaseAvgAggregateInputType = {
-    productPurchaseId?: true
     purchasePrice?: true
     purchaseQuantity?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    productId?: true
-    purchaseId?: true
   }
 
   export type ProductPurchaseSumAggregateInputType = {
-    productPurchaseId?: true
     purchasePrice?: true
     purchaseQuantity?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    productId?: true
-    purchaseId?: true
   }
 
   export type ProductPurchaseMinAggregateInputType = {
@@ -8862,18 +8682,18 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseGroupByOutputType = {
-    productPurchaseId: number
+    productPurchaseId: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
     _count: ProductPurchaseCountAggregateOutputType | null
     _avg: ProductPurchaseAvgAggregateOutputType | null
     _sum: ProductPurchaseSumAggregateOutputType | null
@@ -9003,18 +8823,18 @@ export namespace Prisma {
       purchase: Prisma.$PurchasePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      productPurchaseId: number
+      productPurchaseId: string
       purchasePrice: number
       purchaseQuantity: number
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
-      updatedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
-      productId: number
-      purchaseId: number
+      productId: string
+      purchaseId: string
     }, ExtArgs["result"]["productPurchase"]>
     composites: {}
   }
@@ -9443,18 +9263,18 @@ export namespace Prisma {
    * Fields of the ProductPurchase model
    */
   interface ProductPurchaseFieldRefs {
-    readonly productPurchaseId: FieldRef<"ProductPurchase", 'Int'>
+    readonly productPurchaseId: FieldRef<"ProductPurchase", 'String'>
     readonly purchasePrice: FieldRef<"ProductPurchase", 'Float'>
     readonly purchaseQuantity: FieldRef<"ProductPurchase", 'Int'>
     readonly createdAt: FieldRef<"ProductPurchase", 'DateTime'>
     readonly deletedAt: FieldRef<"ProductPurchase", 'DateTime'>
-    readonly createdBy: FieldRef<"ProductPurchase", 'Int'>
-    readonly deletedBy: FieldRef<"ProductPurchase", 'Int'>
-    readonly updatedBy: FieldRef<"ProductPurchase", 'Int'>
+    readonly createdBy: FieldRef<"ProductPurchase", 'String'>
+    readonly deletedBy: FieldRef<"ProductPurchase", 'String'>
+    readonly updatedBy: FieldRef<"ProductPurchase", 'String'>
     readonly updatedAt: FieldRef<"ProductPurchase", 'DateTime'>
     readonly isDeleted: FieldRef<"ProductPurchase", 'Boolean'>
-    readonly productId: FieldRef<"ProductPurchase", 'Int'>
-    readonly purchaseId: FieldRef<"ProductPurchase", 'Int'>
+    readonly productId: FieldRef<"ProductPurchase", 'String'>
+    readonly purchaseId: FieldRef<"ProductPurchase", 'String'>
   }
     
 
@@ -9939,55 +9759,43 @@ export namespace Prisma {
   }
 
   export type ProductSaleAvgAggregateOutputType = {
-    productSaleId: number | null
     salePrice: number | null
     saleQuantity: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    productId: number | null
-    saleId: number | null
   }
 
   export type ProductSaleSumAggregateOutputType = {
-    productSaleId: number | null
     salePrice: number | null
     saleQuantity: number | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
-    productId: number | null
-    saleId: number | null
   }
 
   export type ProductSaleMinAggregateOutputType = {
-    productSaleId: number | null
+    productSaleId: string | null
     salePrice: number | null
     saleQuantity: number | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    productId: number | null
-    saleId: number | null
+    productId: string | null
+    saleId: string | null
   }
 
   export type ProductSaleMaxAggregateOutputType = {
-    productSaleId: number | null
+    productSaleId: string | null
     salePrice: number | null
     saleQuantity: number | null
     createdAt: Date | null
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
-    productId: number | null
-    saleId: number | null
+    productId: string | null
+    saleId: string | null
   }
 
   export type ProductSaleCountAggregateOutputType = {
@@ -10008,25 +9816,13 @@ export namespace Prisma {
 
 
   export type ProductSaleAvgAggregateInputType = {
-    productSaleId?: true
     salePrice?: true
     saleQuantity?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    productId?: true
-    saleId?: true
   }
 
   export type ProductSaleSumAggregateInputType = {
-    productSaleId?: true
     salePrice?: true
     saleQuantity?: true
-    createdBy?: true
-    deletedBy?: true
-    updatedBy?: true
-    productId?: true
-    saleId?: true
   }
 
   export type ProductSaleMinAggregateInputType = {
@@ -10162,18 +9958,18 @@ export namespace Prisma {
   }
 
   export type ProductSaleGroupByOutputType = {
-    productSaleId: number
+    productSaleId: string
     salePrice: number
     saleQuantity: number
     createdAt: Date
     deletedAt: Date | null
-    createdBy: number | null
-    deletedBy: number | null
-    updatedBy: number | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
     _count: ProductSaleCountAggregateOutputType | null
     _avg: ProductSaleAvgAggregateOutputType | null
     _sum: ProductSaleSumAggregateOutputType | null
@@ -10303,18 +10099,18 @@ export namespace Prisma {
       sale: Prisma.$SalePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      productSaleId: number
+      productSaleId: string
       salePrice: number
       saleQuantity: number
       createdAt: Date
       deletedAt: Date | null
-      createdBy: number | null
-      deletedBy: number | null
-      updatedBy: number | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
-      productId: number
-      saleId: number
+      productId: string
+      saleId: string
     }, ExtArgs["result"]["productSale"]>
     composites: {}
   }
@@ -10743,18 +10539,18 @@ export namespace Prisma {
    * Fields of the ProductSale model
    */
   interface ProductSaleFieldRefs {
-    readonly productSaleId: FieldRef<"ProductSale", 'Int'>
+    readonly productSaleId: FieldRef<"ProductSale", 'String'>
     readonly salePrice: FieldRef<"ProductSale", 'Float'>
     readonly saleQuantity: FieldRef<"ProductSale", 'Int'>
     readonly createdAt: FieldRef<"ProductSale", 'DateTime'>
     readonly deletedAt: FieldRef<"ProductSale", 'DateTime'>
-    readonly createdBy: FieldRef<"ProductSale", 'Int'>
-    readonly deletedBy: FieldRef<"ProductSale", 'Int'>
-    readonly updatedBy: FieldRef<"ProductSale", 'Int'>
+    readonly createdBy: FieldRef<"ProductSale", 'String'>
+    readonly deletedBy: FieldRef<"ProductSale", 'String'>
+    readonly updatedBy: FieldRef<"ProductSale", 'String'>
     readonly updatedAt: FieldRef<"ProductSale", 'DateTime'>
     readonly isDeleted: FieldRef<"ProductSale", 'Boolean'>
-    readonly productId: FieldRef<"ProductSale", 'Int'>
-    readonly saleId: FieldRef<"ProductSale", 'Int'>
+    readonly productId: FieldRef<"ProductSale", 'String'>
+    readonly saleId: FieldRef<"ProductSale", 'String'>
   }
     
 
@@ -11242,7 +11038,10 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     userId: 'userId',
-    name: 'name',
+    firstName: 'firstName',
+    surName: 'surName',
+    lastName: 'lastName',
+    profilePictureUrl: 'profilePictureUrl',
     email: 'email',
     password: 'password',
     createdAt: 'createdAt',
@@ -11265,7 +11064,8 @@ export namespace Prisma {
     deletedBy: 'deletedBy',
     updatedBy: 'updatedBy',
     updatedAt: 'updatedAt',
-    isDeleted: 'isDeleted'
+    isDeleted: 'isDeleted',
+    isAdmin: 'isAdmin'
   };
 
   export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
@@ -11389,20 +11189,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -11438,6 +11224,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -11458,16 +11258,19 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    userId?: IntFilter<"User"> | number
-    name?: StringFilter<"User"> | string
+    userId?: StringFilter<"User"> | string
+    firstName?: StringFilter<"User"> | string
+    surName?: StringNullableFilter<"User"> | string | null
+    lastName?: StringFilter<"User"> | string
+    profilePictureUrl?: StringNullableFilter<"User"> | string | null
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    createdBy?: IntNullableFilter<"User"> | number | null
-    deletedBy?: IntNullableFilter<"User"> | number | null
+    createdBy?: StringNullableFilter<"User"> | string | null
+    deletedBy?: StringNullableFilter<"User"> | string | null
     isDeleted?: BoolFilter<"User"> | boolean
-    roleId?: IntFilter<"User"> | number
+    roleId?: StringFilter<"User"> | string
     createdRoles?: RoleListRelationFilter
     deletedRoles?: RoleListRelationFilter
     updatedRoles?: RoleListRelationFilter
@@ -11492,7 +11295,10 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     userId?: SortOrder
-    name?: SortOrder
+    firstName?: SortOrder
+    surName?: SortOrderInput | SortOrder
+    lastName?: SortOrder
+    profilePictureUrl?: SortOrderInput | SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
@@ -11524,19 +11330,22 @@ export namespace Prisma {
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    userId?: number
+    userId?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringFilter<"User"> | string
+    firstName?: StringFilter<"User"> | string
+    surName?: StringNullableFilter<"User"> | string | null
+    lastName?: StringFilter<"User"> | string
+    profilePictureUrl?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    createdBy?: IntNullableFilter<"User"> | number | null
-    deletedBy?: IntNullableFilter<"User"> | number | null
+    createdBy?: StringNullableFilter<"User"> | string | null
+    deletedBy?: StringNullableFilter<"User"> | string | null
     isDeleted?: BoolFilter<"User"> | boolean
-    roleId?: IntFilter<"User"> | number
+    roleId?: StringFilter<"User"> | string
     createdRoles?: RoleListRelationFilter
     deletedRoles?: RoleListRelationFilter
     updatedRoles?: RoleListRelationFilter
@@ -11561,7 +11370,10 @@ export namespace Prisma {
 
   export type UserOrderByWithAggregationInput = {
     userId?: SortOrder
-    name?: SortOrder
+    firstName?: SortOrder
+    surName?: SortOrderInput | SortOrder
+    lastName?: SortOrder
+    profilePictureUrl?: SortOrderInput | SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
@@ -11571,41 +11383,43 @@ export namespace Prisma {
     isDeleted?: SortOrder
     roleId?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    userId?: IntWithAggregatesFilter<"User"> | number
-    name?: StringWithAggregatesFilter<"User"> | string
+    userId?: StringWithAggregatesFilter<"User"> | string
+    firstName?: StringWithAggregatesFilter<"User"> | string
+    surName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    lastName?: StringWithAggregatesFilter<"User"> | string
+    profilePictureUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"User"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"User"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"User"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"User"> | string | null
     isDeleted?: BoolWithAggregatesFilter<"User"> | boolean
-    roleId?: IntWithAggregatesFilter<"User"> | number
+    roleId?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type RoleWhereInput = {
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
-    roleId?: IntFilter<"Role"> | number
+    roleId?: StringFilter<"Role"> | string
     roleType?: StringFilter<"Role"> | string
     createdAt?: DateTimeFilter<"Role"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Role"> | Date | string | null
-    createdBy?: IntNullableFilter<"Role"> | number | null
-    deletedBy?: IntNullableFilter<"Role"> | number | null
-    updatedBy?: IntNullableFilter<"Role"> | number | null
+    createdBy?: StringNullableFilter<"Role"> | string | null
+    deletedBy?: StringNullableFilter<"Role"> | string | null
+    updatedBy?: StringNullableFilter<"Role"> | string | null
     updatedAt?: DateTimeNullableFilter<"Role"> | Date | string | null
     isDeleted?: BoolFilter<"Role"> | boolean
+    isAdmin?: BoolFilter<"Role"> | boolean
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11622,6 +11436,7 @@ export namespace Prisma {
     updatedBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
     isDeleted?: SortOrder
+    isAdmin?: SortOrder
     createdByUser?: UserOrderByWithRelationInput
     deletedByUser?: UserOrderByWithRelationInput
     updatedByUser?: UserOrderByWithRelationInput
@@ -11629,18 +11444,19 @@ export namespace Prisma {
   }
 
   export type RoleWhereUniqueInput = Prisma.AtLeast<{
-    roleId?: number
+    roleId?: string
     roleType?: string
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
     createdAt?: DateTimeFilter<"Role"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Role"> | Date | string | null
-    createdBy?: IntNullableFilter<"Role"> | number | null
-    deletedBy?: IntNullableFilter<"Role"> | number | null
-    updatedBy?: IntNullableFilter<"Role"> | number | null
+    createdBy?: StringNullableFilter<"Role"> | string | null
+    deletedBy?: StringNullableFilter<"Role"> | string | null
+    updatedBy?: StringNullableFilter<"Role"> | string | null
     updatedAt?: DateTimeNullableFilter<"Role"> | Date | string | null
     isDeleted?: BoolFilter<"Role"> | boolean
+    isAdmin?: BoolFilter<"Role"> | boolean
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11657,33 +11473,33 @@ export namespace Prisma {
     updatedBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
     isDeleted?: SortOrder
+    isAdmin?: SortOrder
     _count?: RoleCountOrderByAggregateInput
-    _avg?: RoleAvgOrderByAggregateInput
     _max?: RoleMaxOrderByAggregateInput
     _min?: RoleMinOrderByAggregateInput
-    _sum?: RoleSumOrderByAggregateInput
   }
 
   export type RoleScalarWhereWithAggregatesInput = {
     AND?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
     OR?: RoleScalarWhereWithAggregatesInput[]
     NOT?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
-    roleId?: IntWithAggregatesFilter<"Role"> | number
+    roleId?: StringWithAggregatesFilter<"Role"> | string
     roleType?: StringWithAggregatesFilter<"Role"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Role"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Role"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"Role"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"Role"> | number | null
-    updatedBy?: IntNullableWithAggregatesFilter<"Role"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"Role"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Role"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"Role"> | boolean
+    isAdmin?: BoolWithAggregatesFilter<"Role"> | boolean
   }
 
   export type ProductWhereInput = {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
-    productId?: IntFilter<"Product"> | number
+    productId?: StringFilter<"Product"> | string
     imageUrl?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
@@ -11694,12 +11510,12 @@ export namespace Prisma {
     costPrice?: FloatFilter<"Product"> | number
     createdAt?: DateTimeFilter<"Product"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
-    createdBy?: IntNullableFilter<"Product"> | number | null
-    deletedBy?: IntNullableFilter<"Product"> | number | null
-    updatedBy?: IntNullableFilter<"Product"> | number | null
+    createdBy?: StringNullableFilter<"Product"> | string | null
+    deletedBy?: StringNullableFilter<"Product"> | string | null
+    updatedBy?: StringNullableFilter<"Product"> | string | null
     updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     isDeleted?: BoolFilter<"Product"> | boolean
-    userId?: IntFilter<"Product"> | number
+    userId?: StringFilter<"Product"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11735,7 +11551,7 @@ export namespace Prisma {
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
-    productId?: number
+    productId?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
@@ -11749,12 +11565,12 @@ export namespace Prisma {
     costPrice?: FloatFilter<"Product"> | number
     createdAt?: DateTimeFilter<"Product"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
-    createdBy?: IntNullableFilter<"Product"> | number | null
-    deletedBy?: IntNullableFilter<"Product"> | number | null
-    updatedBy?: IntNullableFilter<"Product"> | number | null
+    createdBy?: StringNullableFilter<"Product"> | string | null
+    deletedBy?: StringNullableFilter<"Product"> | string | null
+    updatedBy?: StringNullableFilter<"Product"> | string | null
     updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     isDeleted?: BoolFilter<"Product"> | boolean
-    userId?: IntFilter<"Product"> | number
+    userId?: StringFilter<"Product"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11792,7 +11608,7 @@ export namespace Prisma {
     AND?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     OR?: ProductScalarWhereWithAggregatesInput[]
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
-    productId?: IntWithAggregatesFilter<"Product"> | number
+    productId?: StringWithAggregatesFilter<"Product"> | string
     imageUrl?: StringWithAggregatesFilter<"Product"> | string
     description?: StringWithAggregatesFilter<"Product"> | string
     category?: StringWithAggregatesFilter<"Product"> | string
@@ -11803,24 +11619,24 @@ export namespace Prisma {
     costPrice?: FloatWithAggregatesFilter<"Product"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"Product"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"Product"> | number | null
-    updatedBy?: IntNullableWithAggregatesFilter<"Product"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"Product"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"Product"> | boolean
-    userId?: IntWithAggregatesFilter<"Product"> | number
+    userId?: StringWithAggregatesFilter<"Product"> | string
   }
 
   export type SaleWhereInput = {
     AND?: SaleWhereInput | SaleWhereInput[]
     OR?: SaleWhereInput[]
     NOT?: SaleWhereInput | SaleWhereInput[]
-    saleId?: IntFilter<"Sale"> | number
+    saleId?: StringFilter<"Sale"> | string
     createdAt?: DateTimeFilter<"Sale"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
-    createdBy?: IntNullableFilter<"Sale"> | number | null
-    deletedBy?: IntNullableFilter<"Sale"> | number | null
-    updatedBy?: IntNullableFilter<"Sale"> | number | null
+    createdBy?: StringNullableFilter<"Sale"> | string | null
+    deletedBy?: StringNullableFilter<"Sale"> | string | null
+    updatedBy?: StringNullableFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
     isDeleted?: BoolFilter<"Sale"> | boolean
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11845,15 +11661,15 @@ export namespace Prisma {
   }
 
   export type SaleWhereUniqueInput = Prisma.AtLeast<{
-    saleId?: number
+    saleId?: string
     AND?: SaleWhereInput | SaleWhereInput[]
     OR?: SaleWhereInput[]
     NOT?: SaleWhereInput | SaleWhereInput[]
     createdAt?: DateTimeFilter<"Sale"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
-    createdBy?: IntNullableFilter<"Sale"> | number | null
-    deletedBy?: IntNullableFilter<"Sale"> | number | null
-    updatedBy?: IntNullableFilter<"Sale"> | number | null
+    createdBy?: StringNullableFilter<"Sale"> | string | null
+    deletedBy?: StringNullableFilter<"Sale"> | string | null
+    updatedBy?: StringNullableFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
     isDeleted?: BoolFilter<"Sale"> | boolean
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11872,22 +11688,20 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     isDeleted?: SortOrder
     _count?: SaleCountOrderByAggregateInput
-    _avg?: SaleAvgOrderByAggregateInput
     _max?: SaleMaxOrderByAggregateInput
     _min?: SaleMinOrderByAggregateInput
-    _sum?: SaleSumOrderByAggregateInput
   }
 
   export type SaleScalarWhereWithAggregatesInput = {
     AND?: SaleScalarWhereWithAggregatesInput | SaleScalarWhereWithAggregatesInput[]
     OR?: SaleScalarWhereWithAggregatesInput[]
     NOT?: SaleScalarWhereWithAggregatesInput | SaleScalarWhereWithAggregatesInput[]
-    saleId?: IntWithAggregatesFilter<"Sale"> | number
+    saleId?: StringWithAggregatesFilter<"Sale"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Sale"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Sale"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"Sale"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"Sale"> | number | null
-    updatedBy?: IntNullableWithAggregatesFilter<"Sale"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"Sale"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"Sale"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Sale"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"Sale"> | boolean
   }
@@ -11896,15 +11710,15 @@ export namespace Prisma {
     AND?: PurchaseWhereInput | PurchaseWhereInput[]
     OR?: PurchaseWhereInput[]
     NOT?: PurchaseWhereInput | PurchaseWhereInput[]
-    purchaseId?: IntFilter<"Purchase"> | number
+    purchaseId?: StringFilter<"Purchase"> | string
     createdAt?: DateTimeFilter<"Purchase"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Purchase"> | Date | string | null
-    createdBy?: IntNullableFilter<"Purchase"> | number | null
-    deletedBy?: IntNullableFilter<"Purchase"> | number | null
-    updatedBy?: IntNullableFilter<"Purchase"> | number | null
+    createdBy?: StringNullableFilter<"Purchase"> | string | null
+    deletedBy?: StringNullableFilter<"Purchase"> | string | null
+    updatedBy?: StringNullableFilter<"Purchase"> | string | null
     updatedAt?: DateTimeNullableFilter<"Purchase"> | Date | string | null
     isDeleted?: BoolFilter<"Purchase"> | boolean
-    productId?: IntFilter<"Purchase"> | number
+    productId?: StringFilter<"Purchase"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11928,18 +11742,18 @@ export namespace Prisma {
   }
 
   export type PurchaseWhereUniqueInput = Prisma.AtLeast<{
-    purchaseId?: number
+    purchaseId?: string
     AND?: PurchaseWhereInput | PurchaseWhereInput[]
     OR?: PurchaseWhereInput[]
     NOT?: PurchaseWhereInput | PurchaseWhereInput[]
     createdAt?: DateTimeFilter<"Purchase"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Purchase"> | Date | string | null
-    createdBy?: IntNullableFilter<"Purchase"> | number | null
-    deletedBy?: IntNullableFilter<"Purchase"> | number | null
-    updatedBy?: IntNullableFilter<"Purchase"> | number | null
+    createdBy?: StringNullableFilter<"Purchase"> | string | null
+    deletedBy?: StringNullableFilter<"Purchase"> | string | null
+    updatedBy?: StringNullableFilter<"Purchase"> | string | null
     updatedAt?: DateTimeNullableFilter<"Purchase"> | Date | string | null
     isDeleted?: BoolFilter<"Purchase"> | boolean
-    productId?: IntFilter<"Purchase"> | number
+    productId?: StringFilter<"Purchase"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11957,43 +11771,41 @@ export namespace Prisma {
     isDeleted?: SortOrder
     productId?: SortOrder
     _count?: PurchaseCountOrderByAggregateInput
-    _avg?: PurchaseAvgOrderByAggregateInput
     _max?: PurchaseMaxOrderByAggregateInput
     _min?: PurchaseMinOrderByAggregateInput
-    _sum?: PurchaseSumOrderByAggregateInput
   }
 
   export type PurchaseScalarWhereWithAggregatesInput = {
     AND?: PurchaseScalarWhereWithAggregatesInput | PurchaseScalarWhereWithAggregatesInput[]
     OR?: PurchaseScalarWhereWithAggregatesInput[]
     NOT?: PurchaseScalarWhereWithAggregatesInput | PurchaseScalarWhereWithAggregatesInput[]
-    purchaseId?: IntWithAggregatesFilter<"Purchase"> | number
+    purchaseId?: StringWithAggregatesFilter<"Purchase"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Purchase"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Purchase"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"Purchase"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"Purchase"> | number | null
-    updatedBy?: IntNullableWithAggregatesFilter<"Purchase"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"Purchase"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"Purchase"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"Purchase"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Purchase"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"Purchase"> | boolean
-    productId?: IntWithAggregatesFilter<"Purchase"> | number
+    productId?: StringWithAggregatesFilter<"Purchase"> | string
   }
 
   export type ProductPurchaseWhereInput = {
     AND?: ProductPurchaseWhereInput | ProductPurchaseWhereInput[]
     OR?: ProductPurchaseWhereInput[]
     NOT?: ProductPurchaseWhereInput | ProductPurchaseWhereInput[]
-    productPurchaseId?: IntFilter<"ProductPurchase"> | number
+    productPurchaseId?: StringFilter<"ProductPurchase"> | string
     purchasePrice?: FloatFilter<"ProductPurchase"> | number
     purchaseQuantity?: IntFilter<"ProductPurchase"> | number
     createdAt?: DateTimeFilter<"ProductPurchase"> | Date | string
     deletedAt?: DateTimeNullableFilter<"ProductPurchase"> | Date | string | null
-    createdBy?: IntNullableFilter<"ProductPurchase"> | number | null
-    deletedBy?: IntNullableFilter<"ProductPurchase"> | number | null
-    updatedBy?: IntNullableFilter<"ProductPurchase"> | number | null
+    createdBy?: StringNullableFilter<"ProductPurchase"> | string | null
+    deletedBy?: StringNullableFilter<"ProductPurchase"> | string | null
+    updatedBy?: StringNullableFilter<"ProductPurchase"> | string | null
     updatedAt?: DateTimeNullableFilter<"ProductPurchase"> | Date | string | null
     isDeleted?: BoolFilter<"ProductPurchase"> | boolean
-    productId?: IntFilter<"ProductPurchase"> | number
-    purchaseId?: IntFilter<"ProductPurchase"> | number
+    productId?: StringFilter<"ProductPurchase"> | string
+    purchaseId?: StringFilter<"ProductPurchase"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -12022,7 +11834,7 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseWhereUniqueInput = Prisma.AtLeast<{
-    productPurchaseId?: number
+    productPurchaseId?: string
     AND?: ProductPurchaseWhereInput | ProductPurchaseWhereInput[]
     OR?: ProductPurchaseWhereInput[]
     NOT?: ProductPurchaseWhereInput | ProductPurchaseWhereInput[]
@@ -12030,13 +11842,13 @@ export namespace Prisma {
     purchaseQuantity?: IntFilter<"ProductPurchase"> | number
     createdAt?: DateTimeFilter<"ProductPurchase"> | Date | string
     deletedAt?: DateTimeNullableFilter<"ProductPurchase"> | Date | string | null
-    createdBy?: IntNullableFilter<"ProductPurchase"> | number | null
-    deletedBy?: IntNullableFilter<"ProductPurchase"> | number | null
-    updatedBy?: IntNullableFilter<"ProductPurchase"> | number | null
+    createdBy?: StringNullableFilter<"ProductPurchase"> | string | null
+    deletedBy?: StringNullableFilter<"ProductPurchase"> | string | null
+    updatedBy?: StringNullableFilter<"ProductPurchase"> | string | null
     updatedAt?: DateTimeNullableFilter<"ProductPurchase"> | Date | string | null
     isDeleted?: BoolFilter<"ProductPurchase"> | boolean
-    productId?: IntFilter<"ProductPurchase"> | number
-    purchaseId?: IntFilter<"ProductPurchase"> | number
+    productId?: StringFilter<"ProductPurchase"> | string
+    purchaseId?: StringFilter<"ProductPurchase"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -12068,36 +11880,36 @@ export namespace Prisma {
     AND?: ProductPurchaseScalarWhereWithAggregatesInput | ProductPurchaseScalarWhereWithAggregatesInput[]
     OR?: ProductPurchaseScalarWhereWithAggregatesInput[]
     NOT?: ProductPurchaseScalarWhereWithAggregatesInput | ProductPurchaseScalarWhereWithAggregatesInput[]
-    productPurchaseId?: IntWithAggregatesFilter<"ProductPurchase"> | number
+    productPurchaseId?: StringWithAggregatesFilter<"ProductPurchase"> | string
     purchasePrice?: FloatWithAggregatesFilter<"ProductPurchase"> | number
     purchaseQuantity?: IntWithAggregatesFilter<"ProductPurchase"> | number
     createdAt?: DateTimeWithAggregatesFilter<"ProductPurchase"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"ProductPurchase"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"ProductPurchase"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"ProductPurchase"> | number | null
-    updatedBy?: IntNullableWithAggregatesFilter<"ProductPurchase"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"ProductPurchase"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"ProductPurchase"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"ProductPurchase"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"ProductPurchase"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"ProductPurchase"> | boolean
-    productId?: IntWithAggregatesFilter<"ProductPurchase"> | number
-    purchaseId?: IntWithAggregatesFilter<"ProductPurchase"> | number
+    productId?: StringWithAggregatesFilter<"ProductPurchase"> | string
+    purchaseId?: StringWithAggregatesFilter<"ProductPurchase"> | string
   }
 
   export type ProductSaleWhereInput = {
     AND?: ProductSaleWhereInput | ProductSaleWhereInput[]
     OR?: ProductSaleWhereInput[]
     NOT?: ProductSaleWhereInput | ProductSaleWhereInput[]
-    productSaleId?: IntFilter<"ProductSale"> | number
+    productSaleId?: StringFilter<"ProductSale"> | string
     salePrice?: FloatFilter<"ProductSale"> | number
     saleQuantity?: IntFilter<"ProductSale"> | number
     createdAt?: DateTimeFilter<"ProductSale"> | Date | string
     deletedAt?: DateTimeNullableFilter<"ProductSale"> | Date | string | null
-    createdBy?: IntNullableFilter<"ProductSale"> | number | null
-    deletedBy?: IntNullableFilter<"ProductSale"> | number | null
-    updatedBy?: IntNullableFilter<"ProductSale"> | number | null
+    createdBy?: StringNullableFilter<"ProductSale"> | string | null
+    deletedBy?: StringNullableFilter<"ProductSale"> | string | null
+    updatedBy?: StringNullableFilter<"ProductSale"> | string | null
     updatedAt?: DateTimeNullableFilter<"ProductSale"> | Date | string | null
     isDeleted?: BoolFilter<"ProductSale"> | boolean
-    productId?: IntFilter<"ProductSale"> | number
-    saleId?: IntFilter<"ProductSale"> | number
+    productId?: StringFilter<"ProductSale"> | string
+    saleId?: StringFilter<"ProductSale"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -12126,7 +11938,7 @@ export namespace Prisma {
   }
 
   export type ProductSaleWhereUniqueInput = Prisma.AtLeast<{
-    productSaleId?: number
+    productSaleId?: string
     AND?: ProductSaleWhereInput | ProductSaleWhereInput[]
     OR?: ProductSaleWhereInput[]
     NOT?: ProductSaleWhereInput | ProductSaleWhereInput[]
@@ -12134,13 +11946,13 @@ export namespace Prisma {
     saleQuantity?: IntFilter<"ProductSale"> | number
     createdAt?: DateTimeFilter<"ProductSale"> | Date | string
     deletedAt?: DateTimeNullableFilter<"ProductSale"> | Date | string | null
-    createdBy?: IntNullableFilter<"ProductSale"> | number | null
-    deletedBy?: IntNullableFilter<"ProductSale"> | number | null
-    updatedBy?: IntNullableFilter<"ProductSale"> | number | null
+    createdBy?: StringNullableFilter<"ProductSale"> | string | null
+    deletedBy?: StringNullableFilter<"ProductSale"> | string | null
+    updatedBy?: StringNullableFilter<"ProductSale"> | string | null
     updatedAt?: DateTimeNullableFilter<"ProductSale"> | Date | string | null
     isDeleted?: BoolFilter<"ProductSale"> | boolean
-    productId?: IntFilter<"ProductSale"> | number
-    saleId?: IntFilter<"ProductSale"> | number
+    productId?: StringFilter<"ProductSale"> | string
+    saleId?: StringFilter<"ProductSale"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -12172,28 +11984,32 @@ export namespace Prisma {
     AND?: ProductSaleScalarWhereWithAggregatesInput | ProductSaleScalarWhereWithAggregatesInput[]
     OR?: ProductSaleScalarWhereWithAggregatesInput[]
     NOT?: ProductSaleScalarWhereWithAggregatesInput | ProductSaleScalarWhereWithAggregatesInput[]
-    productSaleId?: IntWithAggregatesFilter<"ProductSale"> | number
+    productSaleId?: StringWithAggregatesFilter<"ProductSale"> | string
     salePrice?: FloatWithAggregatesFilter<"ProductSale"> | number
     saleQuantity?: IntWithAggregatesFilter<"ProductSale"> | number
     createdAt?: DateTimeWithAggregatesFilter<"ProductSale"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"ProductSale"> | Date | string | null
-    createdBy?: IntNullableWithAggregatesFilter<"ProductSale"> | number | null
-    deletedBy?: IntNullableWithAggregatesFilter<"ProductSale"> | number | null
-    updatedBy?: IntNullableWithAggregatesFilter<"ProductSale"> | number | null
+    createdBy?: StringNullableWithAggregatesFilter<"ProductSale"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"ProductSale"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"ProductSale"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"ProductSale"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"ProductSale"> | boolean
-    productId?: IntWithAggregatesFilter<"ProductSale"> | number
-    saleId?: IntWithAggregatesFilter<"ProductSale"> | number
+    productId?: StringWithAggregatesFilter<"ProductSale"> | string
+    saleId?: StringWithAggregatesFilter<"ProductSale"> | string
   }
 
   export type UserCreateInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -12218,16 +12034,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -12250,13 +12069,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -12281,16 +12104,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -12313,48 +12139,60 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
   }
 
   export type UserUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type RoleCreateInput = {
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedRolesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedRolesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedRolesInput
@@ -12362,24 +12200,27 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedCreateInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
   }
 
   export type RoleUpdateInput = {
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedRolesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedRolesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedRolesNestedInput
@@ -12387,51 +12228,57 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedUpdateInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleCreateManyInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
   }
 
   export type RoleUpdateManyMutationInput = {
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleUncheckedUpdateManyInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductCreateInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -12453,7 +12300,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -12464,17 +12311,18 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -12496,7 +12344,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -12507,18 +12355,18 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
     productSale?: ProductSaleUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -12529,15 +12377,16 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
   }
 
   export type ProductUpdateManyMutationInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -12553,7 +12402,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateManyInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -12564,15 +12413,16 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleCreateInput = {
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -12584,18 +12434,19 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedCreateInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
   }
 
   export type SaleUpdateInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12607,29 +12458,30 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedUpdateInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     productSale?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleCreateManyInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
   }
 
   export type SaleUpdateManyMutationInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12637,22 +12489,23 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedUpdateManyInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PurchaseCreateInput = {
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     createdByUser?: UserCreateNestedOneWithoutCreatedPurchasesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedPurchasesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedPurchasesInput
@@ -12660,24 +12513,25 @@ export namespace Prisma {
   }
 
   export type PurchaseUncheckedCreateInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutPurchaseInput
   }
 
   export type PurchaseUpdateInput = {
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     createdByUser?: UserUpdateOneWithoutCreatedPurchasesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedPurchasesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedPurchasesNestedInput
@@ -12685,51 +12539,53 @@ export namespace Prisma {
   }
 
   export type PurchaseUncheckedUpdateInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseCreateManyInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type PurchaseUpdateManyMutationInput = {
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type PurchaseUncheckedUpdateManyInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseCreateInput = {
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
@@ -12744,21 +12600,22 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedCreateInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseUpdateInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12773,36 +12630,37 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseCreateManyInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseUpdateManyMutationInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12812,21 +12670,22 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateManyInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleCreateInput = {
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
@@ -12841,21 +12700,22 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedCreateInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleUpdateInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12870,36 +12730,37 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleCreateManyInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleUpdateManyMutationInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12909,29 +12770,18 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateManyInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12947,6 +12797,21 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -12969,17 +12834,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -13059,7 +12913,10 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     userId?: SortOrder
-    name?: SortOrder
+    firstName?: SortOrder
+    surName?: SortOrder
+    lastName?: SortOrder
+    profilePictureUrl?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
@@ -13070,16 +12927,12 @@ export namespace Prisma {
     roleId?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
-    userId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    roleId?: SortOrder
-  }
-
   export type UserMaxOrderByAggregateInput = {
     userId?: SortOrder
-    name?: SortOrder
+    firstName?: SortOrder
+    surName?: SortOrder
+    lastName?: SortOrder
+    profilePictureUrl?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
@@ -13092,7 +12945,10 @@ export namespace Prisma {
 
   export type UserMinOrderByAggregateInput = {
     userId?: SortOrder
-    name?: SortOrder
+    firstName?: SortOrder
+    surName?: SortOrder
+    lastName?: SortOrder
+    profilePictureUrl?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
@@ -13101,29 +12957,6 @@ export namespace Prisma {
     deletedBy?: SortOrder
     isDeleted?: SortOrder
     roleId?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    userId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    roleId?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -13142,6 +12975,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13170,22 +13021,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -13221,13 +13056,7 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
-  }
-
-  export type RoleAvgOrderByAggregateInput = {
-    roleId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
+    isAdmin?: SortOrder
   }
 
   export type RoleMaxOrderByAggregateInput = {
@@ -13240,6 +13069,7 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
+    isAdmin?: SortOrder
   }
 
   export type RoleMinOrderByAggregateInput = {
@@ -13252,13 +13082,18 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
+    isAdmin?: SortOrder
   }
 
-  export type RoleSumOrderByAggregateInput = {
-    roleId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -13298,14 +13133,9 @@ export namespace Prisma {
   }
 
   export type ProductAvgOrderByAggregateInput = {
-    productId?: SortOrder
     quantity?: SortOrder
     price?: SortOrder
     costPrice?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-    userId?: SortOrder
   }
 
   export type ProductMaxOrderByAggregateInput = {
@@ -13349,14 +13179,25 @@ export namespace Prisma {
   }
 
   export type ProductSumOrderByAggregateInput = {
-    productId?: SortOrder
     quantity?: SortOrder
     price?: SortOrder
     costPrice?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-    userId?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -13386,13 +13227,6 @@ export namespace Prisma {
     isDeleted?: SortOrder
   }
 
-  export type SaleAvgOrderByAggregateInput = {
-    saleId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-  }
-
   export type SaleMaxOrderByAggregateInput = {
     saleId?: SortOrder
     createdAt?: SortOrder
@@ -13415,13 +13249,6 @@ export namespace Prisma {
     isDeleted?: SortOrder
   }
 
-  export type SaleSumOrderByAggregateInput = {
-    saleId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-  }
-
   export type PurchaseCountOrderByAggregateInput = {
     purchaseId?: SortOrder
     createdAt?: SortOrder
@@ -13431,14 +13258,6 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
-    productId?: SortOrder
-  }
-
-  export type PurchaseAvgOrderByAggregateInput = {
-    purchaseId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
     productId?: SortOrder
   }
 
@@ -13463,14 +13282,6 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
-    productId?: SortOrder
-  }
-
-  export type PurchaseSumOrderByAggregateInput = {
-    purchaseId?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
     productId?: SortOrder
   }
 
@@ -13500,14 +13311,8 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseAvgOrderByAggregateInput = {
-    productPurchaseId?: SortOrder
     purchasePrice?: SortOrder
     purchaseQuantity?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-    productId?: SortOrder
-    purchaseId?: SortOrder
   }
 
   export type ProductPurchaseMaxOrderByAggregateInput = {
@@ -13541,14 +13346,8 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseSumOrderByAggregateInput = {
-    productPurchaseId?: SortOrder
     purchasePrice?: SortOrder
     purchaseQuantity?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-    productId?: SortOrder
-    purchaseId?: SortOrder
   }
 
   export type SaleScalarRelationFilter = {
@@ -13572,14 +13371,8 @@ export namespace Prisma {
   }
 
   export type ProductSaleAvgOrderByAggregateInput = {
-    productSaleId?: SortOrder
     salePrice?: SortOrder
     saleQuantity?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-    productId?: SortOrder
-    saleId?: SortOrder
   }
 
   export type ProductSaleMaxOrderByAggregateInput = {
@@ -13613,14 +13406,8 @@ export namespace Prisma {
   }
 
   export type ProductSaleSumOrderByAggregateInput = {
-    productSaleId?: SortOrder
     salePrice?: SortOrder
     saleQuantity?: SortOrder
-    createdBy?: SortOrder
-    deletedBy?: SortOrder
-    updatedBy?: SortOrder
-    productId?: SortOrder
-    saleId?: SortOrder
   }
 
   export type RoleCreateNestedManyWithoutCreatedByUserInput = {
@@ -13899,20 +13686,16 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -14191,14 +13974,6 @@ export namespace Prisma {
     update?: ProductUpdateWithWhereUniqueWithoutUserInput | ProductUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ProductUpdateManyWithWhereWithoutUserInput | ProductUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
@@ -14607,6 +14382,14 @@ export namespace Prisma {
     connectOrCreate?: ProductSaleCreateOrConnectWithoutProductInput | ProductSaleCreateOrConnectWithoutProductInput[]
     createMany?: ProductSaleCreateManyProductInputEnvelope
     connect?: ProductSaleWhereUniqueInput | ProductSaleWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -15043,17 +14826,6 @@ export namespace Prisma {
     update?: XOR<XOR<SaleUpdateToOneWithWhereWithoutProductSaleInput, SaleUpdateWithoutProductSaleInput>, SaleUncheckedUpdateWithoutProductSaleInput>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -15066,6 +14838,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -15090,47 +14876,9 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -15148,6 +14896,45 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -15178,39 +14965,39 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -15230,25 +15017,28 @@ export namespace Prisma {
   }
 
   export type RoleCreateWithoutCreatedByUserInput = {
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     deletedByUser?: UserCreateNestedOneWithoutDeletedRolesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedRolesInput
     users?: UserCreateNestedManyWithoutRoleInput
   }
 
   export type RoleUncheckedCreateWithoutCreatedByUserInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -15263,25 +15053,28 @@ export namespace Prisma {
   }
 
   export type RoleCreateWithoutDeletedByUserInput = {
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedRolesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedRolesInput
     users?: UserCreateNestedManyWithoutRoleInput
   }
 
   export type RoleUncheckedCreateWithoutDeletedByUserInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -15296,25 +15089,28 @@ export namespace Prisma {
   }
 
   export type RoleCreateWithoutUpdatedByUserInput = {
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedRolesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedRolesInput
     users?: UserCreateNestedManyWithoutRoleInput
   }
 
   export type RoleUncheckedCreateWithoutUpdatedByUserInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -15329,6 +15125,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutCreatedByUserInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15349,7 +15146,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutCreatedByUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15360,11 +15157,11 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutProductInput
   }
@@ -15380,6 +15177,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutDeletedByUserInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15400,7 +15198,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutDeletedByUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15411,11 +15209,11 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutProductInput
   }
@@ -15431,6 +15229,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutUpdatedByUserInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15451,7 +15250,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutUpdatedByUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15462,11 +15261,11 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutProductInput
   }
@@ -15482,6 +15281,7 @@ export namespace Prisma {
   }
 
   export type SaleCreateWithoutCreatedByUserInput = {
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -15492,11 +15292,11 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedCreateWithoutCreatedByUserInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
@@ -15513,6 +15313,7 @@ export namespace Prisma {
   }
 
   export type SaleCreateWithoutDeletedByUserInput = {
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -15523,11 +15324,11 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedCreateWithoutDeletedByUserInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
@@ -15544,6 +15345,7 @@ export namespace Prisma {
   }
 
   export type SaleCreateWithoutUpdatedByUserInput = {
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -15554,11 +15356,11 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedCreateWithoutUpdatedByUserInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
@@ -15575,25 +15377,26 @@ export namespace Prisma {
   }
 
   export type PurchaseCreateWithoutCreatedByUserInput = {
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     deletedByUser?: UserCreateNestedOneWithoutDeletedPurchasesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedPurchasesInput
     productPurchase?: ProductPurchaseCreateNestedManyWithoutPurchaseInput
   }
 
   export type PurchaseUncheckedCreateWithoutCreatedByUserInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutPurchaseInput
   }
 
@@ -15608,25 +15411,26 @@ export namespace Prisma {
   }
 
   export type PurchaseCreateWithoutDeletedByUserInput = {
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     createdByUser?: UserCreateNestedOneWithoutCreatedPurchasesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedPurchasesInput
     productPurchase?: ProductPurchaseCreateNestedManyWithoutPurchaseInput
   }
 
   export type PurchaseUncheckedCreateWithoutDeletedByUserInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutPurchaseInput
   }
 
@@ -15641,25 +15445,26 @@ export namespace Prisma {
   }
 
   export type PurchaseCreateWithoutUpdatedByUserInput = {
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     createdByUser?: UserCreateNestedOneWithoutCreatedPurchasesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedPurchasesInput
     productPurchase?: ProductPurchaseCreateNestedManyWithoutPurchaseInput
   }
 
   export type PurchaseUncheckedCreateWithoutUpdatedByUserInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutPurchaseInput
   }
 
@@ -15674,6 +15479,7 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseCreateWithoutCreatedByUserInput = {
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
@@ -15687,17 +15493,17 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedCreateWithoutCreatedByUserInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseCreateOrConnectWithoutCreatedByUserInput = {
@@ -15711,6 +15517,7 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseCreateWithoutDeletedByUserInput = {
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
@@ -15724,17 +15531,17 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedCreateWithoutDeletedByUserInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseCreateOrConnectWithoutDeletedByUserInput = {
@@ -15748,6 +15555,7 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseCreateWithoutUpdatedByUserInput = {
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
@@ -15761,17 +15569,17 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedCreateWithoutUpdatedByUserInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseCreateOrConnectWithoutUpdatedByUserInput = {
@@ -15785,6 +15593,7 @@ export namespace Prisma {
   }
 
   export type ProductSaleCreateWithoutCreatedByUserInput = {
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
@@ -15798,17 +15607,17 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedCreateWithoutCreatedByUserInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleCreateOrConnectWithoutCreatedByUserInput = {
@@ -15822,6 +15631,7 @@ export namespace Prisma {
   }
 
   export type ProductSaleCreateWithoutDeletedByUserInput = {
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
@@ -15835,17 +15645,17 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedCreateWithoutDeletedByUserInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleCreateOrConnectWithoutDeletedByUserInput = {
@@ -15859,6 +15669,7 @@ export namespace Prisma {
   }
 
   export type ProductSaleCreateWithoutUpdatedByUserInput = {
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
@@ -15872,17 +15683,17 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedCreateWithoutUpdatedByUserInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleCreateOrConnectWithoutUpdatedByUserInput = {
@@ -15896,26 +15707,29 @@ export namespace Prisma {
   }
 
   export type RoleCreateWithoutUsersInput = {
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedRolesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedRolesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedRolesInput
   }
 
   export type RoleUncheckedCreateWithoutUsersInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
   }
 
   export type RoleCreateOrConnectWithoutUsersInput = {
@@ -15924,6 +15738,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutUserInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15944,7 +15759,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -15955,9 +15770,9 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
@@ -15994,15 +15809,16 @@ export namespace Prisma {
     AND?: RoleScalarWhereInput | RoleScalarWhereInput[]
     OR?: RoleScalarWhereInput[]
     NOT?: RoleScalarWhereInput | RoleScalarWhereInput[]
-    roleId?: IntFilter<"Role"> | number
+    roleId?: StringFilter<"Role"> | string
     roleType?: StringFilter<"Role"> | string
     createdAt?: DateTimeFilter<"Role"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Role"> | Date | string | null
-    createdBy?: IntNullableFilter<"Role"> | number | null
-    deletedBy?: IntNullableFilter<"Role"> | number | null
-    updatedBy?: IntNullableFilter<"Role"> | number | null
+    createdBy?: StringNullableFilter<"Role"> | string | null
+    deletedBy?: StringNullableFilter<"Role"> | string | null
+    updatedBy?: StringNullableFilter<"Role"> | string | null
     updatedAt?: DateTimeNullableFilter<"Role"> | Date | string | null
     isDeleted?: BoolFilter<"Role"> | boolean
+    isAdmin?: BoolFilter<"Role"> | boolean
   }
 
   export type RoleUpsertWithWhereUniqueWithoutDeletedByUserInput = {
@@ -16057,7 +15873,7 @@ export namespace Prisma {
     AND?: ProductScalarWhereInput | ProductScalarWhereInput[]
     OR?: ProductScalarWhereInput[]
     NOT?: ProductScalarWhereInput | ProductScalarWhereInput[]
-    productId?: IntFilter<"Product"> | number
+    productId?: StringFilter<"Product"> | string
     imageUrl?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
@@ -16068,12 +15884,12 @@ export namespace Prisma {
     costPrice?: FloatFilter<"Product"> | number
     createdAt?: DateTimeFilter<"Product"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
-    createdBy?: IntNullableFilter<"Product"> | number | null
-    deletedBy?: IntNullableFilter<"Product"> | number | null
-    updatedBy?: IntNullableFilter<"Product"> | number | null
+    createdBy?: StringNullableFilter<"Product"> | string | null
+    deletedBy?: StringNullableFilter<"Product"> | string | null
+    updatedBy?: StringNullableFilter<"Product"> | string | null
     updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     isDeleted?: BoolFilter<"Product"> | boolean
-    userId?: IntFilter<"Product"> | number
+    userId?: StringFilter<"Product"> | string
   }
 
   export type ProductUpsertWithWhereUniqueWithoutDeletedByUserInput = {
@@ -16128,12 +15944,12 @@ export namespace Prisma {
     AND?: SaleScalarWhereInput | SaleScalarWhereInput[]
     OR?: SaleScalarWhereInput[]
     NOT?: SaleScalarWhereInput | SaleScalarWhereInput[]
-    saleId?: IntFilter<"Sale"> | number
+    saleId?: StringFilter<"Sale"> | string
     createdAt?: DateTimeFilter<"Sale"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
-    createdBy?: IntNullableFilter<"Sale"> | number | null
-    deletedBy?: IntNullableFilter<"Sale"> | number | null
-    updatedBy?: IntNullableFilter<"Sale"> | number | null
+    createdBy?: StringNullableFilter<"Sale"> | string | null
+    deletedBy?: StringNullableFilter<"Sale"> | string | null
+    updatedBy?: StringNullableFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
     isDeleted?: BoolFilter<"Sale"> | boolean
   }
@@ -16190,15 +16006,15 @@ export namespace Prisma {
     AND?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
     OR?: PurchaseScalarWhereInput[]
     NOT?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
-    purchaseId?: IntFilter<"Purchase"> | number
+    purchaseId?: StringFilter<"Purchase"> | string
     createdAt?: DateTimeFilter<"Purchase"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Purchase"> | Date | string | null
-    createdBy?: IntNullableFilter<"Purchase"> | number | null
-    deletedBy?: IntNullableFilter<"Purchase"> | number | null
-    updatedBy?: IntNullableFilter<"Purchase"> | number | null
+    createdBy?: StringNullableFilter<"Purchase"> | string | null
+    deletedBy?: StringNullableFilter<"Purchase"> | string | null
+    updatedBy?: StringNullableFilter<"Purchase"> | string | null
     updatedAt?: DateTimeNullableFilter<"Purchase"> | Date | string | null
     isDeleted?: BoolFilter<"Purchase"> | boolean
-    productId?: IntFilter<"Purchase"> | number
+    productId?: StringFilter<"Purchase"> | string
   }
 
   export type PurchaseUpsertWithWhereUniqueWithoutDeletedByUserInput = {
@@ -16253,18 +16069,18 @@ export namespace Prisma {
     AND?: ProductPurchaseScalarWhereInput | ProductPurchaseScalarWhereInput[]
     OR?: ProductPurchaseScalarWhereInput[]
     NOT?: ProductPurchaseScalarWhereInput | ProductPurchaseScalarWhereInput[]
-    productPurchaseId?: IntFilter<"ProductPurchase"> | number
+    productPurchaseId?: StringFilter<"ProductPurchase"> | string
     purchasePrice?: FloatFilter<"ProductPurchase"> | number
     purchaseQuantity?: IntFilter<"ProductPurchase"> | number
     createdAt?: DateTimeFilter<"ProductPurchase"> | Date | string
     deletedAt?: DateTimeNullableFilter<"ProductPurchase"> | Date | string | null
-    createdBy?: IntNullableFilter<"ProductPurchase"> | number | null
-    deletedBy?: IntNullableFilter<"ProductPurchase"> | number | null
-    updatedBy?: IntNullableFilter<"ProductPurchase"> | number | null
+    createdBy?: StringNullableFilter<"ProductPurchase"> | string | null
+    deletedBy?: StringNullableFilter<"ProductPurchase"> | string | null
+    updatedBy?: StringNullableFilter<"ProductPurchase"> | string | null
     updatedAt?: DateTimeNullableFilter<"ProductPurchase"> | Date | string | null
     isDeleted?: BoolFilter<"ProductPurchase"> | boolean
-    productId?: IntFilter<"ProductPurchase"> | number
-    purchaseId?: IntFilter<"ProductPurchase"> | number
+    productId?: StringFilter<"ProductPurchase"> | string
+    purchaseId?: StringFilter<"ProductPurchase"> | string
   }
 
   export type ProductPurchaseUpsertWithWhereUniqueWithoutDeletedByUserInput = {
@@ -16319,18 +16135,18 @@ export namespace Prisma {
     AND?: ProductSaleScalarWhereInput | ProductSaleScalarWhereInput[]
     OR?: ProductSaleScalarWhereInput[]
     NOT?: ProductSaleScalarWhereInput | ProductSaleScalarWhereInput[]
-    productSaleId?: IntFilter<"ProductSale"> | number
+    productSaleId?: StringFilter<"ProductSale"> | string
     salePrice?: FloatFilter<"ProductSale"> | number
     saleQuantity?: IntFilter<"ProductSale"> | number
     createdAt?: DateTimeFilter<"ProductSale"> | Date | string
     deletedAt?: DateTimeNullableFilter<"ProductSale"> | Date | string | null
-    createdBy?: IntNullableFilter<"ProductSale"> | number | null
-    deletedBy?: IntNullableFilter<"ProductSale"> | number | null
-    updatedBy?: IntNullableFilter<"ProductSale"> | number | null
+    createdBy?: StringNullableFilter<"ProductSale"> | string | null
+    deletedBy?: StringNullableFilter<"ProductSale"> | string | null
+    updatedBy?: StringNullableFilter<"ProductSale"> | string | null
     updatedAt?: DateTimeNullableFilter<"ProductSale"> | Date | string | null
     isDeleted?: BoolFilter<"ProductSale"> | boolean
-    productId?: IntFilter<"ProductSale"> | number
-    saleId?: IntFilter<"ProductSale"> | number
+    productId?: StringFilter<"ProductSale"> | string
+    saleId?: StringFilter<"ProductSale"> | string
   }
 
   export type ProductSaleUpsertWithWhereUniqueWithoutDeletedByUserInput = {
@@ -16377,26 +16193,29 @@ export namespace Prisma {
   }
 
   export type RoleUpdateWithoutUsersInput = {
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedRolesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedRolesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedRolesNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutUsersInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductUpsertWithWhereUniqueWithoutUserInput = {
@@ -16416,13 +16235,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCreatedRolesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleCreateNestedManyWithoutUpdatedByUserInput
@@ -16446,16 +16269,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCreatedRolesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
     createdProducts?: ProductUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -16482,13 +16308,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDeletedRolesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     updatedRoles?: RoleCreateNestedManyWithoutUpdatedByUserInput
@@ -16512,16 +16342,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDeletedRolesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
     createdProducts?: ProductUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -16548,13 +16381,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUpdatedRolesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -16578,16 +16415,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUpdatedRolesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     createdProducts?: ProductUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -16614,13 +16454,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutRoleInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -16644,14 +16488,17 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
@@ -16696,13 +16543,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedRolesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUpdateManyWithoutUpdatedByUserNestedInput
@@ -16726,16 +16577,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCreatedRolesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     createdProducts?: ProductUncheckedUpdateManyWithoutCreatedByUserNestedInput
@@ -16768,13 +16622,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDeletedRolesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     updatedRoles?: RoleUpdateManyWithoutUpdatedByUserNestedInput
@@ -16798,16 +16656,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDeletedRolesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     createdProducts?: ProductUncheckedUpdateManyWithoutCreatedByUserNestedInput
@@ -16840,13 +16701,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUpdatedRolesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -16870,16 +16735,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUpdatedRolesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     createdProducts?: ProductUncheckedUpdateManyWithoutCreatedByUserNestedInput
@@ -16920,26 +16788,33 @@ export namespace Prisma {
     AND?: UserScalarWhereInput | UserScalarWhereInput[]
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    userId?: IntFilter<"User"> | number
-    name?: StringFilter<"User"> | string
+    userId?: StringFilter<"User"> | string
+    firstName?: StringFilter<"User"> | string
+    surName?: StringNullableFilter<"User"> | string | null
+    lastName?: StringFilter<"User"> | string
+    profilePictureUrl?: StringNullableFilter<"User"> | string | null
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    createdBy?: IntNullableFilter<"User"> | number | null
-    deletedBy?: IntNullableFilter<"User"> | number | null
+    createdBy?: StringNullableFilter<"User"> | string | null
+    deletedBy?: StringNullableFilter<"User"> | string | null
     isDeleted?: BoolFilter<"User"> | boolean
-    roleId?: IntFilter<"User"> | number
+    roleId?: StringFilter<"User"> | string
   }
 
   export type UserCreateWithoutCreatedProductsInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -16963,16 +16838,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCreatedProductsInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -16999,13 +16877,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDeletedProductsInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -17029,16 +16911,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDeletedProductsInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -17065,13 +16950,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUpdatedProductsInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -17095,16 +16984,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUpdatedProductsInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -17131,13 +17023,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutOwnedProductsInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -17161,16 +17057,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutOwnedProductsInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -17197,6 +17096,7 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseCreateWithoutProductInput = {
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
@@ -17210,17 +17110,17 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedCreateWithoutProductInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    purchaseId: number
+    purchaseId: string
   }
 
   export type ProductPurchaseCreateOrConnectWithoutProductInput = {
@@ -17234,6 +17134,7 @@ export namespace Prisma {
   }
 
   export type ProductSaleCreateWithoutProductInput = {
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
@@ -17247,17 +17148,17 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedCreateWithoutProductInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    saleId: number
+    saleId: string
   }
 
   export type ProductSaleCreateOrConnectWithoutProductInput = {
@@ -17282,13 +17183,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedProductsInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -17312,16 +17217,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCreatedProductsInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -17354,13 +17262,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDeletedProductsInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -17384,16 +17296,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDeletedProductsInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -17426,13 +17341,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUpdatedProductsInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -17456,16 +17375,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUpdatedProductsInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -17498,13 +17420,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutOwnedProductsInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -17528,16 +17454,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutOwnedProductsInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -17591,13 +17520,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCreatedSalesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -17621,16 +17554,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCreatedSalesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -17657,13 +17593,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDeletedSalesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -17687,16 +17627,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDeletedSalesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -17723,13 +17666,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUpdatedSalesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -17753,16 +17700,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUpdatedSalesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -17789,6 +17739,7 @@ export namespace Prisma {
   }
 
   export type ProductSaleCreateWithoutSaleInput = {
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
@@ -17802,17 +17753,17 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedCreateWithoutSaleInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type ProductSaleCreateOrConnectWithoutSaleInput = {
@@ -17837,13 +17788,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedSalesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -17867,16 +17822,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCreatedSalesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -17909,13 +17867,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDeletedSalesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -17939,16 +17901,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDeletedSalesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -17981,13 +17946,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUpdatedSalesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18011,16 +17980,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUpdatedSalesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -18058,13 +18030,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCreatedPurchasesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -18088,16 +18064,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCreatedPurchasesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -18124,13 +18103,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDeletedPurchasesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -18154,16 +18137,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDeletedPurchasesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -18190,13 +18176,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUpdatedPurchasesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -18220,16 +18210,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUpdatedPurchasesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -18256,6 +18249,7 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseCreateWithoutPurchaseInput = {
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
@@ -18269,17 +18263,17 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedCreateWithoutPurchaseInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type ProductPurchaseCreateOrConnectWithoutPurchaseInput = {
@@ -18304,13 +18298,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedPurchasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18334,16 +18332,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCreatedPurchasesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -18376,13 +18377,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDeletedPurchasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18406,16 +18411,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDeletedPurchasesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -18448,13 +18456,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUpdatedPurchasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18478,16 +18490,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUpdatedPurchasesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -18525,13 +18540,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCreatedProductPurchasesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -18555,16 +18574,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCreatedProductPurchasesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -18591,13 +18613,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDeletedProductPurchasesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -18621,16 +18647,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDeletedProductPurchasesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -18657,13 +18686,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUpdatedProductPurchasesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -18687,16 +18720,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUpdatedProductPurchasesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -18723,6 +18759,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutProductPurchaseInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -18743,7 +18780,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutProductPurchaseInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -18754,12 +18791,12 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
     productSale?: ProductSaleUncheckedCreateNestedManyWithoutProductInput
   }
 
@@ -18769,26 +18806,27 @@ export namespace Prisma {
   }
 
   export type PurchaseCreateWithoutProductPurchaseInput = {
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
     createdByUser?: UserCreateNestedOneWithoutCreatedPurchasesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedPurchasesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedPurchasesInput
   }
 
   export type PurchaseUncheckedCreateWithoutProductPurchaseInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type PurchaseCreateOrConnectWithoutProductPurchaseInput = {
@@ -18808,13 +18846,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedProductPurchasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18838,16 +18880,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCreatedProductPurchasesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -18880,13 +18925,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDeletedProductPurchasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18910,16 +18959,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDeletedProductPurchasesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -18952,13 +19004,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUpdatedProductPurchasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -18982,16 +19038,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUpdatedProductPurchasesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -19024,6 +19083,7 @@ export namespace Prisma {
   }
 
   export type ProductUpdateWithoutProductPurchaseInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -19044,7 +19104,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutProductPurchaseInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -19055,12 +19115,12 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     productSale?: ProductSaleUncheckedUpdateManyWithoutProductNestedInput
   }
 
@@ -19076,36 +19136,41 @@ export namespace Prisma {
   }
 
   export type PurchaseUpdateWithoutProductPurchaseInput = {
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     createdByUser?: UserUpdateOneWithoutCreatedPurchasesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedPurchasesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedPurchasesNestedInput
   }
 
   export type PurchaseUncheckedUpdateWithoutProductPurchaseInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateWithoutCreatedProductSalesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -19129,16 +19194,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCreatedProductSalesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -19165,13 +19233,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDeletedProductSalesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -19195,16 +19267,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDeletedProductSalesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -19231,13 +19306,17 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUpdatedProductSalesInput = {
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
     createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
@@ -19261,16 +19340,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUpdatedProductSalesInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
-    roleId: number
+    roleId: string
     createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
@@ -19297,6 +19379,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutProductSaleInput = {
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -19317,7 +19400,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutProductSaleInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -19328,12 +19411,12 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
     productPurchase?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
   }
 
@@ -19343,6 +19426,7 @@ export namespace Prisma {
   }
 
   export type SaleCreateWithoutProductSaleInput = {
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -19353,12 +19437,12 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedCreateWithoutProductSaleInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
   }
@@ -19380,13 +19464,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedProductSalesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -19410,16 +19498,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCreatedProductSalesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -19452,13 +19543,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDeletedProductSalesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -19482,16 +19577,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDeletedProductSalesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -19524,13 +19622,17 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUpdatedProductSalesInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -19554,16 +19656,19 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUpdatedProductSalesInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
@@ -19596,6 +19701,7 @@ export namespace Prisma {
   }
 
   export type ProductUpdateWithoutProductSaleInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -19616,7 +19722,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutProductSaleInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -19627,12 +19733,12 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
   }
 
@@ -19648,6 +19754,7 @@ export namespace Prisma {
   }
 
   export type SaleUpdateWithoutProductSaleInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19658,51 +19765,54 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedUpdateWithoutProductSaleInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleCreateManyCreatedByUserInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
   }
 
   export type RoleCreateManyDeletedByUserInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
   }
 
   export type RoleCreateManyUpdatedByUserInput = {
-    roleId?: number
+    roleId?: string
     roleType: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    isAdmin?: boolean
   }
 
   export type ProductCreateManyCreatedByUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -19713,15 +19823,15 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
   }
 
   export type ProductCreateManyDeletedByUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -19732,15 +19842,15 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
   }
 
   export type ProductCreateManyUpdatedByUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -19751,162 +19861,162 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    userId: number
+    userId: string
   }
 
   export type SaleCreateManyCreatedByUserInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
   }
 
   export type SaleCreateManyDeletedByUserInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
   }
 
   export type SaleCreateManyUpdatedByUserInput = {
-    saleId?: number
+    saleId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
   }
 
   export type PurchaseCreateManyCreatedByUserInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type PurchaseCreateManyDeletedByUserInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type PurchaseCreateManyUpdatedByUserInput = {
-    purchaseId?: number
+    purchaseId?: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type ProductPurchaseCreateManyCreatedByUserInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseCreateManyDeletedByUserInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductPurchaseCreateManyUpdatedByUserInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    purchaseId: number
+    productId: string
+    purchaseId: string
   }
 
   export type ProductSaleCreateManyCreatedByUserInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleCreateManyDeletedByUserInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductSaleCreateManyUpdatedByUserInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
-    saleId: number
+    productId: string
+    saleId: string
   }
 
   export type ProductCreateManyUserInput = {
-    productId?: number
+    productId?: string
     imageUrl: string
     description: string
     category: string
@@ -19917,116 +20027,129 @@ export namespace Prisma {
     costPrice: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
   }
 
   export type RoleUpdateWithoutCreatedByUserInput = {
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     deletedByUser?: UserUpdateOneWithoutDeletedRolesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedRolesNestedInput
     users?: UserUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutCreatedByUserInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateManyWithoutCreatedByUserInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleUpdateWithoutDeletedByUserInput = {
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedRolesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedRolesNestedInput
     users?: UserUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutDeletedByUserInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateManyWithoutDeletedByUserInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleUpdateWithoutUpdatedByUserInput = {
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedRolesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedRolesNestedInput
     users?: UserUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutUpdatedByUserInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateManyWithoutUpdatedByUserInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
+    roleId?: StringFieldUpdateOperationsInput | string
     roleType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductUpdateWithoutCreatedByUserInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20047,7 +20170,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutCreatedByUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20058,17 +20181,17 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
     productSale?: ProductSaleUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCreatedByUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20079,14 +20202,15 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductUpdateWithoutDeletedByUserInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20107,7 +20231,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutDeletedByUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20118,17 +20242,17 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
     productSale?: ProductSaleUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutDeletedByUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20139,14 +20263,15 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductUpdateWithoutUpdatedByUserInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20167,7 +20292,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutUpdatedByUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20178,17 +20303,17 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
     productSale?: ProductSaleUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutUpdatedByUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20199,14 +20324,15 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleUpdateWithoutCreatedByUserInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -20217,27 +20343,28 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedUpdateWithoutCreatedByUserInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     productSale?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateManyWithoutCreatedByUserInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SaleUpdateWithoutDeletedByUserInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -20248,27 +20375,28 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedUpdateWithoutDeletedByUserInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     productSale?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateManyWithoutDeletedByUserInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SaleUpdateWithoutUpdatedByUserInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -20279,129 +20407,133 @@ export namespace Prisma {
   }
 
   export type SaleUncheckedUpdateWithoutUpdatedByUserInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     productSale?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
   export type SaleUncheckedUpdateManyWithoutUpdatedByUserInput = {
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PurchaseUpdateWithoutCreatedByUserInput = {
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     deletedByUser?: UserUpdateOneWithoutDeletedPurchasesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedPurchasesNestedInput
     productPurchase?: ProductPurchaseUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateWithoutCreatedByUserInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateManyWithoutCreatedByUserInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type PurchaseUpdateWithoutDeletedByUserInput = {
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     createdByUser?: UserUpdateOneWithoutCreatedPurchasesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedPurchasesNestedInput
     productPurchase?: ProductPurchaseUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateWithoutDeletedByUserInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateManyWithoutDeletedByUserInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type PurchaseUpdateWithoutUpdatedByUserInput = {
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     createdByUser?: UserUpdateOneWithoutCreatedPurchasesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedPurchasesNestedInput
     productPurchase?: ProductPurchaseUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateWithoutUpdatedByUserInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateManyWithoutUpdatedByUserInput = {
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUpdateWithoutCreatedByUserInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20415,34 +20547,35 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateWithoutCreatedByUserInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUncheckedUpdateManyWithoutCreatedByUserInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUpdateWithoutDeletedByUserInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20456,34 +20589,35 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateWithoutDeletedByUserInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUncheckedUpdateManyWithoutDeletedByUserInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUpdateWithoutUpdatedByUserInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20497,34 +20631,35 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateWithoutUpdatedByUserInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUncheckedUpdateManyWithoutUpdatedByUserInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUpdateWithoutCreatedByUserInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20538,34 +20673,35 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateWithoutCreatedByUserInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUncheckedUpdateManyWithoutCreatedByUserInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUpdateWithoutDeletedByUserInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20579,34 +20715,35 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateWithoutDeletedByUserInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUncheckedUpdateManyWithoutDeletedByUserInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUpdateWithoutUpdatedByUserInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20620,34 +20757,35 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateWithoutUpdatedByUserInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUncheckedUpdateManyWithoutUpdatedByUserInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
-    saleId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductUpdateWithoutUserInput = {
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20668,7 +20806,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20679,9 +20817,9 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     productPurchase?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
@@ -20689,7 +20827,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateManyWithoutUserInput = {
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -20700,33 +20838,40 @@ export namespace Prisma {
     costPrice?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserCreateManyRoleInput = {
-    userId?: number
-    name: string
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
     email: string
     password: string
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
     isDeleted?: boolean
   }
 
   export type UserUpdateWithoutRoleInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
@@ -20750,14 +20895,17 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
@@ -20781,46 +20929,50 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductPurchaseCreateManyProductInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    purchaseId: number
+    purchaseId: string
   }
 
   export type ProductSaleCreateManyProductInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    saleId: number
+    saleId: string
   }
 
   export type ProductPurchaseUpdateWithoutProductInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20834,34 +20986,35 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateWithoutProductInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUncheckedUpdateManyWithoutProductInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    purchaseId?: IntFieldUpdateOperationsInput | number
+    purchaseId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUpdateWithoutProductInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20875,48 +21028,49 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateWithoutProductInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUncheckedUpdateManyWithoutProductInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    saleId?: IntFieldUpdateOperationsInput | number
+    saleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleCreateManySaleInput = {
-    productSaleId?: number
+    productSaleId?: string
     salePrice: number
     saleQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type ProductSaleUpdateWithoutSaleInput = {
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20930,48 +21084,49 @@ export namespace Prisma {
   }
 
   export type ProductSaleUncheckedUpdateWithoutSaleInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSaleUncheckedUpdateManyWithoutSaleInput = {
-    productSaleId?: IntFieldUpdateOperationsInput | number
+    productSaleId?: StringFieldUpdateOperationsInput | string
     salePrice?: FloatFieldUpdateOperationsInput | number
     saleQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseCreateManyPurchaseInput = {
-    productPurchaseId?: number
+    productPurchaseId?: string
     purchasePrice: number
     purchaseQuantity: number
     createdAt?: Date | string
     deletedAt?: Date | string | null
-    createdBy?: number | null
-    deletedBy?: number | null
-    updatedBy?: number | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
-    productId: number
+    productId: string
   }
 
   export type ProductPurchaseUpdateWithoutPurchaseInput = {
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20985,31 +21140,31 @@ export namespace Prisma {
   }
 
   export type ProductPurchaseUncheckedUpdateWithoutPurchaseInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductPurchaseUncheckedUpdateManyWithoutPurchaseInput = {
-    productPurchaseId?: IntFieldUpdateOperationsInput | number
+    productPurchaseId?: StringFieldUpdateOperationsInput | string
     purchasePrice?: FloatFieldUpdateOperationsInput | number
     purchaseQuantity?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
-    deletedBy?: NullableIntFieldUpdateOperationsInput | number | null
-    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    productId?: IntFieldUpdateOperationsInput | number
+    productId?: StringFieldUpdateOperationsInput | string
   }
 
 
