@@ -14,6 +14,7 @@ const adminMiddleware = require("../middleware/adminMiddleware");
 const {
 	createUserValidation,
 	updateUserValidation,
+	userIdValidation,
 } = require("../validators/user.validation");
 const { validationMiddleware } = require("../middleware/validationMiddleware");
 router.post(
@@ -28,11 +29,24 @@ router.post("/login", loginUser);
 router.post("/register", createUserValidation, validationMiddleware, register);
 
 router.get("/", authMiddleware, getAllUsers);
-router.get("/:id", authMiddleware, getOneUser);
-router.delete("/:id", authMiddleware, deleteUser);
+router.get(
+	"/:id",
+	authMiddleware,
+	userIdValidation,
+	validationMiddleware,
+	getOneUser
+);
+router.delete(
+	"/:id",
+	authMiddleware,
+	userIdValidation,
+	validationMiddleware,
+	deleteUser
+);
 router.put(
 	"/:id",
 	authMiddleware,
+	userIdValidation,
 	updateUserValidation,
 	validationMiddleware,
 	updateUser
