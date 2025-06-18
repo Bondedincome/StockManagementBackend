@@ -24,20 +24,15 @@ const getAllUsers = async (req, res) => {
 
 // Get a user by ID
 const getOneUser = async (req, res) => {
-	const { id } = req.params;
-
 	try {
+		const { id } = req.params;
 		const user = await getOneUserService(id);
-
 		if (!user) {
-			return res.status(404).json({ error: "User not found" });
+			return res.status(404).json({ message: "User not found" });
 		}
-
 		res.json(user);
 	} catch (error) {
-		res
-			.status(500)
-			.json({ error: "Failed to fetch user", detail: error.message });
+		res.status(500).json({ error: "Failed to fetch user" });
 	}
 };
 
