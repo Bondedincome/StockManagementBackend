@@ -1,0 +1,176 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId                  Int               @id @default(autoincrement())
+  name                    String
+  email                   String            @unique
+  password                String
+  createdAt               DateTime          @default(now())
+  deletedAt               DateTime?
+  createdBy               Int?
+  deletedBy               Int?
+  isDeleted               Boolean           @default(false)
+  createdRoles            Role[]            @relation("RoleCreatedBy")
+  deletedRoles            Role[]            @relation("RoleDeletedBy")
+  updatedRoles            Role[]            @relation("RoleUpdatedBy")
+  createdProducts         Product[]         @relation("ProductCreatedBy")
+  deletedProducts         Product[]         @relation("ProductDeletedBy")
+  updatedProducts         Product[]         @relation("ProductUpdatedBy")
+  createdSales            Sale[]            @relation("SaleCreatedBy")
+  deletedSales            Sale[]            @relation("SaleDeletedBy")
+  updatedSales            Sale[]            @relation("SaleUpdatedBy")
+  createdPurchases        Purchase[]        @relation("PurchaseCreatedBy")
+  deletedPurchases        Purchase[]        @relation("PurchaseDeletedBy")
+  updatedPurchases        Purchase[]        @relation("PurchaseUpdatedBy")
+  createdProductPurchases ProductPurchase[] @relation("ProductPurchaseCreatedBy")
+  deletedProductPurchases ProductPurchase[] @relation("ProductPurchaseDeletedBy")
+  updatedProductPurchases ProductPurchase[] @relation("ProductPurchaseUpdatedBy")
+  createdProductSales     ProductSale[]     @relation("ProductSaleCreatedBy")
+  deletedProductSales     ProductSale[]     @relation("ProductSaleDeletedBy")
+  updatedProductSales     ProductSale[]     @relation("ProductSaleUpdatedBy")
+
+  roleId        Int
+  role          Role      @relation(fields: [roleId], references: [roleId])
+  ownedProducts Product[]
+
+  @@map("users")
+}
+
+model Role {
+  roleId        Int       @id @default(autoincrement())
+  roleType      String    @unique
+  createdAt     DateTime  @default(now())
+  deletedAt     DateTime?
+  createdBy     Int?
+  deletedBy     Int?
+  updatedBy     Int?
+  updatedAt     DateTime?
+  createdByUser User?     @relation("RoleCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser User?     @relation("RoleDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser User?     @relation("RoleUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted     Boolean   @default(false)
+  users         User[]
+
+  @@map("roles")
+}
+
+model Product {
+  productId       Int               @id @default(autoincrement())
+  imageUrl        String
+  description     String
+  category        String
+  expiryDate      DateTime?
+  productionDate  DateTime?
+  quantity        Int
+  price           Float
+  costPrice       Float
+  createdAt       DateTime          @default(now())
+  deletedAt       DateTime?
+  createdBy       Int?
+  deletedBy       Int?
+  updatedBy       Int?
+  updatedAt       DateTime?
+  createdByUser   User?             @relation("ProductCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser   User?             @relation("ProductDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser   User?             @relation("ProductUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted       Boolean           @default(false)
+  userId          Int
+  user            User              @relation(fields: [userId], references: [userId])
+  productPurchase ProductPurchase[]
+  productSale     ProductSale[]
+
+  @@map("products")
+}
+
+model Sale {
+  saleId        Int           @id @default(autoincrement())
+  createdAt     DateTime      @default(now())
+  deletedAt     DateTime?
+  createdBy     Int?
+  deletedBy     Int?
+  updatedBy     Int?
+  updatedAt     DateTime?
+  createdByUser User?         @relation("SaleCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser User?         @relation("SaleDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser User?         @relation("SaleUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted     Boolean       @default(false)
+  productSale   ProductSale[]
+
+  @@map("sales")
+}
+
+model Purchase {
+  purchaseId      Int               @id @default(autoincrement())
+  createdAt       DateTime          @default(now())
+  deletedAt       DateTime?
+  createdBy       Int?
+  deletedBy       Int?
+  updatedBy       Int?
+  updatedAt       DateTime?
+  createdByUser   User?             @relation("PurchaseCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser   User?             @relation("PurchaseDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser   User?             @relation("PurchaseUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted       Boolean           @default(false)
+  productId       Int
+  productPurchase ProductPurchase[]
+
+  @@map("purchases")
+}
+
+model ProductPurchase {
+  productPurchaseId Int       @id @default(autoincrement())
+  purchasePrice     Float
+  purchaseQuantity  Int
+  createdAt         DateTime  @default(now())
+  deletedAt         DateTime?
+  createdBy         Int?
+  deletedBy         Int?
+  updatedBy         Int?
+  updatedAt         DateTime?
+  createdByUser     User?     @relation("ProductPurchaseCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser     User?     @relation("ProductPurchaseDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser     User?     @relation("ProductPurchaseUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted         Boolean   @default(false)
+  productId         Int
+  purchaseId        Int
+  product           Product   @relation(fields: [productId], references: [productId])
+  purchase          Purchase  @relation(fields: [purchaseId], references: [purchaseId])
+
+  @@map("productPurchases")
+}
+
+model ProductSale {
+  productSaleId Int       @id @default(autoincrement())
+  salePrice     Float
+  saleQuantity  Int
+  createdAt     DateTime  @default(now())
+  deletedAt     DateTime?
+  createdBy     Int?
+  deletedBy     Int?
+  updatedBy     Int?
+  updatedAt     DateTime?
+  createdByUser User?     @relation("ProductSaleCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser User?     @relation("ProductSaleDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser User?     @relation("ProductSaleUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted     Boolean   @default(false)
+  productId     Int
+  saleId        Int
+  product       Product   @relation(fields: [productId], references: [productId])
+  sale          Sale      @relation(fields: [saleId], references: [saleId])
+
+  @@map("productSales")
+}
