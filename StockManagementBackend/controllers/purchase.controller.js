@@ -5,6 +5,7 @@ const {
 	createPurchaseService,
 	updatePurchaseService,
 	deletePurchaseService,
+	getPaginatedPurchasesService,
 } = require("../services/purchase.service");
 
 // Get all purchases
@@ -34,15 +35,14 @@ const getOnePurchase = async (req, res) => {
 
 // Create a new purchase
 const createPurchase = async (req, res) => {
-	const { purchaseId, userId, productId, quantity, price } = req.body;
+	const { userId, productId, quantity, price } = req.body;
 	try {
 		const newPurchase = await createPurchaseService({
-			purchaseId,
 			userId,
 			productId,
 			quantity,
 			price,
-			createdBy: 1,
+			createdBy: req.authUser?.userId || null,
 		});
 		res.status(201).json(newPurchase);
 	} catch (error) {
@@ -55,15 +55,14 @@ const createPurchase = async (req, res) => {
 // Update an existing purchase
 const updatePurchase = async (req, res) => {
 	const { id } = req.params;
-	const { purchaseId, userId, productId, quantity, price } = req.body;
+	const { userId, productId, quantity, price } = req.body;
 	try {
 		const updatedPurchase = await updatePurchaseService(id, {
-			purchaseId,
 			userId,
 			productId,
 			quantity,
 			price,
-			updatedBy: 1,
+			updatedBy: req.authUser?.userId || null,
 		});
 		res.json(updatedPurchase);
 	} catch (error) {
@@ -76,7 +75,10 @@ const updatePurchase = async (req, res) => {
 const deletePurchase = async (req, res) => {
 	const { id } = req.params;
 	try {
-		const deletedPurchase = await deletePurchaseService(id);
+		const deletedPurchase = await deletePurchaseService(
+			id,
+			req.authUser?.userId || null
+		);
 		res.json(deletedPurchase);
 	} catch (error) {
 		res
@@ -85,8 +87,21 @@ const deletePurchase = async (req, res) => {
 	}
 };
 
+// Get paginated purchases
+const getPaginatedPurchases = async (req, res) => {
+	const page = parseInt(req.query.page) || 1;
+	const limit = parseInt(req.query.limit) || 10;
+	try {
+		const result = await getPaginatedPurchasesService(page, limit);
+		res.json(result);
+	} catch (error) {
+		res.status(500).json({ error: "Failed to fetch paginated purchases" });
+	}
+};
+
 module.exports = {
 	getAllPurchases,
+	getPaginatedPurchases,
 	getOnePurchase,
 	createPurchase,
 	updatePurchase,

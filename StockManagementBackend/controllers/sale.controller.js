@@ -5,6 +5,7 @@ const {
 	createSaleService,
 	updateSaleService,
 	deleteSaleService,
+	getPaginatedSalesService,
 } = require("../services/sale.service");
 
 // Get all sales
@@ -90,8 +91,21 @@ const updateSale = async (req, res) => {
 	}
 };
 
+// Get paginated sales
+const getPaginatedSales = async (req, res) => {
+	const page = parseInt(req.query.page) || 1;
+	const limit = parseInt(req.query.limit) || 10;
+	try {
+		const result = await getPaginatedSalesService(page, limit);
+		res.json(result);
+	} catch (error) {
+		res.status(500).json({ error: "Failed to fetch paginated sales" });
+	}
+};
+
 module.exports = {
 	getAllSales,
+	getPaginatedSales,
 	getOneSale,
 	updateSale,
 	createSale,

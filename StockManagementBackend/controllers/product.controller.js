@@ -5,6 +5,7 @@ const {
 	createProductService,
 	updateProductService,
 	deleteProductService,
+	getPaginatedProductsService,
 } = require("../services/product.service");
 
 // Get all purchases
@@ -113,8 +114,21 @@ const deleteProduct = async (req, res) => {
 	}
 };
 
+// Get paginated products
+const getPaginatedProducts = async (req, res) => {
+	const page = parseInt(req.query.page) || 1;
+	const limit = parseInt(req.query.limit) || 10;
+	try {
+		const result = await getPaginatedProductsService(page, limit);
+		res.json(result);
+	} catch (error) {
+		res.status(500).json({ error: "Failed to fetch paginated products" });
+	}
+};
+
 module.exports = {
 	getAllProduct,
+	getPaginatedProducts,
 	createProduct,
 	deleteProduct,
 	getOneProduct,

@@ -32,16 +32,33 @@ const getOneUser = async (req, res) => {
 		}
 		res.json(user);
 	} catch (error) {
+		// console.log(error)
 		res.status(500).json({ error: "Failed to fetch user" });
 	}
 };
 
 // Create a new user
 const createUser = async (req, res) => {
-	const { name, email, password, roleId } = req.body;
+	const {
+		firstName,
+		surName,
+		lastName,
+		profilePictureUrl,
+		email,
+		password,
+		roleId,
+	} = req.body;
 
 	try {
-		const newUser = await createUserService({ name, email, password, roleId });
+		const newUser = await createUserService({
+			firstName,
+			surName,
+			lastName,
+			profilePictureUrl,
+			email,
+			password,
+			roleId,
+		});
 		res.status(201).json(newUser);
 	} catch (error) {
 		res
@@ -53,11 +70,22 @@ const createUser = async (req, res) => {
 // Update a user
 const updateUser = async (req, res) => {
 	const { id } = req.params;
-	const { name, email, password, roleId } = req.body;
+	const {
+		firstName,
+		surName,
+		lastName,
+		profilePictureUrl,
+		email,
+		password,
+		roleId,
+	} = req.body;
 
 	try {
 		const updatedUser = await updateUserService(id, {
-			name,
+			firstName,
+			surName,
+			lastName,
+			profilePictureUrl,
 			email,
 			password,
 			roleId,
@@ -76,7 +104,6 @@ const deleteUser = async (req, res) => {
 
 	try {
 		const deletedUser = await deleteUserService(id);
-
 		res.json({ message: "User soft-deleted", deletedUser });
 	} catch (error) {
 		res
@@ -106,9 +133,25 @@ const loginUser = async (req, res) => {
 
 // Register a new user (public)
 const register = async (req, res) => {
-	const { name, email, password, roleId } = req.body;
+	const {
+		firstName,
+		surName,
+		lastName,
+		profilePictureUrl,
+		email,
+		password,
+		roleId,
+	} = req.body;
 	try {
-		const newUser = await createUserService({ name, email, password, roleId });
+		const newUser = await createUserService({
+			firstName,
+			surName,
+			lastName,
+			profilePictureUrl,
+			email,
+			password,
+			roleId,
+		});
 		res.status(201).json(newUser);
 	} catch (error) {
 		res
@@ -119,9 +162,15 @@ const register = async (req, res) => {
 
 // Generate token for user
 const generateToken = (user) => {
-	return jwt.sign({ userId: user.userId, roleId: user.roleId }, SECRET, {
-		expiresIn: "1minutes",
-	});
+	return jwt.sign(
+		{
+			userId: user.userId,
+			roleId: user.roleId,
+			isAdmin: user.role?.isAdmin,
+		},
+		SECRET,
+		{ expiresIn: "1d" }
+	);
 };
 
 module.exports = {
