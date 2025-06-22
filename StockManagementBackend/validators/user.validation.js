@@ -1,25 +1,7 @@
-const { body, query, param } = require("express-validator");
+const { body, param } = require("express-validator");
 
 const uuidRegex =
 	/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-const FullName = body("name").isString().withMessage("Name is required.");
-const Email = body("email")
-	.isEmail()
-	.withMessage("Valid email is required.")
-	.normalizeEmail();
-const Password = body("password")
-	.isLength({ min: 6, max: 20 })
-	.withMessage("Password must be at least 6 characters long.");
-
-const createUserValidation = [FullName, Email, Password];
-
-const updateUserValidation = [
-	param("id").isInt().withMessage("User ID must be an integer."),
-	FullName,
-	Email,
-	Password,
-];
 
 const userIdValidation = [
 	param("id")
@@ -33,12 +15,36 @@ const userIdValidation = [
 		.withMessage("User ID must be a valid UUID"),
 ];
 
+const createUserValidation = [
+	body("firstName")
+		.isString()
+		.notEmpty()
+		.withMessage("First name is required."),
+	body("lastName").isString().notEmpty().withMessage("Last name is required."),
+	body("surName").optional().isString(),
+	body("profilePictureUrl").optional().isString(),
+	body("email")
+		.isEmail()
+		.withMessage("Valid email is required.")
+		.normalizeEmail(),
+	body("password")
+		.isLength({ min: 6, max: 20 })
+		.withMessage("Password must be 6-20 characters."),
+	body("roleId").isString().notEmpty().withMessage("Role ID is required."),
+];
+
+const updateUserValidation = [
+	body("firstName").optional().isString(),
+	body("lastName").optional().isString(),
+	body("surName").optional().isString(),
+	body("profilePictureUrl").optional().isString(),
+	body("email").optional().isEmail().normalizeEmail(),
+	body("password").optional().isLength({ min: 6, max: 20 }),
+	body("roleId").optional().isString(),
+];
+
 module.exports = {
+	userIdValidation,
 	createUserValidation,
 	updateUserValidation,
-	userIdValidation,
 };
-
-// name
-// email
-// password
