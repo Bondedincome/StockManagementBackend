@@ -15,11 +15,22 @@ const getOneUserService = async (userId) => {
 	});
 };
 
-const createUserService = async ({ name, email, password, roleId }) => {
+const createUserService = async ({
+	firstName,
+	surName,
+	lastName,
+	profilePictureUrl,
+	email,
+	password,
+	roleId,
+}) => {
 	const hashedPassword = await bcrypt.hash(password, 10);
 	return await prisma.user.create({
 		data: {
-			name,
+			firstName,
+			surName,
+			lastName,
+			profilePictureUrl,
 			email,
 			password: hashedPassword,
 			roleId,
@@ -27,24 +38,27 @@ const createUserService = async ({ name, email, password, roleId }) => {
 	});
 };
 
-const updateUserService = async (id, { name, email, password, roleId }) => {
-	let data = { name, email, roleId };
+const updateUserService = async (
+	id,
+	{ firstName, surName, lastName, profilePictureUrl, email, password, roleId }
+) => {
+	let data = { firstName, surName, lastName, profilePictureUrl, email, roleId };
 	if (password) {
 		data.password = await bcrypt.hash(password, 10);
 	}
 	return await prisma.user.update({
-		where: { userId: parseInt(id) },
+		where: { userId: id },
 		data,
 	});
 };
 
 const deleteUserService = async (id) => {
 	return await prisma.user.update({
-		where: { userId: parseInt(id) },
+		where: { userId: id },
 		data: {
 			isDeleted: true,
 			deletedAt: new Date(),
-			deletedBy: 1,
+			deletedBy: null,
 		},
 	});
 };

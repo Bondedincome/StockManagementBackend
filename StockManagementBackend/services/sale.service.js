@@ -36,8 +36,29 @@ const deleteSaleService = async (id) => {
 	});
 };
 
+// Paginated sales
+const getPaginatedSalesService = async (page = 1, limit = 10) => {
+	const skip = (page - 1) * limit;
+	const [data, total] = await Promise.all([
+		prisma.sale.findMany({
+			where: { isDeleted: false },
+			include: { user: true, ownedProducts: true },
+			skip,
+			take: limit,
+		}),
+		prisma.sale.count({ where: { isDeleted: false } }),
+	]);
+	return {
+		data,
+		total,
+		page,
+		totalPages: Math.ceil(total / limit),
+	};
+};
+
 module.exports = {
 	getAllSalesService,
+	getPaginatedSalesService,
 	getOneSaleService,
 	createSaleService,
 	updateSaleService,

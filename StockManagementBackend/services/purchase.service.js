@@ -36,8 +36,29 @@ const deletePurchaseService = async (id) => {
 	});
 };
 
+// Paginated purchases
+const getPaginatedPurchasesService = async (page = 1, limit = 10) => {
+	const skip = (page - 1) * limit;
+	const [data, total] = await Promise.all([
+		prisma.purchase.findMany({
+			where: { isDeleted: false },
+			include: { user: true, ownedProducts: true },
+			skip,
+			take: limit,
+		}),
+		prisma.purchase.count({ where: { isDeleted: false } }),
+	]);
+	return {
+		data,
+		total,
+		page,
+		totalPages: Math.ceil(total / limit),
+	};
+};
+
 module.exports = {
 	getAllPurchasesService,
+	getPaginatedPurchasesService,
 	getOnePurchaseService,
 	createPurchaseService,
 	updatePurchaseService,

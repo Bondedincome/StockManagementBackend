@@ -36,8 +36,29 @@ const deleteProductService = async (id) => {
 	});
 };
 
+// Paginated products
+const getPaginatedProductsService = async (page = 1, limit = 10) => {
+	const skip = (page - 1) * limit;
+	const [data, total] = await Promise.all([
+		prisma.product.findMany({
+			where: { isDeleted: false },
+			include: { user: true },
+			skip,
+			take: limit,
+		}),
+		prisma.product.count({ where: { isDeleted: false } }),
+	]);
+	return {
+		data,
+		total,
+		page,
+		totalPages: Math.ceil(total / limit),
+	};
+};
+
 module.exports = {
 	getAllProductsService,
+	getPaginatedProductsService,
 	getOneProductService,
 	createProductService,
 	updateProductService,

@@ -9,7 +9,7 @@ const getAllRolesService = async () => {
 
 const getOneRoleService = async (id) => {
 	return await prisma.role.findUnique({
-		where: { roleId: parseInt(id) },
+		where: { roleId: id },
 		include: { users: true },
 	});
 };
@@ -20,14 +20,14 @@ const createRoleService = async (data) => {
 
 const updateRoleService = async (id, data) => {
 	return await prisma.role.update({
-		where: { roleId: parseInt(id) },
+		where: { roleId: id },
 		data,
 	});
 };
 
 const deleteRoleService = async (id) => {
 	return await prisma.role.update({
-		where: { roleId: parseInt(id) },
+		where: { roleId: id },
 		data: { isDeleted: true, deletedAt: new Date() },
 	});
 };
