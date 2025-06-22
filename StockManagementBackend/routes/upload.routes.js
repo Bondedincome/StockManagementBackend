@@ -2,15 +2,26 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
-const uploadFileService = require("../services/upload.service");
+const {
+	uploadProfilePicture,
+	uploadProductPicture,
+} = require("../controllers/upload.controller");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.post("/", upload.single("file"), (req, res) => {
-	try {
-		const filePath = uploadFileService(req.file, "public/images");
-		res.json({ success: true, path: filePath });
-	} catch (error) {
-		res.status(400).json({ success: false, message: error.message });
-	}
-});
+// Upload profile picture for a user (by id)
+router.post(
+	"/profile-picture/:id",
+	authMiddleware,
+	upload.single("profilePicture"),
+	uploadProfilePicture
+);
+
+// Upload product picture for a product (by id)
+router.post(
+	"/product-picture/:id",
+	authMiddleware,
+	upload.single("file"),
+	uploadProductPicture
+);
 
 module.exports = router;
