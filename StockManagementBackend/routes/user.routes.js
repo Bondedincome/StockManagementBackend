@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
 const {
 	getAllUsers,
 	getOneUser,
@@ -9,6 +11,7 @@ const {
 	updateUser,
 	register,
 } = require("../controllers/user.controller");
+const setImagePathMiddleware = require("../middleware/setImagePathMiddleware");
 const authMiddleware = require("../middleware/authMiddleware");
 const adminMiddleware = require("../middleware/adminMiddleware");
 const {
@@ -21,6 +24,12 @@ router.post(
 	"/",
 	authMiddleware,
 	adminMiddleware, // Ensure only admins can create users
+	upload.single("profilePicture"),
+	setImagePathMiddleware(
+		"profilePicture",
+		"public/images",
+		"profilePictureUrl"
+	),
 	createUserValidation,
 	validationMiddleware,
 	createUser
