@@ -3,8 +3,8 @@ const router = express.Router();
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 const {
-	uploadProfilePicture,
-	uploadProductPicture,
+	uploadProfilePictureUpdate,
+	uploadProductPictureUpdate,
 } = require("../controllers/upload.controller");
 const authMiddleware = require("../middleware/authMiddleware");
 
@@ -13,7 +13,7 @@ router.post(
 	"/profile-picture/:id",
 	authMiddleware,
 	upload.single("profilePicture"),
-	uploadProfilePicture
+	uploadProfilePictureUpdate
 );
 
 // Upload product picture for a product (by id)
@@ -21,7 +21,7 @@ router.post(
 	"/product-picture/:id",
 	authMiddleware,
 	upload.single("file"),
-	uploadProductPicture
+	uploadProductPictureUpdate
 );
 
 module.exports = router;

@@ -2,7 +2,7 @@ const path = require("path");
 const uploadFileService = require("../services/upload.service");
 const prisma = require("../prisma/client");
 
-const uploadProfilePicture = async (req, res) => {
+const uploadProfilePictureUpdate = async (req, res) => {
 	const id = req.params.id;
 	try {
 		if (!req.file) {
@@ -25,7 +25,7 @@ const uploadProfilePicture = async (req, res) => {
 	}
 };
 
-const uploadProductPicture = async (req, res) => {
+const uploadProductPictureUpdate = async (req, res) => {
 	const { id } = req.params.id;
 	try {
 		if (!req.file) {
@@ -49,6 +49,6 @@ const uploadProductPicture = async (req, res) => {
 };
 
 module.exports = {
-	uploadProfilePicture,
-	uploadProductPicture,
+	uploadProfilePictureUpdate,
+	uploadProductPictureUpdate,
 };
