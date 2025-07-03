@@ -19,9 +19,25 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: "#/components/schemas/UserInput"
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                surName:
+                  type: string
+                profilePicture:
+                  type: string
+                  format: binary
+                email:
+                  type: string
+                password:
+                  type: string
+                roleId:
+                  type: string
       responses:
         "201":
           description: User created
@@ -186,7 +202,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -198,6 +214,9 @@ paths:
                   type: number
                 quantity:
                   type: integer
+                file:
+                  type: string
+                  format: binary
       responses:
         "201":
           description: Product created
@@ -506,8 +525,31 @@ paths:
       responses:
         "200":
           description: Customer deleted
+  /api/products/paginated:
+    get:
+      summary: Get paginated products
+      tags: [Products]
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Items per page
+      responses:
+        "200":
+          description: Paginated product list
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     UserInput:
       type: object
