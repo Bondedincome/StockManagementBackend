@@ -35,10 +35,11 @@ const getOneCustomer = async (req, res) => {
 
 // Create a new customer
 const createCustomer = async (req, res) => {
-	const { name, email, phone } = req.body;
+	const { firstName, lastName, email, phone } = req.body;
 	try {
 		const newCustomer = await createCustomerService({
-			name,
+			firstName,
+			lastName,
 			email,
 			phone,
 			userId: req.authUser.userId, // Use req.authUser set by authMiddleware
@@ -52,10 +53,11 @@ const createCustomer = async (req, res) => {
 // Update an existing customer
 const updateCustomer = async (req, res) => {
 	const { id } = req.params;
-	const { name, email, phone } = req.body;
+	const { firstName, lastName, email, phone  } = req.body;
 	try {
 		const updatedCustomer = await updateCustomerService(id, {
-			name,
+			firstName,
+			lastName,
 			email,
 			phone,
 			updatedBy: req.authUser.userId, // Use req.authUser set by authMiddleware
