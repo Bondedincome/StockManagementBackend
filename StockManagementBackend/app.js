@@ -61,6 +61,7 @@ const corsOptions = {
 	credentials: false, //access-control-allow-credentials:true else false
 	optionSuccessStatus: 200,
 };
+app.use(cors(corsOptions));
 
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load(path.join(__dirname, "swagger.yaml"));
@@ -68,7 +69,6 @@ const swaggerDocument = YAML.load(path.join(__dirname, "swagger.yaml"));
 // const swaggerDocs = swaggerJsDocS(swaggerOptions);
 app.use(
 	"/api-docs",
-	cors(corsOptions),
 	swaggerUi.serve,
 	swaggerUi.setup(swaggerDocument)
 );
