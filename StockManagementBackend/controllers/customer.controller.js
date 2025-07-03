@@ -1,4 +1,4 @@
-const prisma = require("../prisma/client");
+// const prisma = require("../prisma/client");
 
 const {
 	getAllCustomersService,
@@ -41,7 +41,7 @@ const createCustomer = async (req, res) => {
 			name,
 			email,
 			phone,
-			userId: req.user.userId, // Assuming req.user is set by authentication middleware
+			userId: req.authUser.userId, // Use req.authUser set by authMiddleware
 		});
 		res.status(201).json(newCustomer);
 	} catch (error) {
@@ -58,7 +58,7 @@ const updateCustomer = async (req, res) => {
 			name,
 			email,
 			phone,
-			updatedBy: req.user.userId, // Assuming req.user is set by authentication middleware
+			updatedBy: req.authUser.userId, // Use req.authUser set by authMiddleware
 		});
 		res.json(updatedCustomer);
 	} catch (error) {
