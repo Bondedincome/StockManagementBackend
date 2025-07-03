@@ -4,7 +4,8 @@ info:
   version: 1.0.0
   description: API documentation for Stock Management System
 servers:
-  - url: http://localhost:3000
+  # - url: http://localhost:3000
+  - url: http://stockmanagementbackend.onrender.com
 paths:
   /api/users:
     get:
