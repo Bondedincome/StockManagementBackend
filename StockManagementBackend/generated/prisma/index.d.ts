@@ -5155,7 +5155,7 @@ export namespace Prisma {
   export type ProductGroupByOutputType = {
     productId: string
     name: string
-    imageUrl: string
+    imageUrl: string | null
     description: string
     category: string
     expiryDate: Date | null
@@ -5327,7 +5327,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       productId: string
       name: string
-      imageUrl: string
+      imageUrl: string | null
       description: string
       category: string
       expiryDate: Date | null
@@ -13028,7 +13028,7 @@ export namespace Prisma {
     NOT?: ProductWhereInput | ProductWhereInput[]
     productId?: StringFilter<"Product"> | string
     name?: StringFilter<"Product"> | string
-    imageUrl?: StringFilter<"Product"> | string
+    imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
     expiryDate?: DateTimeNullableFilter<"Product"> | Date | string | null
@@ -13055,7 +13055,7 @@ export namespace Prisma {
   export type ProductOrderByWithRelationInput = {
     productId?: SortOrder
     name?: SortOrder
-    imageUrl?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     description?: SortOrder
     category?: SortOrder
     expiryDate?: SortOrderInput | SortOrder
@@ -13085,7 +13085,7 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     name?: StringFilter<"Product"> | string
-    imageUrl?: StringFilter<"Product"> | string
+    imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
     expiryDate?: DateTimeNullableFilter<"Product"> | Date | string | null
@@ -13112,7 +13112,7 @@ export namespace Prisma {
   export type ProductOrderByWithAggregationInput = {
     productId?: SortOrder
     name?: SortOrder
-    imageUrl?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     description?: SortOrder
     category?: SortOrder
     expiryDate?: SortOrderInput | SortOrder
@@ -13141,7 +13141,7 @@ export namespace Prisma {
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     productId?: StringWithAggregatesFilter<"Product"> | string
     name?: StringWithAggregatesFilter<"Product"> | string
-    imageUrl?: StringWithAggregatesFilter<"Product"> | string
+    imageUrl?: StringNullableWithAggregatesFilter<"Product"> | string | null
     description?: StringWithAggregatesFilter<"Product"> | string
     category?: StringWithAggregatesFilter<"Product"> | string
     expiryDate?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
@@ -13932,7 +13932,7 @@ export namespace Prisma {
   export type ProductCreateInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -13955,7 +13955,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -13978,7 +13978,7 @@ export namespace Prisma {
   export type ProductUpdateInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14001,7 +14001,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14024,7 +14024,7 @@ export namespace Prisma {
   export type ProductCreateManyInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -14045,7 +14045,7 @@ export namespace Prisma {
   export type ProductUpdateManyMutationInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14062,7 +14062,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateManyInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17185,7 +17185,7 @@ export namespace Prisma {
   export type ProductCreateWithoutCreatedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17207,7 +17207,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateWithoutCreatedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17239,7 +17239,7 @@ export namespace Prisma {
   export type ProductCreateWithoutDeletedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17261,7 +17261,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateWithoutDeletedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17293,7 +17293,7 @@ export namespace Prisma {
   export type ProductCreateWithoutUpdatedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17315,7 +17315,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateWithoutUpdatedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17924,7 +17924,7 @@ export namespace Prisma {
   export type ProductCreateWithoutUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -17946,7 +17946,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateWithoutUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -18101,7 +18101,7 @@ export namespace Prisma {
     NOT?: ProductScalarWhereInput | ProductScalarWhereInput[]
     productId?: StringFilter<"Product"> | string
     name?: StringFilter<"Product"> | string
-    imageUrl?: StringFilter<"Product"> | string
+    imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
     expiryDate?: DateTimeNullableFilter<"Product"> | Date | string | null
@@ -21311,7 +21311,7 @@ export namespace Prisma {
   export type ProductCreateWithoutProductPurchaseInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -21333,7 +21333,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateWithoutProductPurchaseInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -21661,7 +21661,7 @@ export namespace Prisma {
   export type ProductUpdateWithoutProductPurchaseInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -21683,7 +21683,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateWithoutProductPurchaseInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -21983,7 +21983,7 @@ export namespace Prisma {
   export type ProductCreateWithoutProductSaleInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -22005,7 +22005,7 @@ export namespace Prisma {
   export type ProductUncheckedCreateWithoutProductSaleInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -22331,7 +22331,7 @@ export namespace Prisma {
   export type ProductUpdateWithoutProductSaleInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22353,7 +22353,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateWithoutProductSaleInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23116,7 +23116,7 @@ export namespace Prisma {
   export type ProductCreateManyCreatedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -23136,7 +23136,7 @@ export namespace Prisma {
   export type ProductCreateManyDeletedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -23156,7 +23156,7 @@ export namespace Prisma {
   export type ProductCreateManyUpdatedByUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -23368,7 +23368,7 @@ export namespace Prisma {
   export type ProductCreateManyUserInput = {
     productId?: string
     name: string
-    imageUrl: string
+    imageUrl?: string | null
     description: string
     category: string
     expiryDate?: Date | string | null
@@ -23517,7 +23517,7 @@ export namespace Prisma {
   export type ProductUpdateWithoutCreatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23539,7 +23539,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateWithoutCreatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23561,7 +23561,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateManyWithoutCreatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23581,7 +23581,7 @@ export namespace Prisma {
   export type ProductUpdateWithoutDeletedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23603,7 +23603,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateWithoutDeletedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23625,7 +23625,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateManyWithoutDeletedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23645,7 +23645,7 @@ export namespace Prisma {
   export type ProductUpdateWithoutUpdatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23667,7 +23667,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateWithoutUpdatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23689,7 +23689,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateManyWithoutUpdatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -24297,7 +24297,7 @@ export namespace Prisma {
   export type ProductUpdateWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -24319,7 +24319,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -24341,7 +24341,7 @@ export namespace Prisma {
   export type ProductUncheckedUpdateManyWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
