@@ -104,9 +104,14 @@ const updateProduct = async (req, res) => {
 // Soft-delete a product
 const deleteProduct = async (req, res) => {
 	const { id } = req.params;
+	// const { isDeleted, deletedAt, deletedBy } = req.body;
 
 	try {
-		const deletedProduct = await deleteProductService(id);
+		const deletedProduct = await deleteProductService(id, {
+			isDeleted: true,
+			deletedAt: new Date(),
+			deletedBy: req.authUser.userId, // Use req.authUser set by authMiddleware
+		});
 		res.json({ message: "Product soft-deleted", deletedProduct });
 	} catch (error) {
 		console.error("Soft delete error:", error);

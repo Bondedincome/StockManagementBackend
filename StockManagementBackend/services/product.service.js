@@ -9,7 +9,7 @@ const getAllProductsService = async () => {
 
 const getOneProductService = async (id) => {
 	return await prisma.product.findUnique({
-		where: { productId: parseInt(id) },
+		where: { productId: id },
 		include: { user: true },
 	});
 };
@@ -20,19 +20,15 @@ const createProductService = async (data) => {
 
 const updateProductService = async (id, data) => {
 	return await prisma.product.update({
-		where: { productId: parseInt(id) },
+		where: { productId: id },
 		data,
 	});
 };
 
-const deleteProductService = async (id) => {
+const deleteProductService = async (id, data) => {
 	return await prisma.product.update({
-		where: { productId: parseInt(id) },
-		data: {
-			isDeleted: true,
-			deletedAt: new Date(),
-			deletedBy: 1,
-		},
+		where: { productId: id },
+		data,
 	});
 };
 
