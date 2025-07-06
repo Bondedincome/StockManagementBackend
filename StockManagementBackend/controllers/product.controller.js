@@ -35,6 +35,7 @@ const getOneProduct = async (req, res) => {
 const createProduct = async (req, res) => {
 	const {
 		userId,
+		name,
 		description,
 		imageUrl,
 		category,
@@ -46,7 +47,8 @@ const createProduct = async (req, res) => {
 	} = req.body;
 	try {
 		const newProduct = await createProductService({
-			userId,
+			userId: req.authUser.userId, // Use req.authUser set by authMiddleware
+			name,
 			description,
 			imageUrl,
 			category,
@@ -81,7 +83,7 @@ const updateProduct = async (req, res) => {
 
 	try {
 		const updatedProduct = await updateProductService(id, {
-			userId,
+			userId: req.authUser.userId,
 			description,
 			imageUrl,
 			category,

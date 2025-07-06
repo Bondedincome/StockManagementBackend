@@ -1,6 +1,7 @@
 const { body } = require("express-validator");
 
 const createProductValidation = [
+	body("name").isString().notEmpty(),
 	body("userId").isString().notEmpty(),
 	body("description").isString().notEmpty(),
 	body("imageUrl").optional().isString(),
