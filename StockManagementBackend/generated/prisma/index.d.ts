@@ -4927,6 +4927,7 @@ export namespace Prisma {
 
   export type ProductMinAggregateOutputType = {
     productId: string | null
+    name: string | null
     imageUrl: string | null
     description: string | null
     category: string | null
@@ -4947,6 +4948,7 @@ export namespace Prisma {
 
   export type ProductMaxAggregateOutputType = {
     productId: string | null
+    name: string | null
     imageUrl: string | null
     description: string | null
     category: string | null
@@ -4967,6 +4969,7 @@ export namespace Prisma {
 
   export type ProductCountAggregateOutputType = {
     productId: number
+    name: number
     imageUrl: number
     description: number
     category: number
@@ -5001,6 +5004,7 @@ export namespace Prisma {
 
   export type ProductMinAggregateInputType = {
     productId?: true
+    name?: true
     imageUrl?: true
     description?: true
     category?: true
@@ -5021,6 +5025,7 @@ export namespace Prisma {
 
   export type ProductMaxAggregateInputType = {
     productId?: true
+    name?: true
     imageUrl?: true
     description?: true
     category?: true
@@ -5041,6 +5046,7 @@ export namespace Prisma {
 
   export type ProductCountAggregateInputType = {
     productId?: true
+    name?: true
     imageUrl?: true
     description?: true
     category?: true
@@ -5148,6 +5154,7 @@ export namespace Prisma {
 
   export type ProductGroupByOutputType = {
     productId: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -5187,6 +5194,7 @@ export namespace Prisma {
 
   export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     productId?: boolean
+    name?: boolean
     imageUrl?: boolean
     description?: boolean
     category?: boolean
@@ -5214,6 +5222,7 @@ export namespace Prisma {
 
   export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     productId?: boolean
+    name?: boolean
     imageUrl?: boolean
     description?: boolean
     category?: boolean
@@ -5238,6 +5247,7 @@ export namespace Prisma {
 
   export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     productId?: boolean
+    name?: boolean
     imageUrl?: boolean
     description?: boolean
     category?: boolean
@@ -5262,6 +5272,7 @@ export namespace Prisma {
 
   export type ProductSelectScalar = {
     productId?: boolean
+    name?: boolean
     imageUrl?: boolean
     description?: boolean
     category?: boolean
@@ -5280,7 +5291,7 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"productId" | "imageUrl" | "description" | "category" | "expiryDate" | "productionDate" | "quantity" | "price" | "costPrice" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted" | "userId", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"productId" | "name" | "imageUrl" | "description" | "category" | "expiryDate" | "productionDate" | "quantity" | "price" | "costPrice" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted" | "userId", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
@@ -5315,6 +5326,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       productId: string
+      name: string
       imageUrl: string
       description: string
       category: string
@@ -5761,6 +5773,7 @@ export namespace Prisma {
    */
   interface ProductFieldRefs {
     readonly productId: FieldRef<"Product", 'String'>
+    readonly name: FieldRef<"Product", 'String'>
     readonly imageUrl: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
     readonly category: FieldRef<"Product", 'String'>
@@ -12555,6 +12568,7 @@ export namespace Prisma {
 
   export const ProductScalarFieldEnum: {
     productId: 'productId',
+    name: 'name',
     imageUrl: 'imageUrl',
     description: 'description',
     category: 'category',
@@ -13013,6 +13027,7 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     productId?: StringFilter<"Product"> | string
+    name?: StringFilter<"Product"> | string
     imageUrl?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
@@ -13039,6 +13054,7 @@ export namespace Prisma {
 
   export type ProductOrderByWithRelationInput = {
     productId?: SortOrder
+    name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
     category?: SortOrder
@@ -13068,6 +13084,7 @@ export namespace Prisma {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
+    name?: StringFilter<"Product"> | string
     imageUrl?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
@@ -13094,6 +13111,7 @@ export namespace Prisma {
 
   export type ProductOrderByWithAggregationInput = {
     productId?: SortOrder
+    name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
     category?: SortOrder
@@ -13122,6 +13140,7 @@ export namespace Prisma {
     OR?: ProductScalarWhereWithAggregatesInput[]
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     productId?: StringWithAggregatesFilter<"Product"> | string
+    name?: StringWithAggregatesFilter<"Product"> | string
     imageUrl?: StringWithAggregatesFilter<"Product"> | string
     description?: StringWithAggregatesFilter<"Product"> | string
     category?: StringWithAggregatesFilter<"Product"> | string
@@ -13912,6 +13931,7 @@ export namespace Prisma {
 
   export type ProductCreateInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -13934,6 +13954,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -13956,6 +13977,7 @@ export namespace Prisma {
 
   export type ProductUpdateInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -13978,6 +14000,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -14000,6 +14023,7 @@ export namespace Prisma {
 
   export type ProductCreateManyInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -14020,6 +14044,7 @@ export namespace Prisma {
 
   export type ProductUpdateManyMutationInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -14036,6 +14061,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateManyInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -14865,6 +14891,7 @@ export namespace Prisma {
 
   export type ProductCountOrderByAggregateInput = {
     productId?: SortOrder
+    name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
     category?: SortOrder
@@ -14891,6 +14918,7 @@ export namespace Prisma {
 
   export type ProductMaxOrderByAggregateInput = {
     productId?: SortOrder
+    name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
     category?: SortOrder
@@ -14911,6 +14939,7 @@ export namespace Prisma {
 
   export type ProductMinOrderByAggregateInput = {
     productId?: SortOrder
+    name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
     category?: SortOrder
@@ -17155,6 +17184,7 @@ export namespace Prisma {
 
   export type ProductCreateWithoutCreatedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17176,6 +17206,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutCreatedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17207,6 +17238,7 @@ export namespace Prisma {
 
   export type ProductCreateWithoutDeletedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17228,6 +17260,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutDeletedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17259,6 +17292,7 @@ export namespace Prisma {
 
   export type ProductCreateWithoutUpdatedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17280,6 +17314,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutUpdatedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17888,6 +17923,7 @@ export namespace Prisma {
 
   export type ProductCreateWithoutUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -17909,6 +17945,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -18063,6 +18100,7 @@ export namespace Prisma {
     OR?: ProductScalarWhereInput[]
     NOT?: ProductScalarWhereInput | ProductScalarWhereInput[]
     productId?: StringFilter<"Product"> | string
+    name?: StringFilter<"Product"> | string
     imageUrl?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
@@ -21272,6 +21310,7 @@ export namespace Prisma {
 
   export type ProductCreateWithoutProductPurchaseInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -21293,6 +21332,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutProductPurchaseInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -21620,6 +21660,7 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutProductPurchaseInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -21641,6 +21682,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutProductPurchaseInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -21940,6 +21982,7 @@ export namespace Prisma {
 
   export type ProductCreateWithoutProductSaleInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -21961,6 +22004,7 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutProductSaleInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -22286,6 +22330,7 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutProductSaleInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -22307,6 +22352,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutProductSaleInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23069,6 +23115,7 @@ export namespace Prisma {
 
   export type ProductCreateManyCreatedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -23088,6 +23135,7 @@ export namespace Prisma {
 
   export type ProductCreateManyDeletedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -23107,6 +23155,7 @@ export namespace Prisma {
 
   export type ProductCreateManyUpdatedByUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -23318,6 +23367,7 @@ export namespace Prisma {
 
   export type ProductCreateManyUserInput = {
     productId?: string
+    name: string
     imageUrl: string
     description: string
     category: string
@@ -23466,6 +23516,7 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutCreatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23487,6 +23538,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutCreatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23508,6 +23560,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateManyWithoutCreatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23527,6 +23580,7 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutDeletedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23548,6 +23602,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutDeletedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23569,6 +23624,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateManyWithoutDeletedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23588,6 +23644,7 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutUpdatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23609,6 +23666,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutUpdatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -23630,6 +23688,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateManyWithoutUpdatedByUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -24237,6 +24296,7 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -24258,6 +24318,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -24279,6 +24340,7 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateManyWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string

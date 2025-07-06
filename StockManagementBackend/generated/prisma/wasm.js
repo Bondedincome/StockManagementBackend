@@ -151,6 +151,7 @@ exports.Prisma.RoleScalarFieldEnum = {
 
 exports.Prisma.ProductScalarFieldEnum = {
   productId: 'productId',
+  name: 'name',
   imageUrl: 'imageUrl',
   description: 'description',
   category: 'category',
