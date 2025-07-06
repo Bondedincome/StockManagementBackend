@@ -38,7 +38,7 @@ const createPurchase = async (req, res) => {
 	const { userId, productId, quantity, price } = req.body;
 	try {
 		const newPurchase = await createPurchaseService({
-			userId,
+			userId: req.authUser.userId,
 			productId,
 			quantity,
 			price,
@@ -58,7 +58,7 @@ const updatePurchase = async (req, res) => {
 	const { userId, productId, quantity, price } = req.body;
 	try {
 		const updatedPurchase = await updatePurchaseService(id, {
-			userId,
+			userId: req.authUser.userId,
 			productId,
 			quantity,
 			price,

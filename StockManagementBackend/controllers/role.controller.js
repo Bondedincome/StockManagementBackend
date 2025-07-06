@@ -20,10 +20,14 @@ const getAllRoles = async (req, res) => {
 
 // Create a new role
 const createRole = async (req, res) => {
-	const { roleType, createdBy } = req.body;
+	const { roleType, isAdmin, createdBy } = req.body;
 
 	try {
-		const newRole = await createRoleService({ roleType, createdBy });
+		const newRole = await createRoleService({
+			roleType,
+			isAdmin: false,
+			createdBy: req.authUser.userId || createdBy, // Use req.authUser set by authMiddleware
+		});
 		res.status(201).json(newRole);
 	} catch (error) {
 		res
@@ -68,10 +72,14 @@ const getOneRole = async (req, res) => {
 // Update a role
 const updateRole = async (req, res) => {
 	const { id } = req.params;
-	const { roleType } = req.body;
+	const { roleType, isAdmin, updatedBy } = req.body;
 
 	try {
-		const updatedRole = await updateRoleService(id, { roleType });
+		const updatedRole = await updateRoleService(id, {
+			roleType,
+			isAdmin: false,
+			updatedBy: req.authUser.userId,
+		});
 		res.json(updatedRole);
 	} catch (error) {
 		res

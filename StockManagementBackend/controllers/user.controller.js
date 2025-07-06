@@ -88,7 +88,7 @@ const updateUser = async (req, res) => {
 			profilePictureUrl,
 			email,
 			password,
-			roleId,
+			roleId: roleId || undefined, // Allow roleId to be optional
 		});
 		res.json(updatedUser);
 	} catch (error) {
