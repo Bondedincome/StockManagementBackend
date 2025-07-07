@@ -91,7 +91,7 @@ model Role {
 
 model Product {
   productId       String            @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
-  name            String
+  name            String            @unique
   imageUrl        String?
   description     String
   category        String

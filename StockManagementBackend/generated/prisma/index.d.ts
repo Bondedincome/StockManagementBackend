@@ -13081,10 +13081,10 @@ export namespace Prisma {
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
     productId?: string
+    name?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
-    name?: StringFilter<"Product"> | string
     imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
     category?: StringFilter<"Product"> | string
@@ -13107,7 +13107,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     productPurchase?: ProductPurchaseListRelationFilter
     productSale?: ProductSaleListRelationFilter
-  }, "productId">
+  }, "productId" | "name">
 
   export type ProductOrderByWithAggregationInput = {
     productId?: SortOrder
