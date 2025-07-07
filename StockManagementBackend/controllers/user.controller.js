@@ -30,7 +30,9 @@ const getOneUser = async (req, res) => {
 		if (!user) {
 			return res.status(404).json({ message: "User not found" });
 		}
-		res.json(user);
+		// Destructure password out so it's not returned
+		const { password, ...userWithoutPassword } = user;
+		res.json(userWithoutPassword);
 	} catch (error) {
 		// console.log(error)
 		res.status(500).json({ error: "Failed to fetch user" });
