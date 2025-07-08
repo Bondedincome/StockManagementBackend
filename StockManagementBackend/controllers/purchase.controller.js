@@ -15,6 +15,7 @@ const getAllPurchases = async (req, res) => {
 		res.json(purchases);
 		// console.log("Purchases fetched successfully");
 	} catch (error) {
+		// console.error("Error in getAllPurchases:", error);
 		res.status(500).json({ error: "Failed to fetch purchases" });
 	}
 };
@@ -35,7 +36,7 @@ const getOnePurchase = async (req, res) => {
 
 // Create a new purchase
 const createPurchase = async (req, res) => {
-	const { userId, productId, quantity, price } = req.body;
+	const { productId, quantity, price } = req.body;
 	try {
 		const newPurchase = await createPurchaseService({
 			userId: req.authUser.userId,
@@ -55,7 +56,7 @@ const createPurchase = async (req, res) => {
 // Update an existing purchase
 const updatePurchase = async (req, res) => {
 	const { id } = req.params;
-	const { userId, productId, quantity, price } = req.body;
+	const { productId, quantity, price } = req.body;
 	try {
 		const updatedPurchase = await updatePurchaseService(id, {
 			userId: req.authUser.userId,
