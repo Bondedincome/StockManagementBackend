@@ -235,6 +235,7 @@ exports.Prisma.CustomerScalarFieldEnum = {
   createdBy: 'createdBy',
   deletedBy: 'deletedBy',
   updatedBy: 'updatedBy',
+  isSupplier: 'isSupplier',
   isDeleted: 'isDeleted',
   userId: 'userId'
 };

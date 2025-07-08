@@ -209,6 +209,7 @@ model Customer {
   createdBy     String?
   deletedBy     String?
   updatedBy     String?
+  isSupplier    Boolean   @default(false)
   isDeleted     Boolean   @default(false)
   createdByUser User?     @relation("CustomerCreatedBy", fields: [createdBy], references: [userId])
   deletedByUser User?     @relation("CustomerDeletedBy", fields: [deletedBy], references: [userId])

@@ -11296,6 +11296,7 @@ export namespace Prisma {
     createdBy: string | null
     deletedBy: string | null
     updatedBy: string | null
+    isSupplier: boolean | null
     isDeleted: boolean | null
     userId: string | null
   }
@@ -11312,6 +11313,7 @@ export namespace Prisma {
     createdBy: string | null
     deletedBy: string | null
     updatedBy: string | null
+    isSupplier: boolean | null
     isDeleted: boolean | null
     userId: string | null
   }
@@ -11328,6 +11330,7 @@ export namespace Prisma {
     createdBy: number
     deletedBy: number
     updatedBy: number
+    isSupplier: number
     isDeleted: number
     userId: number
     _all: number
@@ -11346,6 +11349,7 @@ export namespace Prisma {
     createdBy?: true
     deletedBy?: true
     updatedBy?: true
+    isSupplier?: true
     isDeleted?: true
     userId?: true
   }
@@ -11362,6 +11366,7 @@ export namespace Prisma {
     createdBy?: true
     deletedBy?: true
     updatedBy?: true
+    isSupplier?: true
     isDeleted?: true
     userId?: true
   }
@@ -11378,6 +11383,7 @@ export namespace Prisma {
     createdBy?: true
     deletedBy?: true
     updatedBy?: true
+    isSupplier?: true
     isDeleted?: true
     userId?: true
     _all?: true
@@ -11467,6 +11473,7 @@ export namespace Prisma {
     createdBy: string | null
     deletedBy: string | null
     updatedBy: string | null
+    isSupplier: boolean
     isDeleted: boolean
     userId: string
     _count: CustomerCountAggregateOutputType | null
@@ -11500,6 +11507,7 @@ export namespace Prisma {
     createdBy?: boolean
     deletedBy?: boolean
     updatedBy?: boolean
+    isSupplier?: boolean
     isDeleted?: boolean
     userId?: boolean
     createdByUser?: boolean | Customer$createdByUserArgs<ExtArgs>
@@ -11520,6 +11528,7 @@ export namespace Prisma {
     createdBy?: boolean
     deletedBy?: boolean
     updatedBy?: boolean
+    isSupplier?: boolean
     isDeleted?: boolean
     userId?: boolean
     createdByUser?: boolean | Customer$createdByUserArgs<ExtArgs>
@@ -11540,6 +11549,7 @@ export namespace Prisma {
     createdBy?: boolean
     deletedBy?: boolean
     updatedBy?: boolean
+    isSupplier?: boolean
     isDeleted?: boolean
     userId?: boolean
     createdByUser?: boolean | Customer$createdByUserArgs<ExtArgs>
@@ -11560,11 +11570,12 @@ export namespace Prisma {
     createdBy?: boolean
     deletedBy?: boolean
     updatedBy?: boolean
+    isSupplier?: boolean
     isDeleted?: boolean
     userId?: boolean
   }
 
-  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"customerId" | "firstName" | "lastName" | "email" | "phone" | "createdAt" | "deletedAt" | "updatedAt" | "createdBy" | "deletedBy" | "updatedBy" | "isDeleted" | "userId", ExtArgs["result"]["customer"]>
+  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"customerId" | "firstName" | "lastName" | "email" | "phone" | "createdAt" | "deletedAt" | "updatedAt" | "createdBy" | "deletedBy" | "updatedBy" | "isSupplier" | "isDeleted" | "userId", ExtArgs["result"]["customer"]>
   export type CustomerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdByUser?: boolean | Customer$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Customer$deletedByUserArgs<ExtArgs>
@@ -11604,6 +11615,7 @@ export namespace Prisma {
       createdBy: string | null
       deletedBy: string | null
       updatedBy: string | null
+      isSupplier: boolean
       isDeleted: boolean
       userId: string
     }, ExtArgs["result"]["customer"]>
@@ -12044,6 +12056,7 @@ export namespace Prisma {
     readonly createdBy: FieldRef<"Customer", 'String'>
     readonly deletedBy: FieldRef<"Customer", 'String'>
     readonly updatedBy: FieldRef<"Customer", 'String'>
+    readonly isSupplier: FieldRef<"Customer", 'Boolean'>
     readonly isDeleted: FieldRef<"Customer", 'Boolean'>
     readonly userId: FieldRef<"Customer", 'String'>
   }
@@ -12667,6 +12680,7 @@ export namespace Prisma {
     createdBy: 'createdBy',
     deletedBy: 'deletedBy',
     updatedBy: 'updatedBy',
+    isSupplier: 'isSupplier',
     isDeleted: 'isDeleted',
     userId: 'userId'
   };
@@ -13545,6 +13559,7 @@ export namespace Prisma {
     createdBy?: StringNullableFilter<"Customer"> | string | null
     deletedBy?: StringNullableFilter<"Customer"> | string | null
     updatedBy?: StringNullableFilter<"Customer"> | string | null
+    isSupplier?: BoolFilter<"Customer"> | boolean
     isDeleted?: BoolFilter<"Customer"> | boolean
     userId?: StringFilter<"Customer"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -13565,6 +13580,7 @@ export namespace Prisma {
     createdBy?: SortOrderInput | SortOrder
     deletedBy?: SortOrderInput | SortOrder
     updatedBy?: SortOrderInput | SortOrder
+    isSupplier?: SortOrder
     isDeleted?: SortOrder
     userId?: SortOrder
     createdByUser?: UserOrderByWithRelationInput
@@ -13588,6 +13604,7 @@ export namespace Prisma {
     createdBy?: StringNullableFilter<"Customer"> | string | null
     deletedBy?: StringNullableFilter<"Customer"> | string | null
     updatedBy?: StringNullableFilter<"Customer"> | string | null
+    isSupplier?: BoolFilter<"Customer"> | boolean
     isDeleted?: BoolFilter<"Customer"> | boolean
     userId?: StringFilter<"Customer"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -13608,6 +13625,7 @@ export namespace Prisma {
     createdBy?: SortOrderInput | SortOrder
     deletedBy?: SortOrderInput | SortOrder
     updatedBy?: SortOrderInput | SortOrder
+    isSupplier?: SortOrder
     isDeleted?: SortOrder
     userId?: SortOrder
     _count?: CustomerCountOrderByAggregateInput
@@ -13630,6 +13648,7 @@ export namespace Prisma {
     createdBy?: StringNullableWithAggregatesFilter<"Customer"> | string | null
     deletedBy?: StringNullableWithAggregatesFilter<"Customer"> | string | null
     updatedBy?: StringNullableWithAggregatesFilter<"Customer"> | string | null
+    isSupplier?: BoolWithAggregatesFilter<"Customer"> | boolean
     isDeleted?: BoolWithAggregatesFilter<"Customer"> | boolean
     userId?: StringWithAggregatesFilter<"Customer"> | string
   }
@@ -14452,6 +14471,7 @@ export namespace Prisma {
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedCustomerInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedCustomerInput
@@ -14471,6 +14491,7 @@ export namespace Prisma {
     createdBy?: string | null
     deletedBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -14484,6 +14505,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedCustomerNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedCustomerNestedInput
@@ -14503,6 +14525,7 @@ export namespace Prisma {
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -14519,6 +14542,7 @@ export namespace Prisma {
     createdBy?: string | null
     deletedBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -14532,6 +14556,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -14547,6 +14572,7 @@ export namespace Prisma {
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -15202,6 +15228,7 @@ export namespace Prisma {
     createdBy?: SortOrder
     deletedBy?: SortOrder
     updatedBy?: SortOrder
+    isSupplier?: SortOrder
     isDeleted?: SortOrder
     userId?: SortOrder
   }
@@ -15218,6 +15245,7 @@ export namespace Prisma {
     createdBy?: SortOrder
     deletedBy?: SortOrder
     updatedBy?: SortOrder
+    isSupplier?: SortOrder
     isDeleted?: SortOrder
     userId?: SortOrder
   }
@@ -15234,6 +15262,7 @@ export namespace Prisma {
     createdBy?: SortOrder
     deletedBy?: SortOrder
     updatedBy?: SortOrder
+    isSupplier?: SortOrder
     isDeleted?: SortOrder
     userId?: SortOrder
   }
@@ -17779,6 +17808,7 @@ export namespace Prisma {
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     deletedByUser?: UserCreateNestedOneWithoutDeletedCustomerInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedCustomerInput
@@ -17796,6 +17826,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     deletedBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -17819,6 +17850,7 @@ export namespace Prisma {
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedCustomerInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedCustomerInput
@@ -17836,6 +17868,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     createdBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -17859,6 +17892,7 @@ export namespace Prisma {
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedCustomerInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedCustomerInput
@@ -17876,6 +17910,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     createdBy?: string | null
     deletedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -17984,6 +18019,7 @@ export namespace Prisma {
     createdAt?: Date | string
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     createdByUser?: UserCreateNestedOneWithoutCreatedCustomerInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedCustomerInput
@@ -18002,6 +18038,7 @@ export namespace Prisma {
     createdBy?: string | null
     deletedBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
   }
 
@@ -18439,6 +18476,7 @@ export namespace Prisma {
     createdBy?: StringNullableFilter<"Customer"> | string | null
     deletedBy?: StringNullableFilter<"Customer"> | string | null
     updatedBy?: StringNullableFilter<"Customer"> | string | null
+    isSupplier?: BoolFilter<"Customer"> | boolean
     isDeleted?: BoolFilter<"Customer"> | boolean
     userId?: StringFilter<"Customer"> | string
   }
@@ -23331,6 +23369,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     deletedBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -23346,6 +23385,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     createdBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -23361,6 +23401,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     createdBy?: string | null
     deletedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
     userId: string
   }
@@ -23397,6 +23438,7 @@ export namespace Prisma {
     createdBy?: string | null
     deletedBy?: string | null
     updatedBy?: string | null
+    isSupplier?: boolean
     isDeleted?: boolean
   }
 
@@ -24168,6 +24210,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedByUser?: UserUpdateOneWithoutDeletedCustomerNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedCustomerNestedInput
@@ -24185,6 +24228,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -24200,6 +24244,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -24213,6 +24258,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedCustomerNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedCustomerNestedInput
@@ -24230,6 +24276,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -24245,6 +24292,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -24258,6 +24306,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedCustomerNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedCustomerNestedInput
@@ -24275,6 +24324,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -24290,6 +24340,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -24367,6 +24418,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdByUser?: UserUpdateOneWithoutCreatedCustomerNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedCustomerNestedInput
@@ -24385,6 +24437,7 @@ export namespace Prisma {
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -24400,6 +24453,7 @@ export namespace Prisma {
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
