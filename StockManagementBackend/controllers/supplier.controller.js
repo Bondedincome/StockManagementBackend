@@ -43,7 +43,7 @@ const createSupplier = async (req, res) => {
 			email,
 			phone,
 			isSupplier: true, // Set isSupplier to true for suppliers
-			createdBy: req.authUser.userId, // Use req.authUser set by auth
+			// createdBy: req.authUser.userId, // Use req.authUser set by auth
 			userId: req.authUser.userId, // Use req.authUser set by authMiddleware
 		});
 		res.status(201).json(newCustomer);
