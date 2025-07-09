@@ -36,6 +36,8 @@ const getOneSupplier = async (req, res) => {
 // Create a new customer
 const createSupplier = async (req, res) => {
 	const { firstName, lastName, email, phone } = req.body;
+	console.log("📩 Incoming Supplier:", req.body);
+	console.log("🔐 Auth User:", req.authUser);
 	try {
 		const newCustomer = await createSupplierService({
 			firstName,
@@ -43,7 +45,7 @@ const createSupplier = async (req, res) => {
 			email,
 			phone,
 			isSupplier: true, // Set isSupplier to true for suppliers
-			// createdBy: req.authUser.userId, // Use req.authUser set by auth
+			createdBy: req.authUser.userId, // Use req.authUser set by auth
 			userId: req.authUser.userId, // Use req.authUser set by authMiddleware
 		});
 		res.status(201).json(newCustomer);
