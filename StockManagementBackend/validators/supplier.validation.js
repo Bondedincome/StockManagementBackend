@@ -7,7 +7,7 @@ const createSupplierValidation = [
 	body("phone").optional().isString(),
 ];
 const updateSupplierValidation = [
-    param("id").isUUID(),
+    // param("id").isUUID(),
 	body("firstName").optional().isString(),
 	body("lastName").optional().isString(),
 	body("email").optional().isEmail(),
