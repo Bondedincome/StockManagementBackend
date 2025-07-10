@@ -190,7 +190,10 @@ exports.Prisma.PurchaseScalarFieldEnum = {
   updatedBy: 'updatedBy',
   updatedAt: 'updatedAt',
   isDeleted: 'isDeleted',
-  productId: 'productId'
+  productId: 'productId',
+  supplierId: 'supplierId',
+  customerId: 'customerId',
+  customerCustomerId: 'customerCustomerId'
 };
 
 exports.Prisma.ProductPurchaseScalarFieldEnum = {

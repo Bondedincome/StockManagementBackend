@@ -90,31 +90,30 @@ model Role {
 }
 
 model Product {
-  productId       String            @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
-  name            String            @unique
-  imageUrl        String?
-  description     String
-  category        String
-  expiryDate      DateTime?
-  productionDate  DateTime?
-  quantity        Int
-  price           Float
-  costPrice       Float
-  createdAt       DateTime          @default(now())
-  deletedAt       DateTime?
-  createdBy       String?
-  deletedBy       String?
-  updatedBy       String?
-  updatedAt       DateTime?
-  createdByUser   User?             @relation("ProductCreatedBy", fields: [createdBy], references: [userId])
-  deletedByUser   User?             @relation("ProductDeletedBy", fields: [deletedBy], references: [userId])
-  updatedByUser   User?             @relation("ProductUpdatedBy", fields: [updatedBy], references: [userId])
-  isDeleted       Boolean           @default(false)
-  userId          String
-  user            User              @relation(fields: [userId], references: [userId])
-  productPurchase ProductPurchase[]
-  productSale     ProductSale[]
-  Customer        Customer[]        @relation("CustomerOwnedProducts")
+  productId        String            @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
+  name             String            @unique
+  imageUrl         String?
+  description      String
+  category         String
+  expiryDate       DateTime?
+  productionDate   DateTime?
+  quantity         Int
+  price            Float
+  costPrice        Float
+  createdAt        DateTime          @default(now())
+  deletedAt        DateTime?
+  createdBy        String?
+  deletedBy        String?
+  updatedBy        String?
+  updatedAt        DateTime?
+  createdByUser    User?             @relation("ProductCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser    User?             @relation("ProductDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser    User?             @relation("ProductUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted        Boolean           @default(false)
+  userId           String
+  user             User              @relation(fields: [userId], references: [userId])
+  productPurchases ProductPurchase[]
+  productSales     ProductSale[]
 
   @@map("products")
 }
@@ -131,25 +130,35 @@ model Sale {
   deletedByUser User?         @relation("SaleDeletedBy", fields: [deletedBy], references: [userId])
   updatedByUser User?         @relation("SaleUpdatedBy", fields: [updatedBy], references: [userId])
   isDeleted     Boolean       @default(false)
-  productSale   ProductSale[]
+  productSales  ProductSale[]
 
   @@map("sales")
 }
 
 model Purchase {
-  purchaseId      String            @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
-  createdAt       DateTime          @default(now())
-  deletedAt       DateTime?
-  createdBy       String?
-  deletedBy       String?
-  updatedBy       String?
-  updatedAt       DateTime?
-  createdByUser   User?             @relation("PurchaseCreatedBy", fields: [createdBy], references: [userId])
-  deletedByUser   User?             @relation("PurchaseDeletedBy", fields: [deletedBy], references: [userId])
-  updatedByUser   User?             @relation("PurchaseUpdatedBy", fields: [updatedBy], references: [userId])
-  isDeleted       Boolean           @default(false)
-  productId       String
-  productPurchase ProductPurchase[]
+  purchaseId       String            @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
+  createdAt        DateTime          @default(now())
+  deletedAt        DateTime?
+  createdBy        String?
+  deletedBy        String?
+  updatedBy        String?
+  updatedAt        DateTime?
+  createdByUser    User?             @relation("PurchaseCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser    User?             @relation("PurchaseDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser    User?             @relation("PurchaseUpdatedBy", fields: [updatedBy], references: [userId])
+  isDeleted        Boolean           @default(false)
+  productId        String
+  productPurchases ProductPurchase[]
+
+  // Link to supplier
+  supplierId String
+  supplier   Customer @relation("SupplierToPurchase", fields: [supplierId], references: [customerId])
+
+  // Optional: if you're tracking purchases created by a customer (if needed)
+  customerId         String
+  customer           Customer  @relation("PurchasesCreatedByCustomer", fields: [customerId], references: [customerId])
+  Customer           Customer? @relation(fields: [customerCustomerId], references: [customerId])
+  customerCustomerId String?
 
   @@map("purchases")
 }
@@ -199,27 +208,31 @@ model ProductSale {
 }
 
 model Customer {
-  customerId    String    @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
-  firstName     String
-  lastName      String
-  email         String    @unique
-  phone         String
-  createdAt     DateTime  @default(now())
-  deletedAt     DateTime?
-  updatedAt     DateTime?
-  createdBy     String?
-  deletedBy     String?
-  updatedBy     String?
-  isSupplier    Boolean   @default(false)
-  isDeleted     Boolean   @default(false)
-  createdByUser User?     @relation("CustomerCreatedBy", fields: [createdBy], references: [userId])
-  deletedByUser User?     @relation("CustomerDeletedBy", fields: [deletedBy], references: [userId])
-  updatedByUser User?     @relation("CustomerUpdatedBy", fields: [updatedBy], references: [userId])
-  userId        String
-  user          User      @relation(fields: [userId], references: [userId])
-  ownedProducts Product[] @relation("CustomerOwnedProducts")
+  customerId                 String     @id @default(dbgenerated("('usr_' || gen_random_uuid())::text"))
+  firstName                  String
+  lastName                   String
+  email                      String     @unique
+  phone                      String
+  createdAt                  DateTime   @default(now())
+  deletedAt                  DateTime?
+  updatedAt                  DateTime?
+  createdBy                  String?
+  deletedBy                  String?
+  updatedBy                  String?
+  isSupplier                 Boolean    @default(false)
+  isDeleted                  Boolean    @default(false)
+  createdByUser              User?      @relation("CustomerCreatedBy", fields: [createdBy], references: [userId])
+  deletedByUser              User?      @relation("CustomerDeletedBy", fields: [deletedBy], references: [userId])
+  updatedByUser              User?      @relation("CustomerUpdatedBy", fields: [updatedBy], references: [userId])
+  userId                     String
+  user                       User       @relation(fields: [userId], references: [userId])
+  // Purchase      Purchase[]
+  // Rename this to avoid conflict (e.g., purchasesCreatedByCustomer)
+  purchasesCreatedByCustomer Purchase[] @relation("PurchasesCreatedByCustomer")
+
+  // Keep this for supplier relation
+  purchasesAsSupplier Purchase[] @relation("SupplierToPurchase")
+  Purchase            Purchase[]
 
   @@map("customers")
 }
-
-// I'm thinking of adding a new model for the inventory management system called `customer`.
