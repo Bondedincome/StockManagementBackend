@@ -4,19 +4,21 @@ const getAllPurchasesService = async () => {
 	return await prisma.purchase.findMany({
 		where: { isDeleted: false },
 		include: {
-			createdByUser: true,
-			deletedByUser: true,
-			updatedByUser: true,
-			// ownedProducts: true,
 			productPurchase: true,
+			supplier: true,
+			customer: true,
 		},
 	});
 };
 
 const getOnePurchaseService = async (id) => {
 	return await prisma.purchase.findUnique({
-		where: { purchaseId: id, isDeleted: false },
-		include: { ownedProducts: true },
+		where: { purchaseId: id },
+		include: {
+			productPurchase: true,
+			supplier: true,
+			customer: true,
+		},
 	});
 };
 
@@ -31,29 +33,35 @@ const updatePurchaseService = async (id, data) => {
 	});
 };
 
-const deletePurchaseService = async (id) => {
+const deletePurchaseService = async (id, userId) => {
 	return await prisma.purchase.update({
 		where: { purchaseId: id },
 		data: {
 			isDeleted: true,
 			deletedAt: new Date(),
-			deletedBy: 1,
+			deletedBy: req.authUser.userId, // make sure this comes from authenticated user
 		},
 	});
 };
 
-// Paginated purchases
 const getPaginatedPurchasesService = async (page = 1, limit = 10) => {
 	const skip = (page - 1) * limit;
 	const [data, total] = await Promise.all([
 		prisma.purchase.findMany({
 			where: { isDeleted: false },
-			include: { user: true, ownedProducts: true },
+			include: {
+				supplier: true,
+				customer: true,
+				productPurchase: {
+					include: { product: true },
+				},
+			},
 			skip,
 			take: limit,
 		}),
 		prisma.purchase.count({ where: { isDeleted: false } }),
 	]);
+
 	return {
 		data,
 		total,

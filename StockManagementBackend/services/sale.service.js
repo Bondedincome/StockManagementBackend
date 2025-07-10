@@ -4,19 +4,20 @@ const getAllSalesService = async () => {
 	return await prisma.sale.findMany({
 		where: { isDeleted: false },
 		include: {
-			createdByUser: true,
-			deletedByUser: true,
-			updatedByUser: true,
-			productSale: true,
+			productSales: {
+				include: { product: true },
+			},
 		},
 	});
 };
 
 const getOneSaleService = async (id) => {
 	return await prisma.sale.findUnique({
-		where: { saleId: id, isDeleted: false },
+		where: { saleId: id },
 		include: {
-			productSale: true,
+			productSales: {
+				include: { product: true },
+			},
 		},
 	});
 };
@@ -32,34 +33,33 @@ const updateSaleService = async (id, data) => {
 	});
 };
 
-const deleteSaleService = async (id) => {
+const deleteSaleService = async (id, userId) => {
 	return await prisma.sale.update({
 		where: { saleId: id },
 		data: {
 			isDeleted: true,
 			deletedAt: new Date(),
-			deletedBy: 1,
+			deletedBy: userId, // dynamic user ID
 		},
 	});
 };
 
-// Paginated sales
 const getPaginatedSalesService = async (page = 1, limit = 10) => {
 	const skip = (page - 1) * limit;
 	const [data, total] = await Promise.all([
 		prisma.sale.findMany({
 			where: { isDeleted: false },
 			include: {
-				createdByUser: true,
-				deletedByUser: true,
-				updatedByUser: true,
-				productSale: true,
+				productSales: {
+					include: { product: true },
+				},
 			},
 			skip,
 			take: limit,
 		}),
 		prisma.sale.count({ where: { isDeleted: false } }),
 	]);
+
 	return {
 		data,
 		total,

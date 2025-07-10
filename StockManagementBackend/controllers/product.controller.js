@@ -55,6 +55,7 @@ const createProduct = async (req, res) => {
 			quantity,
 			expiryDate: expiryDate ? new Date(expiryDate) : undefined,
 			productionDate: productionDate ? new Date(productionDate) : undefined,
+			createdBy: req.authUser.userId, // Use req.authUser set by authMiddleware
 			price,
 			costPrice: costPrice ?? 0,
 		});
@@ -90,6 +91,7 @@ const updateProduct = async (req, res) => {
 			quantity,
 			expiryDate: expiryDate ? new Date(expiryDate) : undefined,
 			productionDate: productionDate ? new Date(productionDate) : undefined,
+			updatedBy: req.authUser.userId, // Use req.authUser set by authMiddleware
 			price,
 			costPrice: costPrice ?? 0,
 		});

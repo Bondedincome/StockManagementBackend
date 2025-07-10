@@ -3,14 +3,30 @@ const prisma = require("../prisma/client");
 const getAllProductsService = async () => {
 	return await prisma.product.findMany({
 		where: { isDeleted: false },
-		include: { user: true },
+		include: {
+			user: true,
+			productPurchases: true,
+			productSales: true,
+		},
 	});
 };
 
 const getOneProductService = async (id) => {
 	return await prisma.product.findUnique({
 		where: { productId: id },
-		include: { user: true },
+		include: {
+			user: true,
+			productPurchases: {
+				include: {
+					purchase: true,
+				},
+			},
+			productSales: {
+				include: {
+					sale: true,
+				},
+			},
+		},
 	});
 };
 
@@ -25,20 +41,27 @@ const updateProductService = async (id, data) => {
 	});
 };
 
-const deleteProductService = async (id, data) => {
+const deleteProductService = async (id, userId) => {
 	return await prisma.product.update({
 		where: { productId: id },
-		data,
+		data: {
+			isDeleted: true,
+			deletedAt: new Date(),
+			deletedBy: userId,
+		},
 	});
 };
 
-// Paginated products
 const getPaginatedProductsService = async (page = 1, limit = 10) => {
 	const skip = (page - 1) * limit;
 	const [data, total] = await Promise.all([
 		prisma.product.findMany({
 			where: { isDeleted: false },
-			include: { user: true },
+			include: {
+				user: true,
+				productPurchases: true,
+				productSales: true,
+			},
 			skip,
 			take: limit,
 		}),
