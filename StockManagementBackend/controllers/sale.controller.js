@@ -21,7 +21,7 @@ const getAllSales = async (req, res) => {
 
 // Get one sale by ID
 const getOneSale = async (req, res) => {
-	const id = parseInt(req.params.id);
+	const id = req.params.id;
 	if (isNaN(id)) return res.status(400).json({ error: "Invalid ID format" });
 
 	try {
@@ -44,7 +44,7 @@ const createSale = async (req, res) => {
 
 	try {
 		const newSale = await createSaleService({
-			createdBy,
+			createdBy: req.authUser?.userId || createdBy || null,
 		});
 		res.status(201).json(newSale);
 	} catch (error) {

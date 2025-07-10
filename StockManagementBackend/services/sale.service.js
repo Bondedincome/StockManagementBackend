@@ -3,14 +3,21 @@ const prisma = require("../prisma/client");
 const getAllSalesService = async () => {
 	return await prisma.sale.findMany({
 		where: { isDeleted: false },
-		include: { user: true, ownedProducts: true },
+		include: {
+			createdByUser: true,
+			deletedByUser: true,
+			updatedByUser: true,
+			productSale: true,
+		},
 	});
 };
 
 const getOneSaleService = async (id) => {
 	return await prisma.sale.findUnique({
-		where: { id: parseInt(id), isDeleted: false },
-		include: { user: true, ownedProducts: true },
+		where: { saleId: id, isDeleted: false },
+		include: {
+			productSale: true,
+		},
 	});
 };
 
@@ -20,14 +27,14 @@ const createSaleService = async (data) => {
 
 const updateSaleService = async (id, data) => {
 	return await prisma.sale.update({
-		where: { id: parseInt(id) },
+		where: { saleId: id },
 		data,
 	});
 };
 
 const deleteSaleService = async (id) => {
 	return await prisma.sale.update({
-		where: { id: parseInt(id) },
+		where: { saleId: id },
 		data: {
 			isDeleted: true,
 			deletedAt: new Date(),
@@ -42,7 +49,12 @@ const getPaginatedSalesService = async (page = 1, limit = 10) => {
 	const [data, total] = await Promise.all([
 		prisma.sale.findMany({
 			where: { isDeleted: false },
-			include: { user: true, ownedProducts: true },
+			include: {
+				createdByUser: true,
+				deletedByUser: true,
+				updatedByUser: true,
+				productSale: true,
+			},
 			skip,
 			take: limit,
 		}),
