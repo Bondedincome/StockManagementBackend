@@ -4,6 +4,7 @@ const {
 	createRoleService,
 	updateRoleService,
 	deleteRoleService,
+	getRegistrationRolesService,
 } = require("../services/role.service");
 
 // Get all roles
@@ -49,7 +50,19 @@ const deleteRole = async (req, res) => {
 			.json({ error: "Failed to delete role", detail: error.message });
 	}
 };
-
+const getRegistrationRoles = async (req, res) => {
+	try {
+		const roles = await getRegistrationRolesService();
+		res.json(roles);
+	} catch (error) {
+		res
+			.status(500)
+			.json({
+				error: "Failed to fetch registration roles",
+				detail: error.message,
+			});
+	}
+};
 // Get a single role by ID
 const getOneRole = async (req, res) => {
 	const { id } = req.params;
@@ -94,6 +107,7 @@ module.exports = {
 	createRole,
 	deleteRole,
 	getOneRole,
+	getRegistrationRoles,
 };
 
 // Add an UpdateBy and UpdatedAt in all the models in Prisma schema

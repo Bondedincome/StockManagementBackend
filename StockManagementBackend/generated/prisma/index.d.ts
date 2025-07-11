@@ -53,6 +53,11 @@ export type ProductSale = $Result.DefaultSelection<Prisma.$ProductSalePayload>
  * 
  */
 export type Customer = $Result.DefaultSelection<Prisma.$CustomerPayload>
+/**
+ * Model Category
+ * 
+ */
+export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -258,6 +263,16 @@ export class PrismaClient<
     * ```
     */
   get customer(): Prisma.CustomerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.category`: Exposes CRUD operations for the **Category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categories
+    * const categories = await prisma.category.findMany()
+    * ```
+    */
+  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -705,7 +720,8 @@ export namespace Prisma {
     Purchase: 'Purchase',
     ProductPurchase: 'ProductPurchase',
     ProductSale: 'ProductSale',
-    Customer: 'Customer'
+    Customer: 'Customer',
+    Category: 'Category'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -724,7 +740,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "product" | "sale" | "purchase" | "productPurchase" | "productSale" | "customer"
+      modelProps: "user" | "role" | "product" | "sale" | "purchase" | "productPurchase" | "productSale" | "customer" | "category"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1320,6 +1336,80 @@ export namespace Prisma {
           }
         }
       }
+      Category: {
+        payload: Prisma.$CategoryPayload<ExtArgs>
+        fields: Prisma.CategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.CategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          update: {
+            args: Prisma.CategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategory>
+          }
+          groupBy: {
+            args: Prisma.CategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1412,6 +1502,7 @@ export namespace Prisma {
     productPurchase?: ProductPurchaseOmit
     productSale?: ProductSaleOmit
     customer?: CustomerOmit
+    category?: CategoryOmit
   }
 
   /* Types for Logging */
@@ -1527,6 +1618,9 @@ export namespace Prisma {
     createdCustomer: number
     deletedCustomer: number
     updatedCustomer: number
+    createdCategory: number
+    deletedCategory: number
+    updatedCategory: number
     ownedProducts: number
     customersInContact: number
   }
@@ -1553,6 +1647,9 @@ export namespace Prisma {
     createdCustomer?: boolean | UserCountOutputTypeCountCreatedCustomerArgs
     deletedCustomer?: boolean | UserCountOutputTypeCountDeletedCustomerArgs
     updatedCustomer?: boolean | UserCountOutputTypeCountUpdatedCustomerArgs
+    createdCategory?: boolean | UserCountOutputTypeCountCreatedCategoryArgs
+    deletedCategory?: boolean | UserCountOutputTypeCountDeletedCategoryArgs
+    updatedCategory?: boolean | UserCountOutputTypeCountUpdatedCategoryArgs
     ownedProducts?: boolean | UserCountOutputTypeCountOwnedProductsArgs
     customersInContact?: boolean | UserCountOutputTypeCountCustomersInContactArgs
   }
@@ -1718,6 +1815,27 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountCreatedCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDeletedCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUpdatedCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountOwnedProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
   }
@@ -1871,12 +1989,14 @@ export namespace Prisma {
     purchasesCreatedByCustomer: number
     purchasesAsSupplier: number
     Purchase: number
+    sales: number
   }
 
   export type CustomerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     purchasesCreatedByCustomer?: boolean | CustomerCountOutputTypeCountPurchasesCreatedByCustomerArgs
     purchasesAsSupplier?: boolean | CustomerCountOutputTypeCountPurchasesAsSupplierArgs
     Purchase?: boolean | CustomerCountOutputTypeCountPurchaseArgs
+    sales?: boolean | CustomerCountOutputTypeCountSalesArgs
   }
 
   // Custom InputTypes
@@ -1909,6 +2029,44 @@ export namespace Prisma {
    */
   export type CustomerCountOutputTypeCountPurchaseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PurchaseWhereInput
+  }
+
+  /**
+   * CustomerCountOutputType without action
+   */
+  export type CustomerCountOutputTypeCountSalesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SaleWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    products: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | CategoryCountOutputTypeCountProductsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductWhereInput
   }
 
 
@@ -2165,6 +2323,9 @@ export namespace Prisma {
     createdCustomer?: boolean | User$createdCustomerArgs<ExtArgs>
     deletedCustomer?: boolean | User$deletedCustomerArgs<ExtArgs>
     updatedCustomer?: boolean | User$updatedCustomerArgs<ExtArgs>
+    createdCategory?: boolean | User$createdCategoryArgs<ExtArgs>
+    deletedCategory?: boolean | User$deletedCategoryArgs<ExtArgs>
+    updatedCategory?: boolean | User$updatedCategoryArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
     ownedProducts?: boolean | User$ownedProductsArgs<ExtArgs>
     customersInContact?: boolean | User$customersInContactArgs<ExtArgs>
@@ -2244,6 +2405,9 @@ export namespace Prisma {
     createdCustomer?: boolean | User$createdCustomerArgs<ExtArgs>
     deletedCustomer?: boolean | User$deletedCustomerArgs<ExtArgs>
     updatedCustomer?: boolean | User$updatedCustomerArgs<ExtArgs>
+    createdCategory?: boolean | User$createdCategoryArgs<ExtArgs>
+    deletedCategory?: boolean | User$deletedCategoryArgs<ExtArgs>
+    updatedCategory?: boolean | User$updatedCategoryArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
     ownedProducts?: boolean | User$ownedProductsArgs<ExtArgs>
     customersInContact?: boolean | User$customersInContactArgs<ExtArgs>
@@ -2280,6 +2444,9 @@ export namespace Prisma {
       createdCustomer: Prisma.$CustomerPayload<ExtArgs>[]
       deletedCustomer: Prisma.$CustomerPayload<ExtArgs>[]
       updatedCustomer: Prisma.$CustomerPayload<ExtArgs>[]
+      createdCategory: Prisma.$CategoryPayload<ExtArgs>[]
+      deletedCategory: Prisma.$CategoryPayload<ExtArgs>[]
+      updatedCategory: Prisma.$CategoryPayload<ExtArgs>[]
       role: Prisma.$RolePayload<ExtArgs>
       ownedProducts: Prisma.$ProductPayload<ExtArgs>[]
       customersInContact: Prisma.$CustomerPayload<ExtArgs>[]
@@ -2713,6 +2880,9 @@ export namespace Prisma {
     createdCustomer<T extends User$createdCustomerArgs<ExtArgs> = {}>(args?: Subset<T, User$createdCustomerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     deletedCustomer<T extends User$deletedCustomerArgs<ExtArgs> = {}>(args?: Subset<T, User$deletedCustomerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     updatedCustomer<T extends User$updatedCustomerArgs<ExtArgs> = {}>(args?: Subset<T, User$updatedCustomerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdCategory<T extends User$createdCategoryArgs<ExtArgs> = {}>(args?: Subset<T, User$createdCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    deletedCategory<T extends User$deletedCategoryArgs<ExtArgs> = {}>(args?: Subset<T, User$deletedCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    updatedCategory<T extends User$updatedCategoryArgs<ExtArgs> = {}>(args?: Subset<T, User$updatedCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     ownedProducts<T extends User$ownedProductsArgs<ExtArgs> = {}>(args?: Subset<T, User$ownedProductsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     customersInContact<T extends User$customersInContactArgs<ExtArgs> = {}>(args?: Subset<T, User$customersInContactArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3655,6 +3825,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+  }
+
+  /**
+   * User.createdCategory
+   */
+  export type User$createdCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * User.deletedCategory
+   */
+  export type User$deletedCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * User.updatedCategory
+   */
+  export type User$updatedCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
   }
 
   /**
@@ -4979,7 +5221,7 @@ export namespace Prisma {
     name: string | null
     imageUrl: string | null
     description: string | null
-    category: string | null
+    categoryId: string | null
     expiryDate: Date | null
     productionDate: Date | null
     quantity: number | null
@@ -5000,7 +5242,7 @@ export namespace Prisma {
     name: string | null
     imageUrl: string | null
     description: string | null
-    category: string | null
+    categoryId: string | null
     expiryDate: Date | null
     productionDate: Date | null
     quantity: number | null
@@ -5021,7 +5263,7 @@ export namespace Prisma {
     name: number
     imageUrl: number
     description: number
-    category: number
+    categoryId: number
     expiryDate: number
     productionDate: number
     quantity: number
@@ -5056,7 +5298,7 @@ export namespace Prisma {
     name?: true
     imageUrl?: true
     description?: true
-    category?: true
+    categoryId?: true
     expiryDate?: true
     productionDate?: true
     quantity?: true
@@ -5077,7 +5319,7 @@ export namespace Prisma {
     name?: true
     imageUrl?: true
     description?: true
-    category?: true
+    categoryId?: true
     expiryDate?: true
     productionDate?: true
     quantity?: true
@@ -5098,7 +5340,7 @@ export namespace Prisma {
     name?: true
     imageUrl?: true
     description?: true
-    category?: true
+    categoryId?: true
     expiryDate?: true
     productionDate?: true
     quantity?: true
@@ -5206,7 +5448,7 @@ export namespace Prisma {
     name: string
     imageUrl: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate: Date | null
     productionDate: Date | null
     quantity: number
@@ -5246,7 +5488,7 @@ export namespace Prisma {
     name?: boolean
     imageUrl?: boolean
     description?: boolean
-    category?: boolean
+    categoryId?: boolean
     expiryDate?: boolean
     productionDate?: boolean
     quantity?: boolean
@@ -5260,6 +5502,7 @@ export namespace Prisma {
     updatedAt?: boolean
     isDeleted?: boolean
     userId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Product$updatedByUserArgs<ExtArgs>
@@ -5274,7 +5517,7 @@ export namespace Prisma {
     name?: boolean
     imageUrl?: boolean
     description?: boolean
-    category?: boolean
+    categoryId?: boolean
     expiryDate?: boolean
     productionDate?: boolean
     quantity?: boolean
@@ -5288,6 +5531,7 @@ export namespace Prisma {
     updatedAt?: boolean
     isDeleted?: boolean
     userId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Product$updatedByUserArgs<ExtArgs>
@@ -5299,7 +5543,7 @@ export namespace Prisma {
     name?: boolean
     imageUrl?: boolean
     description?: boolean
-    category?: boolean
+    categoryId?: boolean
     expiryDate?: boolean
     productionDate?: boolean
     quantity?: boolean
@@ -5313,6 +5557,7 @@ export namespace Prisma {
     updatedAt?: boolean
     isDeleted?: boolean
     userId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Product$updatedByUserArgs<ExtArgs>
@@ -5324,7 +5569,7 @@ export namespace Prisma {
     name?: boolean
     imageUrl?: boolean
     description?: boolean
-    category?: boolean
+    categoryId?: boolean
     expiryDate?: boolean
     productionDate?: boolean
     quantity?: boolean
@@ -5340,8 +5585,9 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"productId" | "name" | "imageUrl" | "description" | "category" | "expiryDate" | "productionDate" | "quantity" | "price" | "costPrice" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted" | "userId", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"productId" | "name" | "imageUrl" | "description" | "categoryId" | "expiryDate" | "productionDate" | "quantity" | "price" | "costPrice" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted" | "userId", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Product$updatedByUserArgs<ExtArgs>
@@ -5351,12 +5597,14 @@ export namespace Prisma {
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Product$updatedByUserArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProductIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     createdByUser?: boolean | Product$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Product$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Product$updatedByUserArgs<ExtArgs>
@@ -5366,6 +5614,7 @@ export namespace Prisma {
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
     objects: {
+      category: Prisma.$CategoryPayload<ExtArgs>
       createdByUser: Prisma.$UserPayload<ExtArgs> | null
       deletedByUser: Prisma.$UserPayload<ExtArgs> | null
       updatedByUser: Prisma.$UserPayload<ExtArgs> | null
@@ -5378,7 +5627,7 @@ export namespace Prisma {
       name: string
       imageUrl: string | null
       description: string
-      category: string
+      categoryId: string
       expiryDate: Date | null
       productionDate: Date | null
       quantity: number
@@ -5786,6 +6035,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     createdByUser<T extends Product$createdByUserArgs<ExtArgs> = {}>(args?: Subset<T, Product$createdByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     deletedByUser<T extends Product$deletedByUserArgs<ExtArgs> = {}>(args?: Subset<T, Product$deletedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     updatedByUser<T extends Product$updatedByUserArgs<ExtArgs> = {}>(args?: Subset<T, Product$updatedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -5825,7 +6075,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Product", 'String'>
     readonly imageUrl: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
-    readonly category: FieldRef<"Product", 'String'>
+    readonly categoryId: FieldRef<"Product", 'String'>
     readonly expiryDate: FieldRef<"Product", 'DateTime'>
     readonly productionDate: FieldRef<"Product", 'DateTime'>
     readonly quantity: FieldRef<"Product", 'Int'>
@@ -6377,6 +6627,7 @@ export namespace Prisma {
     updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
+    customerId: string | null
   }
 
   export type SaleMaxAggregateOutputType = {
@@ -6388,6 +6639,7 @@ export namespace Prisma {
     updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean | null
+    customerId: string | null
   }
 
   export type SaleCountAggregateOutputType = {
@@ -6399,6 +6651,7 @@ export namespace Prisma {
     updatedBy: number
     updatedAt: number
     isDeleted: number
+    customerId: number
     _all: number
   }
 
@@ -6412,6 +6665,7 @@ export namespace Prisma {
     updatedBy?: true
     updatedAt?: true
     isDeleted?: true
+    customerId?: true
   }
 
   export type SaleMaxAggregateInputType = {
@@ -6423,6 +6677,7 @@ export namespace Prisma {
     updatedBy?: true
     updatedAt?: true
     isDeleted?: true
+    customerId?: true
   }
 
   export type SaleCountAggregateInputType = {
@@ -6434,6 +6689,7 @@ export namespace Prisma {
     updatedBy?: true
     updatedAt?: true
     isDeleted?: true
+    customerId?: true
     _all?: true
   }
 
@@ -6518,6 +6774,7 @@ export namespace Prisma {
     updatedBy: string | null
     updatedAt: Date | null
     isDeleted: boolean
+    customerId: string
     _count: SaleCountAggregateOutputType | null
     _min: SaleMinAggregateOutputType | null
     _max: SaleMaxAggregateOutputType | null
@@ -6546,10 +6803,12 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    customerId?: boolean
     createdByUser?: boolean | Sale$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Sale$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Sale$updatedByUserArgs<ExtArgs>
     productSales?: boolean | Sale$productSalesArgs<ExtArgs>
+    customer?: boolean | CustomerDefaultArgs<ExtArgs>
     _count?: boolean | SaleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sale"]>
 
@@ -6562,9 +6821,11 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    customerId?: boolean
     createdByUser?: boolean | Sale$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Sale$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Sale$updatedByUserArgs<ExtArgs>
+    customer?: boolean | CustomerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sale"]>
 
   export type SaleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6576,9 +6837,11 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    customerId?: boolean
     createdByUser?: boolean | Sale$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Sale$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Sale$updatedByUserArgs<ExtArgs>
+    customer?: boolean | CustomerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sale"]>
 
   export type SaleSelectScalar = {
@@ -6590,25 +6853,29 @@ export namespace Prisma {
     updatedBy?: boolean
     updatedAt?: boolean
     isDeleted?: boolean
+    customerId?: boolean
   }
 
-  export type SaleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"saleId" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted", ExtArgs["result"]["sale"]>
+  export type SaleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"saleId" | "createdAt" | "deletedAt" | "createdBy" | "deletedBy" | "updatedBy" | "updatedAt" | "isDeleted" | "customerId", ExtArgs["result"]["sale"]>
   export type SaleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdByUser?: boolean | Sale$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Sale$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Sale$updatedByUserArgs<ExtArgs>
     productSales?: boolean | Sale$productSalesArgs<ExtArgs>
+    customer?: boolean | CustomerDefaultArgs<ExtArgs>
     _count?: boolean | SaleCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SaleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdByUser?: boolean | Sale$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Sale$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Sale$updatedByUserArgs<ExtArgs>
+    customer?: boolean | CustomerDefaultArgs<ExtArgs>
   }
   export type SaleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdByUser?: boolean | Sale$createdByUserArgs<ExtArgs>
     deletedByUser?: boolean | Sale$deletedByUserArgs<ExtArgs>
     updatedByUser?: boolean | Sale$updatedByUserArgs<ExtArgs>
+    customer?: boolean | CustomerDefaultArgs<ExtArgs>
   }
 
   export type $SalePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6618,6 +6885,7 @@ export namespace Prisma {
       deletedByUser: Prisma.$UserPayload<ExtArgs> | null
       updatedByUser: Prisma.$UserPayload<ExtArgs> | null
       productSales: Prisma.$ProductSalePayload<ExtArgs>[]
+      customer: Prisma.$CustomerPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       saleId: string
@@ -6628,6 +6896,10 @@ export namespace Prisma {
       updatedBy: string | null
       updatedAt: Date | null
       isDeleted: boolean
+      /**
+       * 👉 New relation to Customer (buyer)
+       */
+      customerId: string
     }, ExtArgs["result"]["sale"]>
     composites: {}
   }
@@ -7026,6 +7298,7 @@ export namespace Prisma {
     deletedByUser<T extends Sale$deletedByUserArgs<ExtArgs> = {}>(args?: Subset<T, Sale$deletedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     updatedByUser<T extends Sale$updatedByUserArgs<ExtArgs> = {}>(args?: Subset<T, Sale$updatedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     productSales<T extends Sale$productSalesArgs<ExtArgs> = {}>(args?: Subset<T, Sale$productSalesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductSalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    customer<T extends CustomerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CustomerDefaultArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7063,6 +7336,7 @@ export namespace Prisma {
     readonly updatedBy: FieldRef<"Sale", 'String'>
     readonly updatedAt: FieldRef<"Sale", 'DateTime'>
     readonly isDeleted: FieldRef<"Sale", 'Boolean'>
+    readonly customerId: FieldRef<"Sale", 'String'>
   }
     
 
@@ -7281,7 +7555,7 @@ export namespace Prisma {
     /**
      * The data needed to create a Sale.
      */
-    data?: XOR<SaleCreateInput, SaleUncheckedCreateInput>
+    data: XOR<SaleCreateInput, SaleUncheckedCreateInput>
   }
 
   /**
@@ -11648,6 +11922,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: boolean | Customer$purchasesCreatedByCustomerArgs<ExtArgs>
     purchasesAsSupplier?: boolean | Customer$purchasesAsSupplierArgs<ExtArgs>
     Purchase?: boolean | Customer$PurchaseArgs<ExtArgs>
+    sales?: boolean | Customer$salesArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customer"]>
 
@@ -11719,6 +11994,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: boolean | Customer$purchasesCreatedByCustomerArgs<ExtArgs>
     purchasesAsSupplier?: boolean | Customer$purchasesAsSupplierArgs<ExtArgs>
     Purchase?: boolean | Customer$PurchaseArgs<ExtArgs>
+    sales?: boolean | Customer$salesArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CustomerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11744,6 +12020,7 @@ export namespace Prisma {
       purchasesCreatedByCustomer: Prisma.$PurchasePayload<ExtArgs>[]
       purchasesAsSupplier: Prisma.$PurchasePayload<ExtArgs>[]
       Purchase: Prisma.$PurchasePayload<ExtArgs>[]
+      sales: Prisma.$SalePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       customerId: string
@@ -12161,6 +12438,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer<T extends Customer$purchasesCreatedByCustomerArgs<ExtArgs> = {}>(args?: Subset<T, Customer$purchasesCreatedByCustomerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     purchasesAsSupplier<T extends Customer$purchasesAsSupplierArgs<ExtArgs> = {}>(args?: Subset<T, Customer$purchasesAsSupplierArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Purchase<T extends Customer$PurchaseArgs<ExtArgs> = {}>(args?: Subset<T, Customer$PurchaseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sales<T extends Customer$salesArgs<ExtArgs> = {}>(args?: Subset<T, Customer$salesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12729,6 +13007,30 @@ export namespace Prisma {
   }
 
   /**
+   * Customer.sales
+   */
+  export type Customer$salesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sale
+     */
+    select?: SaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Sale
+     */
+    omit?: SaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SaleInclude<ExtArgs> | null
+    where?: SaleWhereInput
+    orderBy?: SaleOrderByWithRelationInput | SaleOrderByWithRelationInput[]
+    cursor?: SaleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SaleScalarFieldEnum | SaleScalarFieldEnum[]
+  }
+
+  /**
    * Customer without action
    */
   export type CustomerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12744,6 +13046,1232 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CustomerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Category
+   */
+
+  export type AggregateCategory = {
+    _count: CategoryCountAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  export type CategoryMinAggregateOutputType = {
+    categoryId: string | null
+    name: string | null
+    description: string | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
+    deletedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    isDeleted: boolean | null
+  }
+
+  export type CategoryMaxAggregateOutputType = {
+    categoryId: string | null
+    name: string | null
+    description: string | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
+    deletedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    isDeleted: boolean | null
+  }
+
+  export type CategoryCountAggregateOutputType = {
+    categoryId: number
+    name: number
+    description: number
+    createdBy: number
+    deletedBy: number
+    updatedBy: number
+    deletedAt: number
+    createdAt: number
+    updatedAt: number
+    isDeleted: number
+    _all: number
+  }
+
+
+  export type CategoryMinAggregateInputType = {
+    categoryId?: true
+    name?: true
+    description?: true
+    createdBy?: true
+    deletedBy?: true
+    updatedBy?: true
+    deletedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    isDeleted?: true
+  }
+
+  export type CategoryMaxAggregateInputType = {
+    categoryId?: true
+    name?: true
+    description?: true
+    createdBy?: true
+    deletedBy?: true
+    updatedBy?: true
+    deletedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    isDeleted?: true
+  }
+
+  export type CategoryCountAggregateInputType = {
+    categoryId?: true
+    name?: true
+    description?: true
+    createdBy?: true
+    deletedBy?: true
+    updatedBy?: true
+    deletedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    isDeleted?: true
+    _all?: true
+  }
+
+  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Category to aggregate.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categories
+    **/
+    _count?: true | CategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategory[P]>
+      : GetScalarType<T[P], AggregateCategory[P]>
+  }
+
+
+
+
+  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
+    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
+    having?: CategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryCountAggregateInputType | true
+    _min?: CategoryMinAggregateInputType
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type CategoryGroupByOutputType = {
+    categoryId: string
+    name: string
+    description: string | null
+    createdBy: string | null
+    deletedBy: string | null
+    updatedBy: string | null
+    deletedAt: Date | null
+    createdAt: Date
+    updatedAt: Date | null
+    isDeleted: boolean
+    _count: CategoryCountAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    categoryId?: boolean
+    name?: boolean
+    description?: boolean
+    createdBy?: boolean
+    deletedBy?: boolean
+    updatedBy?: boolean
+    deletedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isDeleted?: boolean
+    products?: boolean | Category$productsArgs<ExtArgs>
+    createdByUser?: boolean | Category$createdByUserArgs<ExtArgs>
+    deletedByUser?: boolean | Category$deletedByUserArgs<ExtArgs>
+    updatedByUser?: boolean | Category$updatedByUserArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    categoryId?: boolean
+    name?: boolean
+    description?: boolean
+    createdBy?: boolean
+    deletedBy?: boolean
+    updatedBy?: boolean
+    deletedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isDeleted?: boolean
+    createdByUser?: boolean | Category$createdByUserArgs<ExtArgs>
+    deletedByUser?: boolean | Category$deletedByUserArgs<ExtArgs>
+    updatedByUser?: boolean | Category$updatedByUserArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    categoryId?: boolean
+    name?: boolean
+    description?: boolean
+    createdBy?: boolean
+    deletedBy?: boolean
+    updatedBy?: boolean
+    deletedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isDeleted?: boolean
+    createdByUser?: boolean | Category$createdByUserArgs<ExtArgs>
+    deletedByUser?: boolean | Category$deletedByUserArgs<ExtArgs>
+    updatedByUser?: boolean | Category$updatedByUserArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectScalar = {
+    categoryId?: boolean
+    name?: boolean
+    description?: boolean
+    createdBy?: boolean
+    deletedBy?: boolean
+    updatedBy?: boolean
+    deletedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isDeleted?: boolean
+  }
+
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"categoryId" | "name" | "description" | "createdBy" | "deletedBy" | "updatedBy" | "deletedAt" | "createdAt" | "updatedAt" | "isDeleted", ExtArgs["result"]["category"]>
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | Category$productsArgs<ExtArgs>
+    createdByUser?: boolean | Category$createdByUserArgs<ExtArgs>
+    deletedByUser?: boolean | Category$deletedByUserArgs<ExtArgs>
+    updatedByUser?: boolean | Category$updatedByUserArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdByUser?: boolean | Category$createdByUserArgs<ExtArgs>
+    deletedByUser?: boolean | Category$deletedByUserArgs<ExtArgs>
+    updatedByUser?: boolean | Category$updatedByUserArgs<ExtArgs>
+  }
+  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdByUser?: boolean | Category$createdByUserArgs<ExtArgs>
+    deletedByUser?: boolean | Category$deletedByUserArgs<ExtArgs>
+    updatedByUser?: boolean | Category$updatedByUserArgs<ExtArgs>
+  }
+
+  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Category"
+    objects: {
+      products: Prisma.$ProductPayload<ExtArgs>[]
+      createdByUser: Prisma.$UserPayload<ExtArgs> | null
+      deletedByUser: Prisma.$UserPayload<ExtArgs> | null
+      updatedByUser: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      categoryId: string
+      name: string
+      description: string | null
+      createdBy: string | null
+      deletedBy: string | null
+      updatedBy: string | null
+      deletedAt: Date | null
+      createdAt: Date
+      updatedAt: Date | null
+      isDeleted: boolean
+    }, ExtArgs["result"]["category"]>
+    composites: {}
+  }
+
+  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryCountAggregateInputType | true
+    }
+
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+    /**
+     * Find zero or one Category that matches the filter.
+     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categories
+     * const categories = await prisma.category.findMany()
+     * 
+     * // Get first 10 Categories
+     * const categories = await prisma.category.findMany({ take: 10 })
+     * 
+     * // Only select the `categoryId`
+     * const categoryWithCategoryIdOnly = await prisma.category.findMany({ select: { categoryId: true } })
+     * 
+     */
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Category.
+     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * @example
+     * // Create one Category
+     * const Category = await prisma.category.create({
+     *   data: {
+     *     // ... data to create a Category
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Categories.
+     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Categories and returns the data saved in the database.
+     * @param {CategoryCreateManyAndReturnArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Categories and only return the `categoryId`
+     * const categoryWithCategoryIdOnly = await prisma.category.createManyAndReturn({
+     *   select: { categoryId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Category.
+     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * @example
+     * // Delete one Category
+     * const Category = await prisma.category.delete({
+     *   where: {
+     *     // ... filter to delete one Category
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Category.
+     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * @example
+     * // Update one Category
+     * const category = await prisma.category.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Categories.
+     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * @example
+     * // Delete a few Categories
+     * const { count } = await prisma.category.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories and returns the data updated in the database.
+     * @param {CategoryUpdateManyAndReturnArgs} args - Arguments to update many Categories.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Categories and only return the `categoryId`
+     * const categoryWithCategoryIdOnly = await prisma.category.updateManyAndReturn({
+     *   select: { categoryId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Category.
+     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * @example
+     * // Update or create a Category
+     * const category = await prisma.category.upsert({
+     *   create: {
+     *     // ... data to create a Category
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Category we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @example
+     * // Count the number of Categories
+     * const count = await prisma.category.count({
+     *   where: {
+     *     // ... the filter for the Categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryCountArgs>(
+      args?: Subset<T, CategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+
+    /**
+     * Group by Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Category model
+   */
+  readonly fields: CategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Category.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    products<T extends Category$productsArgs<ExtArgs> = {}>(args?: Subset<T, Category$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdByUser<T extends Category$createdByUserArgs<ExtArgs> = {}>(args?: Subset<T, Category$createdByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    deletedByUser<T extends Category$deletedByUserArgs<ExtArgs> = {}>(args?: Subset<T, Category$deletedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    updatedByUser<T extends Category$updatedByUserArgs<ExtArgs> = {}>(args?: Subset<T, Category$updatedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Category model
+   */
+  interface CategoryFieldRefs {
+    readonly categoryId: FieldRef<"Category", 'String'>
+    readonly name: FieldRef<"Category", 'String'>
+    readonly description: FieldRef<"Category", 'String'>
+    readonly createdBy: FieldRef<"Category", 'String'>
+    readonly deletedBy: FieldRef<"Category", 'String'>
+    readonly updatedBy: FieldRef<"Category", 'String'>
+    readonly deletedAt: FieldRef<"Category", 'DateTime'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+    readonly isDeleted: FieldRef<"Category", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Category findUnique
+   */
+  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findUniqueOrThrow
+   */
+  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findFirst
+   */
+  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findFirstOrThrow
+   */
+  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findMany
+   */
+  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Categories to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category create
+   */
+  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Category.
+     */
+    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+  }
+
+  /**
+   * Category createMany
+   */
+  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category createManyAndReturn
+   */
+  export type CategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Category update
+   */
+  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Category.
+     */
+    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+    /**
+     * Choose, which Category to update.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category updateMany
+   */
+  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category updateManyAndReturn
+   */
+  export type CategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Category upsert
+   */
+  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Category to update in case it exists.
+     */
+    where: CategoryWhereUniqueInput
+    /**
+     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
+     */
+    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    /**
+     * In case the Category was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * Category delete
+   */
+  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter which Category to delete.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category deleteMany
+   */
+  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categories to delete
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category.products
+   */
+  export type Category$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Product
+     */
+    omit?: ProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    where?: ProductWhereInput
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
+    cursor?: ProductWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
+   * Category.createdByUser
+   */
+  export type Category$createdByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Category.deletedByUser
+   */
+  export type Category$deletedByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Category.updatedByUser
+   */
+  export type Category$updatedByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Category without action
+   */
+  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
   }
 
 
@@ -12801,7 +14329,7 @@ export namespace Prisma {
     name: 'name',
     imageUrl: 'imageUrl',
     description: 'description',
-    category: 'category',
+    categoryId: 'categoryId',
     expiryDate: 'expiryDate',
     productionDate: 'productionDate',
     quantity: 'quantity',
@@ -12828,7 +14356,8 @@ export namespace Prisma {
     deletedBy: 'deletedBy',
     updatedBy: 'updatedBy',
     updatedAt: 'updatedAt',
-    isDeleted: 'isDeleted'
+    isDeleted: 'isDeleted',
+    customerId: 'customerId'
   };
 
   export type SaleScalarFieldEnum = (typeof SaleScalarFieldEnum)[keyof typeof SaleScalarFieldEnum]
@@ -12906,6 +14435,22 @@ export namespace Prisma {
   };
 
   export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
+
+
+  export const CategoryScalarFieldEnum: {
+    categoryId: 'categoryId',
+    name: 'name',
+    description: 'description',
+    createdBy: 'createdBy',
+    deletedBy: 'deletedBy',
+    updatedBy: 'updatedBy',
+    deletedAt: 'deletedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    isDeleted: 'isDeleted'
+  };
+
+  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13041,6 +14586,9 @@ export namespace Prisma {
     createdCustomer?: CustomerListRelationFilter
     deletedCustomer?: CustomerListRelationFilter
     updatedCustomer?: CustomerListRelationFilter
+    createdCategory?: CategoryListRelationFilter
+    deletedCategory?: CategoryListRelationFilter
+    updatedCategory?: CategoryListRelationFilter
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     ownedProducts?: ProductListRelationFilter
     customersInContact?: CustomerListRelationFilter
@@ -13081,6 +14629,9 @@ export namespace Prisma {
     createdCustomer?: CustomerOrderByRelationAggregateInput
     deletedCustomer?: CustomerOrderByRelationAggregateInput
     updatedCustomer?: CustomerOrderByRelationAggregateInput
+    createdCategory?: CategoryOrderByRelationAggregateInput
+    deletedCategory?: CategoryOrderByRelationAggregateInput
+    updatedCategory?: CategoryOrderByRelationAggregateInput
     role?: RoleOrderByWithRelationInput
     ownedProducts?: ProductOrderByRelationAggregateInput
     customersInContact?: CustomerOrderByRelationAggregateInput
@@ -13124,6 +14675,9 @@ export namespace Prisma {
     createdCustomer?: CustomerListRelationFilter
     deletedCustomer?: CustomerListRelationFilter
     updatedCustomer?: CustomerListRelationFilter
+    createdCategory?: CategoryListRelationFilter
+    deletedCategory?: CategoryListRelationFilter
+    updatedCategory?: CategoryListRelationFilter
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     ownedProducts?: ProductListRelationFilter
     customersInContact?: CustomerListRelationFilter
@@ -13264,7 +14818,7 @@ export namespace Prisma {
     name?: StringFilter<"Product"> | string
     imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
-    category?: StringFilter<"Product"> | string
+    categoryId?: StringFilter<"Product"> | string
     expiryDate?: DateTimeNullableFilter<"Product"> | Date | string | null
     productionDate?: DateTimeNullableFilter<"Product"> | Date | string | null
     quantity?: IntFilter<"Product"> | number
@@ -13278,6 +14832,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     isDeleted?: BoolFilter<"Product"> | boolean
     userId?: StringFilter<"Product"> | string
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -13291,7 +14846,7 @@ export namespace Prisma {
     name?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
     description?: SortOrder
-    category?: SortOrder
+    categoryId?: SortOrder
     expiryDate?: SortOrderInput | SortOrder
     productionDate?: SortOrderInput | SortOrder
     quantity?: SortOrder
@@ -13305,6 +14860,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     isDeleted?: SortOrder
     userId?: SortOrder
+    category?: CategoryOrderByWithRelationInput
     createdByUser?: UserOrderByWithRelationInput
     deletedByUser?: UserOrderByWithRelationInput
     updatedByUser?: UserOrderByWithRelationInput
@@ -13321,7 +14877,7 @@ export namespace Prisma {
     NOT?: ProductWhereInput | ProductWhereInput[]
     imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
-    category?: StringFilter<"Product"> | string
+    categoryId?: StringFilter<"Product"> | string
     expiryDate?: DateTimeNullableFilter<"Product"> | Date | string | null
     productionDate?: DateTimeNullableFilter<"Product"> | Date | string | null
     quantity?: IntFilter<"Product"> | number
@@ -13335,6 +14891,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     isDeleted?: BoolFilter<"Product"> | boolean
     userId?: StringFilter<"Product"> | string
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -13348,7 +14905,7 @@ export namespace Prisma {
     name?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
     description?: SortOrder
-    category?: SortOrder
+    categoryId?: SortOrder
     expiryDate?: SortOrderInput | SortOrder
     productionDate?: SortOrderInput | SortOrder
     quantity?: SortOrder
@@ -13377,7 +14934,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Product"> | string
     imageUrl?: StringNullableWithAggregatesFilter<"Product"> | string | null
     description?: StringWithAggregatesFilter<"Product"> | string
-    category?: StringWithAggregatesFilter<"Product"> | string
+    categoryId?: StringWithAggregatesFilter<"Product"> | string
     expiryDate?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
     productionDate?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
     quantity?: IntWithAggregatesFilter<"Product"> | number
@@ -13405,10 +14962,12 @@ export namespace Prisma {
     updatedBy?: StringNullableFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
     isDeleted?: BoolFilter<"Sale"> | boolean
+    customerId?: StringFilter<"Sale"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     productSales?: ProductSaleListRelationFilter
+    customer?: XOR<CustomerScalarRelationFilter, CustomerWhereInput>
   }
 
   export type SaleOrderByWithRelationInput = {
@@ -13420,10 +14979,12 @@ export namespace Prisma {
     updatedBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
     isDeleted?: SortOrder
+    customerId?: SortOrder
     createdByUser?: UserOrderByWithRelationInput
     deletedByUser?: UserOrderByWithRelationInput
     updatedByUser?: UserOrderByWithRelationInput
     productSales?: ProductSaleOrderByRelationAggregateInput
+    customer?: CustomerOrderByWithRelationInput
   }
 
   export type SaleWhereUniqueInput = Prisma.AtLeast<{
@@ -13438,10 +14999,12 @@ export namespace Prisma {
     updatedBy?: StringNullableFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
     isDeleted?: BoolFilter<"Sale"> | boolean
+    customerId?: StringFilter<"Sale"> | string
     createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     productSales?: ProductSaleListRelationFilter
+    customer?: XOR<CustomerScalarRelationFilter, CustomerWhereInput>
   }, "saleId">
 
   export type SaleOrderByWithAggregationInput = {
@@ -13453,6 +15016,7 @@ export namespace Prisma {
     updatedBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
     isDeleted?: SortOrder
+    customerId?: SortOrder
     _count?: SaleCountOrderByAggregateInput
     _max?: SaleMaxOrderByAggregateInput
     _min?: SaleMinOrderByAggregateInput
@@ -13470,6 +15034,7 @@ export namespace Prisma {
     updatedBy?: StringNullableWithAggregatesFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Sale"> | Date | string | null
     isDeleted?: BoolWithAggregatesFilter<"Sale"> | boolean
+    customerId?: StringWithAggregatesFilter<"Sale"> | string
   }
 
   export type PurchaseWhereInput = {
@@ -13813,6 +15378,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseListRelationFilter
     purchasesAsSupplier?: PurchaseListRelationFilter
     Purchase?: PurchaseListRelationFilter
+    sales?: SaleListRelationFilter
   }
 
   export type CustomerOrderByWithRelationInput = {
@@ -13837,6 +15403,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseOrderByRelationAggregateInput
     purchasesAsSupplier?: PurchaseOrderByRelationAggregateInput
     Purchase?: PurchaseOrderByRelationAggregateInput
+    sales?: SaleOrderByRelationAggregateInput
   }
 
   export type CustomerWhereUniqueInput = Prisma.AtLeast<{
@@ -13864,6 +15431,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseListRelationFilter
     purchasesAsSupplier?: PurchaseListRelationFilter
     Purchase?: PurchaseListRelationFilter
+    sales?: SaleListRelationFilter
   }, "customerId" | "email">
 
   export type CustomerOrderByWithAggregationInput = {
@@ -13906,6 +15474,95 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"Customer"> | string
   }
 
+  export type CategoryWhereInput = {
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    categoryId?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    description?: StringNullableFilter<"Category"> | string | null
+    createdBy?: StringNullableFilter<"Category"> | string | null
+    deletedBy?: StringNullableFilter<"Category"> | string | null
+    updatedBy?: StringNullableFilter<"Category"> | string | null
+    deletedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
+    isDeleted?: BoolFilter<"Category"> | boolean
+    products?: ProductListRelationFilter
+    createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type CategoryOrderByWithRelationInput = {
+    categoryId?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    deletedBy?: SortOrderInput | SortOrder
+    updatedBy?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    isDeleted?: SortOrder
+    products?: ProductOrderByRelationAggregateInput
+    createdByUser?: UserOrderByWithRelationInput
+    deletedByUser?: UserOrderByWithRelationInput
+    updatedByUser?: UserOrderByWithRelationInput
+  }
+
+  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+    categoryId?: string
+    name?: string
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    description?: StringNullableFilter<"Category"> | string | null
+    createdBy?: StringNullableFilter<"Category"> | string | null
+    deletedBy?: StringNullableFilter<"Category"> | string | null
+    updatedBy?: StringNullableFilter<"Category"> | string | null
+    deletedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
+    isDeleted?: BoolFilter<"Category"> | boolean
+    products?: ProductListRelationFilter
+    createdByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    deletedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    updatedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "categoryId" | "name">
+
+  export type CategoryOrderByWithAggregationInput = {
+    categoryId?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    deletedBy?: SortOrderInput | SortOrder
+    updatedBy?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    isDeleted?: SortOrder
+    _count?: CategoryCountOrderByAggregateInput
+    _max?: CategoryMaxOrderByAggregateInput
+    _min?: CategoryMinOrderByAggregateInput
+  }
+
+  export type CategoryScalarWhereWithAggregatesInput = {
+    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    OR?: CategoryScalarWhereWithAggregatesInput[]
+    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    categoryId?: StringWithAggregatesFilter<"Category"> | string
+    name?: StringWithAggregatesFilter<"Category"> | string
+    description?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    createdBy?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    deletedBy?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Category"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Category"> | Date | string | null
+    isDeleted?: BoolWithAggregatesFilter<"Category"> | boolean
+  }
+
   export type UserCreateInput = {
     userId?: string
     firstName: string
@@ -13940,6 +15597,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -13980,6 +15640,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -14018,6 +15681,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -14058,6 +15724,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -14206,7 +15875,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -14216,6 +15884,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
@@ -14229,7 +15898,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -14252,7 +15921,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -14262,6 +15930,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
@@ -14275,7 +15944,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -14298,7 +15967,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -14319,7 +15988,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -14336,7 +16004,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -14362,6 +16030,7 @@ export namespace Prisma {
     deletedByUser?: UserCreateNestedOneWithoutDeletedSalesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedSalesInput
     productSales?: ProductSaleCreateNestedManyWithoutSaleInput
+    customer: CustomerCreateNestedOneWithoutSalesInput
   }
 
   export type SaleUncheckedCreateInput = {
@@ -14373,6 +16042,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
     productSales?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
   }
 
@@ -14386,6 +16056,7 @@ export namespace Prisma {
     deletedByUser?: UserUpdateOneWithoutDeletedSalesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedSalesNestedInput
     productSales?: ProductSaleUpdateManyWithoutSaleNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutSalesNestedInput
   }
 
   export type SaleUncheckedUpdateInput = {
@@ -14397,6 +16068,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
     productSales?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
@@ -14409,6 +16081,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
   }
 
   export type SaleUpdateManyMutationInput = {
@@ -14428,6 +16101,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type PurchaseCreateInput = {
@@ -14751,6 +16425,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateInput = {
@@ -14771,6 +16446,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUpdateInput = {
@@ -14791,6 +16467,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateInput = {
@@ -14811,6 +16488,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerCreateManyInput = {
@@ -14858,6 +16536,98 @@ export namespace Prisma {
     isSupplier?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryCreateInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductCreateNestedManyWithoutCategoryInput
+    createdByUser?: UserCreateNestedOneWithoutCreatedCategoryInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedCategoryInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedCategoryInput
+  }
+
+  export type CategoryUncheckedCreateInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUpdateInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUpdateManyWithoutCategoryNestedInput
+    createdByUser?: UserUpdateOneWithoutCreatedCategoryNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedCategoryNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryCreateManyInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+  }
+
+  export type CategoryUpdateManyMutationInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CategoryUncheckedUpdateManyInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -14959,6 +16729,12 @@ export namespace Prisma {
     none?: CustomerWhereInput
   }
 
+  export type CategoryListRelationFilter = {
+    every?: CategoryWhereInput
+    some?: CategoryWhereInput
+    none?: CategoryWhereInput
+  }
+
   export type RoleScalarRelationFilter = {
     is?: RoleWhereInput
     isNot?: RoleWhereInput
@@ -14994,6 +16770,10 @@ export namespace Prisma {
   }
 
   export type CustomerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CategoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15193,6 +16973,11 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type CategoryScalarRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -15203,7 +16988,7 @@ export namespace Prisma {
     name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
-    category?: SortOrder
+    categoryId?: SortOrder
     expiryDate?: SortOrder
     productionDate?: SortOrder
     quantity?: SortOrder
@@ -15230,7 +17015,7 @@ export namespace Prisma {
     name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
-    category?: SortOrder
+    categoryId?: SortOrder
     expiryDate?: SortOrder
     productionDate?: SortOrder
     quantity?: SortOrder
@@ -15251,7 +17036,7 @@ export namespace Prisma {
     name?: SortOrder
     imageUrl?: SortOrder
     description?: SortOrder
-    category?: SortOrder
+    categoryId?: SortOrder
     expiryDate?: SortOrder
     productionDate?: SortOrder
     quantity?: SortOrder
@@ -15305,6 +17090,11 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type CustomerScalarRelationFilter = {
+    is?: CustomerWhereInput
+    isNot?: CustomerWhereInput
+  }
+
   export type SaleCountOrderByAggregateInput = {
     saleId?: SortOrder
     createdAt?: SortOrder
@@ -15314,6 +17104,7 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
+    customerId?: SortOrder
   }
 
   export type SaleMaxOrderByAggregateInput = {
@@ -15325,6 +17116,7 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
+    customerId?: SortOrder
   }
 
   export type SaleMinOrderByAggregateInput = {
@@ -15336,11 +17128,7 @@ export namespace Prisma {
     updatedBy?: SortOrder
     updatedAt?: SortOrder
     isDeleted?: SortOrder
-  }
-
-  export type CustomerScalarRelationFilter = {
-    is?: CustomerWhereInput
-    isNot?: CustomerWhereInput
+    customerId?: SortOrder
   }
 
   export type CustomerNullableScalarRelationFilter = {
@@ -15569,6 +17357,45 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type CategoryCountOrderByAggregateInput = {
+    categoryId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    createdBy?: SortOrder
+    deletedBy?: SortOrder
+    updatedBy?: SortOrder
+    deletedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isDeleted?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    categoryId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    createdBy?: SortOrder
+    deletedBy?: SortOrder
+    updatedBy?: SortOrder
+    deletedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isDeleted?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    categoryId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    createdBy?: SortOrder
+    deletedBy?: SortOrder
+    updatedBy?: SortOrder
+    deletedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isDeleted?: SortOrder
+  }
+
   export type RoleCreateNestedManyWithoutCreatedByUserInput = {
     create?: XOR<RoleCreateWithoutCreatedByUserInput, RoleUncheckedCreateWithoutCreatedByUserInput> | RoleCreateWithoutCreatedByUserInput[] | RoleUncheckedCreateWithoutCreatedByUserInput[]
     connectOrCreate?: RoleCreateOrConnectWithoutCreatedByUserInput | RoleCreateOrConnectWithoutCreatedByUserInput[]
@@ -15714,6 +17541,27 @@ export namespace Prisma {
     connectOrCreate?: CustomerCreateOrConnectWithoutUpdatedByUserInput | CustomerCreateOrConnectWithoutUpdatedByUserInput[]
     createMany?: CustomerCreateManyUpdatedByUserInputEnvelope
     connect?: CustomerWhereUniqueInput | CustomerWhereUniqueInput[]
+  }
+
+  export type CategoryCreateNestedManyWithoutCreatedByUserInput = {
+    create?: XOR<CategoryCreateWithoutCreatedByUserInput, CategoryUncheckedCreateWithoutCreatedByUserInput> | CategoryCreateWithoutCreatedByUserInput[] | CategoryUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutCreatedByUserInput | CategoryCreateOrConnectWithoutCreatedByUserInput[]
+    createMany?: CategoryCreateManyCreatedByUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type CategoryCreateNestedManyWithoutDeletedByUserInput = {
+    create?: XOR<CategoryCreateWithoutDeletedByUserInput, CategoryUncheckedCreateWithoutDeletedByUserInput> | CategoryCreateWithoutDeletedByUserInput[] | CategoryUncheckedCreateWithoutDeletedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDeletedByUserInput | CategoryCreateOrConnectWithoutDeletedByUserInput[]
+    createMany?: CategoryCreateManyDeletedByUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type CategoryCreateNestedManyWithoutUpdatedByUserInput = {
+    create?: XOR<CategoryCreateWithoutUpdatedByUserInput, CategoryUncheckedCreateWithoutUpdatedByUserInput> | CategoryCreateWithoutUpdatedByUserInput[] | CategoryUncheckedCreateWithoutUpdatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUpdatedByUserInput | CategoryCreateOrConnectWithoutUpdatedByUserInput[]
+    createMany?: CategoryCreateManyUpdatedByUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {
@@ -15881,6 +17729,27 @@ export namespace Prisma {
     connectOrCreate?: CustomerCreateOrConnectWithoutUpdatedByUserInput | CustomerCreateOrConnectWithoutUpdatedByUserInput[]
     createMany?: CustomerCreateManyUpdatedByUserInputEnvelope
     connect?: CustomerWhereUniqueInput | CustomerWhereUniqueInput[]
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput = {
+    create?: XOR<CategoryCreateWithoutCreatedByUserInput, CategoryUncheckedCreateWithoutCreatedByUserInput> | CategoryCreateWithoutCreatedByUserInput[] | CategoryUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutCreatedByUserInput | CategoryCreateOrConnectWithoutCreatedByUserInput[]
+    createMany?: CategoryCreateManyCreatedByUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput = {
+    create?: XOR<CategoryCreateWithoutDeletedByUserInput, CategoryUncheckedCreateWithoutDeletedByUserInput> | CategoryCreateWithoutDeletedByUserInput[] | CategoryUncheckedCreateWithoutDeletedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDeletedByUserInput | CategoryCreateOrConnectWithoutDeletedByUserInput[]
+    createMany?: CategoryCreateManyDeletedByUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput = {
+    create?: XOR<CategoryCreateWithoutUpdatedByUserInput, CategoryUncheckedCreateWithoutUpdatedByUserInput> | CategoryCreateWithoutUpdatedByUserInput[] | CategoryUncheckedCreateWithoutUpdatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUpdatedByUserInput | CategoryCreateOrConnectWithoutUpdatedByUserInput[]
+    createMany?: CategoryCreateManyUpdatedByUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
   }
 
   export type ProductUncheckedCreateNestedManyWithoutUserInput = {
@@ -16209,6 +18078,48 @@ export namespace Prisma {
     update?: CustomerUpdateWithWhereUniqueWithoutUpdatedByUserInput | CustomerUpdateWithWhereUniqueWithoutUpdatedByUserInput[]
     updateMany?: CustomerUpdateManyWithWhereWithoutUpdatedByUserInput | CustomerUpdateManyWithWhereWithoutUpdatedByUserInput[]
     deleteMany?: CustomerScalarWhereInput | CustomerScalarWhereInput[]
+  }
+
+  export type CategoryUpdateManyWithoutCreatedByUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutCreatedByUserInput, CategoryUncheckedCreateWithoutCreatedByUserInput> | CategoryCreateWithoutCreatedByUserInput[] | CategoryUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutCreatedByUserInput | CategoryCreateOrConnectWithoutCreatedByUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutCreatedByUserInput | CategoryUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+    createMany?: CategoryCreateManyCreatedByUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutCreatedByUserInput | CategoryUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutCreatedByUserInput | CategoryUpdateManyWithWhereWithoutCreatedByUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type CategoryUpdateManyWithoutDeletedByUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutDeletedByUserInput, CategoryUncheckedCreateWithoutDeletedByUserInput> | CategoryCreateWithoutDeletedByUserInput[] | CategoryUncheckedCreateWithoutDeletedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDeletedByUserInput | CategoryCreateOrConnectWithoutDeletedByUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutDeletedByUserInput | CategoryUpsertWithWhereUniqueWithoutDeletedByUserInput[]
+    createMany?: CategoryCreateManyDeletedByUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutDeletedByUserInput | CategoryUpdateWithWhereUniqueWithoutDeletedByUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutDeletedByUserInput | CategoryUpdateManyWithWhereWithoutDeletedByUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type CategoryUpdateManyWithoutUpdatedByUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutUpdatedByUserInput, CategoryUncheckedCreateWithoutUpdatedByUserInput> | CategoryCreateWithoutUpdatedByUserInput[] | CategoryUncheckedCreateWithoutUpdatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUpdatedByUserInput | CategoryCreateOrConnectWithoutUpdatedByUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutUpdatedByUserInput | CategoryUpsertWithWhereUniqueWithoutUpdatedByUserInput[]
+    createMany?: CategoryCreateManyUpdatedByUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutUpdatedByUserInput | CategoryUpdateWithWhereUniqueWithoutUpdatedByUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutUpdatedByUserInput | CategoryUpdateManyWithWhereWithoutUpdatedByUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
   }
 
   export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
@@ -16541,6 +18452,48 @@ export namespace Prisma {
     deleteMany?: CustomerScalarWhereInput | CustomerScalarWhereInput[]
   }
 
+  export type CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutCreatedByUserInput, CategoryUncheckedCreateWithoutCreatedByUserInput> | CategoryCreateWithoutCreatedByUserInput[] | CategoryUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutCreatedByUserInput | CategoryCreateOrConnectWithoutCreatedByUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutCreatedByUserInput | CategoryUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+    createMany?: CategoryCreateManyCreatedByUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutCreatedByUserInput | CategoryUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutCreatedByUserInput | CategoryUpdateManyWithWhereWithoutCreatedByUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutDeletedByUserInput, CategoryUncheckedCreateWithoutDeletedByUserInput> | CategoryCreateWithoutDeletedByUserInput[] | CategoryUncheckedCreateWithoutDeletedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDeletedByUserInput | CategoryCreateOrConnectWithoutDeletedByUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutDeletedByUserInput | CategoryUpsertWithWhereUniqueWithoutDeletedByUserInput[]
+    createMany?: CategoryCreateManyDeletedByUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutDeletedByUserInput | CategoryUpdateWithWhereUniqueWithoutDeletedByUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutDeletedByUserInput | CategoryUpdateManyWithWhereWithoutDeletedByUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutUpdatedByUserInput, CategoryUncheckedCreateWithoutUpdatedByUserInput> | CategoryCreateWithoutUpdatedByUserInput[] | CategoryUncheckedCreateWithoutUpdatedByUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUpdatedByUserInput | CategoryCreateOrConnectWithoutUpdatedByUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutUpdatedByUserInput | CategoryUpsertWithWhereUniqueWithoutUpdatedByUserInput[]
+    createMany?: CategoryCreateManyUpdatedByUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutUpdatedByUserInput | CategoryUpdateWithWhereUniqueWithoutUpdatedByUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutUpdatedByUserInput | CategoryUpdateManyWithWhereWithoutUpdatedByUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
   export type ProductUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ProductCreateWithoutUserInput, ProductUncheckedCreateWithoutUserInput> | ProductCreateWithoutUserInput[] | ProductUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutUserInput | ProductCreateOrConnectWithoutUserInput[]
@@ -16659,6 +18612,12 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type CategoryCreateNestedOneWithoutProductsInput = {
+    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
+    connect?: CategoryWhereUniqueInput
+  }
+
   export type UserCreateNestedOneWithoutCreatedProductsInput = {
     create?: XOR<UserCreateWithoutCreatedProductsInput, UserUncheckedCreateWithoutCreatedProductsInput>
     connectOrCreate?: UserCreateOrConnectWithoutCreatedProductsInput
@@ -16725,6 +18684,14 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type CategoryUpdateOneRequiredWithoutProductsNestedInput = {
+    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
+    upsert?: CategoryUpsertWithoutProductsInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutProductsInput, CategoryUpdateWithoutProductsInput>, CategoryUncheckedUpdateWithoutProductsInput>
   }
 
   export type UserUpdateOneWithoutCreatedProductsNestedInput = {
@@ -16846,6 +18813,12 @@ export namespace Prisma {
     connect?: ProductSaleWhereUniqueInput | ProductSaleWhereUniqueInput[]
   }
 
+  export type CustomerCreateNestedOneWithoutSalesInput = {
+    create?: XOR<CustomerCreateWithoutSalesInput, CustomerUncheckedCreateWithoutSalesInput>
+    connectOrCreate?: CustomerCreateOrConnectWithoutSalesInput
+    connect?: CustomerWhereUniqueInput
+  }
+
   export type ProductSaleUncheckedCreateNestedManyWithoutSaleInput = {
     create?: XOR<ProductSaleCreateWithoutSaleInput, ProductSaleUncheckedCreateWithoutSaleInput> | ProductSaleCreateWithoutSaleInput[] | ProductSaleUncheckedCreateWithoutSaleInput[]
     connectOrCreate?: ProductSaleCreateOrConnectWithoutSaleInput | ProductSaleCreateOrConnectWithoutSaleInput[]
@@ -16895,6 +18868,14 @@ export namespace Prisma {
     update?: ProductSaleUpdateWithWhereUniqueWithoutSaleInput | ProductSaleUpdateWithWhereUniqueWithoutSaleInput[]
     updateMany?: ProductSaleUpdateManyWithWhereWithoutSaleInput | ProductSaleUpdateManyWithWhereWithoutSaleInput[]
     deleteMany?: ProductSaleScalarWhereInput | ProductSaleScalarWhereInput[]
+  }
+
+  export type CustomerUpdateOneRequiredWithoutSalesNestedInput = {
+    create?: XOR<CustomerCreateWithoutSalesInput, CustomerUncheckedCreateWithoutSalesInput>
+    connectOrCreate?: CustomerCreateOrConnectWithoutSalesInput
+    upsert?: CustomerUpsertWithoutSalesInput
+    connect?: CustomerWhereUniqueInput
+    update?: XOR<XOR<CustomerUpdateToOneWithWhereWithoutSalesInput, CustomerUpdateWithoutSalesInput>, CustomerUncheckedUpdateWithoutSalesInput>
   }
 
   export type ProductSaleUncheckedUpdateManyWithoutSaleNestedInput = {
@@ -17242,6 +19223,13 @@ export namespace Prisma {
     connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
   }
 
+  export type SaleCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<SaleCreateWithoutCustomerInput, SaleUncheckedCreateWithoutCustomerInput> | SaleCreateWithoutCustomerInput[] | SaleUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCustomerInput | SaleCreateOrConnectWithoutCustomerInput[]
+    createMany?: SaleCreateManyCustomerInputEnvelope
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+  }
+
   export type PurchaseUncheckedCreateNestedManyWithoutCustomerInput = {
     create?: XOR<PurchaseCreateWithoutCustomerInput, PurchaseUncheckedCreateWithoutCustomerInput> | PurchaseCreateWithoutCustomerInput[] | PurchaseUncheckedCreateWithoutCustomerInput[]
     connectOrCreate?: PurchaseCreateOrConnectWithoutCustomerInput | PurchaseCreateOrConnectWithoutCustomerInput[]
@@ -17261,6 +19249,13 @@ export namespace Prisma {
     connectOrCreate?: PurchaseCreateOrConnectWithoutCustomerInput | PurchaseCreateOrConnectWithoutCustomerInput[]
     createMany?: PurchaseCreateManyCustomerInputEnvelope
     connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
+  }
+
+  export type SaleUncheckedCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<SaleCreateWithoutCustomerInput, SaleUncheckedCreateWithoutCustomerInput> | SaleCreateWithoutCustomerInput[] | SaleUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCustomerInput | SaleCreateOrConnectWithoutCustomerInput[]
+    createMany?: SaleCreateManyCustomerInputEnvelope
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
   }
 
   export type UserUpdateOneWithoutCreatedCustomerNestedInput = {
@@ -17343,6 +19338,20 @@ export namespace Prisma {
     deleteMany?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
   }
 
+  export type SaleUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<SaleCreateWithoutCustomerInput, SaleUncheckedCreateWithoutCustomerInput> | SaleCreateWithoutCustomerInput[] | SaleUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCustomerInput | SaleCreateOrConnectWithoutCustomerInput[]
+    upsert?: SaleUpsertWithWhereUniqueWithoutCustomerInput | SaleUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: SaleCreateManyCustomerInputEnvelope
+    set?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    disconnect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    delete?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    update?: SaleUpdateWithWhereUniqueWithoutCustomerInput | SaleUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: SaleUpdateManyWithWhereWithoutCustomerInput | SaleUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: SaleScalarWhereInput | SaleScalarWhereInput[]
+  }
+
   export type PurchaseUncheckedUpdateManyWithoutCustomerNestedInput = {
     create?: XOR<PurchaseCreateWithoutCustomerInput, PurchaseUncheckedCreateWithoutCustomerInput> | PurchaseCreateWithoutCustomerInput[] | PurchaseUncheckedCreateWithoutCustomerInput[]
     connectOrCreate?: PurchaseCreateOrConnectWithoutCustomerInput | PurchaseCreateOrConnectWithoutCustomerInput[]
@@ -17383,6 +19392,110 @@ export namespace Prisma {
     update?: PurchaseUpdateWithWhereUniqueWithoutCustomerInput | PurchaseUpdateWithWhereUniqueWithoutCustomerInput[]
     updateMany?: PurchaseUpdateManyWithWhereWithoutCustomerInput | PurchaseUpdateManyWithWhereWithoutCustomerInput[]
     deleteMany?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
+  }
+
+  export type SaleUncheckedUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<SaleCreateWithoutCustomerInput, SaleUncheckedCreateWithoutCustomerInput> | SaleCreateWithoutCustomerInput[] | SaleUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: SaleCreateOrConnectWithoutCustomerInput | SaleCreateOrConnectWithoutCustomerInput[]
+    upsert?: SaleUpsertWithWhereUniqueWithoutCustomerInput | SaleUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: SaleCreateManyCustomerInputEnvelope
+    set?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    disconnect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    delete?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    connect?: SaleWhereUniqueInput | SaleWhereUniqueInput[]
+    update?: SaleUpdateWithWhereUniqueWithoutCustomerInput | SaleUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: SaleUpdateManyWithWhereWithoutCustomerInput | SaleUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: SaleScalarWhereInput | SaleScalarWhereInput[]
+  }
+
+  export type ProductCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
+    createMany?: ProductCreateManyCategoryInputEnvelope
+    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCreatedCategoryInput = {
+    create?: XOR<UserCreateWithoutCreatedCategoryInput, UserUncheckedCreateWithoutCreatedCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedCategoryInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutDeletedCategoryInput = {
+    create?: XOR<UserCreateWithoutDeletedCategoryInput, UserUncheckedCreateWithoutDeletedCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDeletedCategoryInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutUpdatedCategoryInput = {
+    create?: XOR<UserCreateWithoutUpdatedCategoryInput, UserUncheckedCreateWithoutUpdatedCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUpdatedCategoryInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProductUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
+    createMany?: ProductCreateManyCategoryInputEnvelope
+    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+  }
+
+  export type ProductUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
+    upsert?: ProductUpsertWithWhereUniqueWithoutCategoryInput | ProductUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ProductCreateManyCategoryInputEnvelope
+    set?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    disconnect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    delete?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    update?: ProductUpdateWithWhereUniqueWithoutCategoryInput | ProductUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ProductUpdateManyWithWhereWithoutCategoryInput | ProductUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
+  }
+
+  export type UserUpdateOneWithoutCreatedCategoryNestedInput = {
+    create?: XOR<UserCreateWithoutCreatedCategoryInput, UserUncheckedCreateWithoutCreatedCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedCategoryInput
+    upsert?: UserUpsertWithoutCreatedCategoryInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatedCategoryInput, UserUpdateWithoutCreatedCategoryInput>, UserUncheckedUpdateWithoutCreatedCategoryInput>
+  }
+
+  export type UserUpdateOneWithoutDeletedCategoryNestedInput = {
+    create?: XOR<UserCreateWithoutDeletedCategoryInput, UserUncheckedCreateWithoutDeletedCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDeletedCategoryInput
+    upsert?: UserUpsertWithoutDeletedCategoryInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDeletedCategoryInput, UserUpdateWithoutDeletedCategoryInput>, UserUncheckedUpdateWithoutDeletedCategoryInput>
+  }
+
+  export type UserUpdateOneWithoutUpdatedCategoryNestedInput = {
+    create?: XOR<UserCreateWithoutUpdatedCategoryInput, UserUncheckedCreateWithoutUpdatedCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUpdatedCategoryInput
+    upsert?: UserUpsertWithoutUpdatedCategoryInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdatedCategoryInput, UserUpdateWithoutUpdatedCategoryInput>, UserUncheckedUpdateWithoutUpdatedCategoryInput>
+  }
+
+  export type ProductUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
+    upsert?: ProductUpsertWithWhereUniqueWithoutCategoryInput | ProductUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ProductCreateManyCategoryInputEnvelope
+    set?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    disconnect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    delete?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+    update?: ProductUpdateWithWhereUniqueWithoutCategoryInput | ProductUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ProductUpdateManyWithWhereWithoutCategoryInput | ProductUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -17688,7 +19801,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -17698,6 +19810,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
     user: UserCreateNestedOneWithoutOwnedProductsInput
@@ -17710,7 +19823,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -17742,7 +19855,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -17752,6 +19864,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
     user: UserCreateNestedOneWithoutOwnedProductsInput
@@ -17764,7 +19877,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -17796,7 +19909,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -17806,6 +19918,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
     user: UserCreateNestedOneWithoutOwnedProductsInput
@@ -17818,7 +19931,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -17854,6 +19967,7 @@ export namespace Prisma {
     deletedByUser?: UserCreateNestedOneWithoutDeletedSalesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedSalesInput
     productSales?: ProductSaleCreateNestedManyWithoutSaleInput
+    customer: CustomerCreateNestedOneWithoutSalesInput
   }
 
   export type SaleUncheckedCreateWithoutCreatedByUserInput = {
@@ -17864,6 +19978,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
     productSales?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
   }
 
@@ -17886,6 +20001,7 @@ export namespace Prisma {
     createdByUser?: UserCreateNestedOneWithoutCreatedSalesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedSalesInput
     productSales?: ProductSaleCreateNestedManyWithoutSaleInput
+    customer: CustomerCreateNestedOneWithoutSalesInput
   }
 
   export type SaleUncheckedCreateWithoutDeletedByUserInput = {
@@ -17896,6 +20012,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
     productSales?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
   }
 
@@ -17918,6 +20035,7 @@ export namespace Prisma {
     createdByUser?: UserCreateNestedOneWithoutCreatedSalesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedSalesInput
     productSales?: ProductSaleCreateNestedManyWithoutSaleInput
+    customer: CustomerCreateNestedOneWithoutSalesInput
   }
 
   export type SaleUncheckedCreateWithoutUpdatedByUserInput = {
@@ -17928,6 +20046,7 @@ export namespace Prisma {
     deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
     productSales?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
   }
 
@@ -18306,6 +20425,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutCreatedByUserInput = {
@@ -18325,6 +20445,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutCreatedByUserInput = {
@@ -18354,6 +20475,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutDeletedByUserInput = {
@@ -18373,6 +20495,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutDeletedByUserInput = {
@@ -18402,6 +20525,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutUpdatedByUserInput = {
@@ -18421,6 +20545,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutUpdatedByUserInput = {
@@ -18430,6 +20555,114 @@ export namespace Prisma {
 
   export type CustomerCreateManyUpdatedByUserInputEnvelope = {
     data: CustomerCreateManyUpdatedByUserInput | CustomerCreateManyUpdatedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CategoryCreateWithoutCreatedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductCreateNestedManyWithoutCategoryInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedCategoryInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutCreatedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutCreatedByUserInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutCreatedByUserInput, CategoryUncheckedCreateWithoutCreatedByUserInput>
+  }
+
+  export type CategoryCreateManyCreatedByUserInputEnvelope = {
+    data: CategoryCreateManyCreatedByUserInput | CategoryCreateManyCreatedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CategoryCreateWithoutDeletedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductCreateNestedManyWithoutCategoryInput
+    createdByUser?: UserCreateNestedOneWithoutCreatedCategoryInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutDeletedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutDeletedByUserInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutDeletedByUserInput, CategoryUncheckedCreateWithoutDeletedByUserInput>
+  }
+
+  export type CategoryCreateManyDeletedByUserInputEnvelope = {
+    data: CategoryCreateManyDeletedByUserInput | CategoryCreateManyDeletedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CategoryCreateWithoutUpdatedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductCreateNestedManyWithoutCategoryInput
+    createdByUser?: UserCreateNestedOneWithoutCreatedCategoryInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutUpdatedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutUpdatedByUserInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutUpdatedByUserInput, CategoryUncheckedCreateWithoutUpdatedByUserInput>
+  }
+
+  export type CategoryCreateManyUpdatedByUserInputEnvelope = {
+    data: CategoryCreateManyUpdatedByUserInput | CategoryCreateManyUpdatedByUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -18469,7 +20702,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -18479,6 +20711,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
@@ -18491,7 +20724,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -18535,6 +20768,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutUserInput = {
@@ -18554,6 +20788,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutUserInput = {
@@ -18654,7 +20889,7 @@ export namespace Prisma {
     name?: StringFilter<"Product"> | string
     imageUrl?: StringNullableFilter<"Product"> | string | null
     description?: StringFilter<"Product"> | string
-    category?: StringFilter<"Product"> | string
+    categoryId?: StringFilter<"Product"> | string
     expiryDate?: DateTimeNullableFilter<"Product"> | Date | string | null
     productionDate?: DateTimeNullableFilter<"Product"> | Date | string | null
     quantity?: IntFilter<"Product"> | number
@@ -18730,6 +20965,7 @@ export namespace Prisma {
     updatedBy?: StringNullableFilter<"Sale"> | string | null
     updatedAt?: DateTimeNullableFilter<"Sale"> | Date | string | null
     isDeleted?: BoolFilter<"Sale"> | boolean
+    customerId?: StringFilter<"Sale"> | string
   }
 
   export type SaleUpsertWithWhereUniqueWithoutDeletedByUserInput = {
@@ -19030,6 +21266,70 @@ export namespace Prisma {
     data: XOR<CustomerUpdateManyMutationInput, CustomerUncheckedUpdateManyWithoutUpdatedByUserInput>
   }
 
+  export type CategoryUpsertWithWhereUniqueWithoutCreatedByUserInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutCreatedByUserInput, CategoryUncheckedUpdateWithoutCreatedByUserInput>
+    create: XOR<CategoryCreateWithoutCreatedByUserInput, CategoryUncheckedCreateWithoutCreatedByUserInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutCreatedByUserInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutCreatedByUserInput, CategoryUncheckedUpdateWithoutCreatedByUserInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutCreatedByUserInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutCreatedByUserInput>
+  }
+
+  export type CategoryScalarWhereInput = {
+    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    OR?: CategoryScalarWhereInput[]
+    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    categoryId?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    description?: StringNullableFilter<"Category"> | string | null
+    createdBy?: StringNullableFilter<"Category"> | string | null
+    deletedBy?: StringNullableFilter<"Category"> | string | null
+    updatedBy?: StringNullableFilter<"Category"> | string | null
+    deletedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
+    isDeleted?: BoolFilter<"Category"> | boolean
+  }
+
+  export type CategoryUpsertWithWhereUniqueWithoutDeletedByUserInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutDeletedByUserInput, CategoryUncheckedUpdateWithoutDeletedByUserInput>
+    create: XOR<CategoryCreateWithoutDeletedByUserInput, CategoryUncheckedCreateWithoutDeletedByUserInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutDeletedByUserInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutDeletedByUserInput, CategoryUncheckedUpdateWithoutDeletedByUserInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutDeletedByUserInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutDeletedByUserInput>
+  }
+
+  export type CategoryUpsertWithWhereUniqueWithoutUpdatedByUserInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutUpdatedByUserInput, CategoryUncheckedUpdateWithoutUpdatedByUserInput>
+    create: XOR<CategoryCreateWithoutUpdatedByUserInput, CategoryUncheckedCreateWithoutUpdatedByUserInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutUpdatedByUserInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutUpdatedByUserInput, CategoryUncheckedUpdateWithoutUpdatedByUserInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutUpdatedByUserInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutUpdatedByUserInput>
+  }
+
   export type RoleUpsertWithoutUsersInput = {
     update: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
     create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
@@ -19132,6 +21432,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -19171,6 +21474,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19213,6 +21519,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -19252,6 +21561,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19294,6 +21606,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -19333,6 +21648,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19376,6 +21694,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
   }
@@ -19414,6 +21735,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19472,6 +21796,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -19511,6 +21838,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -19559,6 +21889,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -19598,6 +21931,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -19646,6 +21982,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -19685,6 +22024,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -19724,6 +22066,37 @@ export namespace Prisma {
     roleId?: StringFilter<"User"> | string
   }
 
+  export type CategoryCreateWithoutProductsInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    createdByUser?: UserCreateNestedOneWithoutCreatedCategoryInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedCategoryInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutProductsInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+  }
+
+  export type CategoryCreateOrConnectWithoutProductsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+  }
+
   export type UserCreateWithoutCreatedProductsInput = {
     userId?: string
     firstName: string
@@ -19757,6 +22130,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -19796,6 +22172,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19838,6 +22217,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -19877,6 +22259,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19919,6 +22304,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -19958,6 +22346,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -20001,6 +22392,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
   }
@@ -20040,6 +22434,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -20124,6 +22521,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategoryUpsertWithoutProductsInput = {
+    update: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
+    create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutProductsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type CategoryUpdateWithoutProductsInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdByUser?: UserUpdateOneWithoutCreatedCategoryNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedCategoryNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutProductsInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type UserUpsertWithoutCreatedProductsInput = {
     update: XOR<UserUpdateWithoutCreatedProductsInput, UserUncheckedUpdateWithoutCreatedProductsInput>
     create: XOR<UserCreateWithoutCreatedProductsInput, UserUncheckedCreateWithoutCreatedProductsInput>
@@ -20168,6 +22602,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -20207,6 +22644,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -20255,6 +22695,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -20294,6 +22737,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -20342,6 +22788,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -20381,6 +22830,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -20430,6 +22882,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
   }
@@ -20469,6 +22924,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -20537,6 +22995,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -20576,6 +23037,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -20618,6 +23082,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -20657,6 +23124,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -20699,6 +23169,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -20738,6 +23211,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -20785,6 +23261,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CustomerCreateWithoutSalesInput = {
+    customerId?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    updatedAt?: Date | string | null
+    isSupplier?: boolean
+    isDeleted?: boolean
+    createdByUser?: UserCreateNestedOneWithoutCreatedCustomerInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedCustomerInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedCustomerInput
+    user: UserCreateNestedOneWithoutCustomersInContactInput
+    purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
+    purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
+    Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+  }
+
+  export type CustomerUncheckedCreateWithoutSalesInput = {
+    customerId?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    updatedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    isSupplier?: boolean
+    isDeleted?: boolean
+    userId: string
+    purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
+    Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+  }
+
+  export type CustomerCreateOrConnectWithoutSalesInput = {
+    where: CustomerWhereUniqueInput
+    create: XOR<CustomerCreateWithoutSalesInput, CustomerUncheckedCreateWithoutSalesInput>
+  }
+
   export type UserUpsertWithoutCreatedSalesInput = {
     update: XOR<UserUpdateWithoutCreatedSalesInput, UserUncheckedUpdateWithoutCreatedSalesInput>
     create: XOR<UserCreateWithoutCreatedSalesInput, UserUncheckedCreateWithoutCreatedSalesInput>
@@ -20829,6 +23350,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -20868,6 +23392,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -20916,6 +23443,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -20955,6 +23485,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -21003,6 +23536,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -21042,6 +23578,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -21060,6 +23599,57 @@ export namespace Prisma {
   export type ProductSaleUpdateManyWithWhereWithoutSaleInput = {
     where: ProductSaleScalarWhereInput
     data: XOR<ProductSaleUpdateManyMutationInput, ProductSaleUncheckedUpdateManyWithoutSaleInput>
+  }
+
+  export type CustomerUpsertWithoutSalesInput = {
+    update: XOR<CustomerUpdateWithoutSalesInput, CustomerUncheckedUpdateWithoutSalesInput>
+    create: XOR<CustomerCreateWithoutSalesInput, CustomerUncheckedCreateWithoutSalesInput>
+    where?: CustomerWhereInput
+  }
+
+  export type CustomerUpdateToOneWithWhereWithoutSalesInput = {
+    where?: CustomerWhereInput
+    data: XOR<CustomerUpdateWithoutSalesInput, CustomerUncheckedUpdateWithoutSalesInput>
+  }
+
+  export type CustomerUpdateWithoutSalesInput = {
+    customerId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdByUser?: UserUpdateOneWithoutCreatedCustomerNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedCustomerNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedCustomerNestedInput
+    user?: UserUpdateOneRequiredWithoutCustomersInContactNestedInput
+    purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
+    purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
+    Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type CustomerUncheckedUpdateWithoutSalesInput = {
+    customerId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isSupplier?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
+    Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type UserCreateWithoutCreatedPurchasesInput = {
@@ -21095,6 +23685,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -21134,6 +23727,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -21176,6 +23772,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -21215,6 +23814,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -21257,6 +23859,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -21296,6 +23901,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -21360,6 +23968,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutCustomersInContactInput
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutPurchasesAsSupplierInput = {
@@ -21379,6 +23988,7 @@ export namespace Prisma {
     userId: string
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutPurchasesAsSupplierInput = {
@@ -21403,6 +24013,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutCustomersInContactInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseCreateNestedManyWithoutCustomerInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutPurchasesCreatedByCustomerInput = {
@@ -21422,6 +24033,7 @@ export namespace Prisma {
     userId: string
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
     Purchase?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutPurchasesCreatedByCustomerInput = {
@@ -21446,6 +24058,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutCustomersInContactInput
     purchasesCreatedByCustomer?: PurchaseCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseCreateNestedManyWithoutSupplierInput
+    sales?: SaleCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateWithoutPurchaseInput = {
@@ -21465,6 +24078,7 @@ export namespace Prisma {
     userId: string
     purchasesCreatedByCustomer?: PurchaseUncheckedCreateNestedManyWithoutCustomerInput
     purchasesAsSupplier?: PurchaseUncheckedCreateNestedManyWithoutSupplierInput
+    sales?: SaleUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerCreateOrConnectWithoutPurchaseInput = {
@@ -21516,6 +24130,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -21555,6 +24172,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -21603,6 +24223,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -21642,6 +24265,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -21690,6 +24316,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -21729,6 +24358,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -21777,6 +24409,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutCustomersInContactNestedInput
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutPurchasesAsSupplierInput = {
@@ -21796,6 +24429,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUpsertWithoutPurchasesCreatedByCustomerInput = {
@@ -21826,6 +24460,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutCustomersInContactNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutPurchasesCreatedByCustomerInput = {
@@ -21845,6 +24480,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUpsertWithoutPurchaseInput = {
@@ -21875,6 +24511,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutCustomersInContactNestedInput
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutPurchaseInput = {
@@ -21894,6 +24531,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type UserCreateWithoutCreatedProductPurchasesInput = {
@@ -21929,6 +24567,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -21968,6 +24609,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22010,6 +24654,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -22049,6 +24696,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22091,6 +24741,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -22130,6 +24783,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22144,7 +24800,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -22154,6 +24809,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
@@ -22166,7 +24822,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -22267,6 +24923,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -22306,6 +24965,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -22354,6 +25016,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -22393,6 +25058,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -22441,6 +25109,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -22480,6 +25151,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -22500,7 +25174,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -22510,6 +25183,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
@@ -22522,7 +25196,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -22613,6 +25287,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -22652,6 +25329,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22694,6 +25374,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -22733,6 +25416,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22775,6 +25461,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -22814,6 +25503,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22828,7 +25520,6 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -22838,6 +25529,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    category: CategoryCreateNestedOneWithoutProductsInput
     createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
@@ -22850,7 +25542,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -22881,6 +25573,7 @@ export namespace Prisma {
     createdByUser?: UserCreateNestedOneWithoutCreatedSalesInput
     deletedByUser?: UserCreateNestedOneWithoutDeletedSalesInput
     updatedByUser?: UserCreateNestedOneWithoutUpdatedSalesInput
+    customer: CustomerCreateNestedOneWithoutSalesInput
   }
 
   export type SaleUncheckedCreateWithoutProductSalesInput = {
@@ -22892,6 +25585,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
   }
 
   export type SaleCreateOrConnectWithoutProductSalesInput = {
@@ -22943,6 +25637,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -22982,6 +25679,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23030,6 +25730,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -23069,6 +25772,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23117,6 +25823,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -23156,6 +25865,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23176,7 +25888,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -23186,6 +25897,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
@@ -23198,7 +25910,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -23235,6 +25947,7 @@ export namespace Prisma {
     createdByUser?: UserUpdateOneWithoutCreatedSalesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedSalesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedSalesNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutSalesNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutProductSalesInput = {
@@ -23246,6 +25959,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateWithoutCreatedCustomerInput = {
@@ -23281,6 +25995,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleCreateNestedManyWithoutUpdatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -23320,6 +26037,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -23362,6 +26082,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleCreateNestedManyWithoutUpdatedByUserInput
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -23401,6 +26124,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -23443,6 +26169,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleCreateNestedManyWithoutUpdatedByUserInput
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
     customersInContact?: CustomerCreateNestedManyWithoutUserInput
@@ -23482,6 +26211,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
     customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
   }
@@ -23525,6 +26257,9 @@ export namespace Prisma {
     createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
     role: RoleCreateNestedOneWithoutUsersInput
     ownedProducts?: ProductCreateNestedManyWithoutUserInput
   }
@@ -23564,6 +26299,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
     deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
     updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
     ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -23682,6 +26420,40 @@ export namespace Prisma {
     productPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutPurchaseInput
   }
 
+  export type SaleCreateWithoutCustomerInput = {
+    saleId?: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    createdByUser?: UserCreateNestedOneWithoutCreatedSalesInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedSalesInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedSalesInput
+    productSales?: ProductSaleCreateNestedManyWithoutSaleInput
+  }
+
+  export type SaleUncheckedCreateWithoutCustomerInput = {
+    saleId?: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    productSales?: ProductSaleUncheckedCreateNestedManyWithoutSaleInput
+  }
+
+  export type SaleCreateOrConnectWithoutCustomerInput = {
+    where: SaleWhereUniqueInput
+    create: XOR<SaleCreateWithoutCustomerInput, SaleUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type SaleCreateManyCustomerInputEnvelope = {
+    data: SaleCreateManyCustomerInput | SaleCreateManyCustomerInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutCreatedCustomerInput = {
     update: XOR<UserUpdateWithoutCreatedCustomerInput, UserUncheckedUpdateWithoutCreatedCustomerInput>
     create: XOR<UserCreateWithoutCreatedCustomerInput, UserUncheckedCreateWithoutCreatedCustomerInput>
@@ -23726,6 +26498,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUpdateManyWithoutUpdatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -23765,6 +26540,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23813,6 +26591,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUpdateManyWithoutUpdatedByUserNestedInput
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -23852,6 +26633,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23900,6 +26684,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUpdateManyWithoutUpdatedByUserNestedInput
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
@@ -23939,6 +26726,9 @@ export namespace Prisma {
     updatedProductSales?: ProductSaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23988,6 +26778,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
   }
@@ -24027,6 +26820,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -24078,6 +26874,632 @@ export namespace Prisma {
     data: XOR<PurchaseUpdateManyMutationInput, PurchaseUncheckedUpdateManyWithoutCustomerInput>
   }
 
+  export type SaleUpsertWithWhereUniqueWithoutCustomerInput = {
+    where: SaleWhereUniqueInput
+    update: XOR<SaleUpdateWithoutCustomerInput, SaleUncheckedUpdateWithoutCustomerInput>
+    create: XOR<SaleCreateWithoutCustomerInput, SaleUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type SaleUpdateWithWhereUniqueWithoutCustomerInput = {
+    where: SaleWhereUniqueInput
+    data: XOR<SaleUpdateWithoutCustomerInput, SaleUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type SaleUpdateManyWithWhereWithoutCustomerInput = {
+    where: SaleScalarWhereInput
+    data: XOR<SaleUpdateManyMutationInput, SaleUncheckedUpdateManyWithoutCustomerInput>
+  }
+
+  export type ProductCreateWithoutCategoryInput = {
+    productId?: string
+    name: string
+    imageUrl?: string | null
+    description: string
+    expiryDate?: Date | string | null
+    productionDate?: Date | string | null
+    quantity: number
+    price: number
+    costPrice: number
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    createdByUser?: UserCreateNestedOneWithoutCreatedProductsInput
+    deletedByUser?: UserCreateNestedOneWithoutDeletedProductsInput
+    updatedByUser?: UserCreateNestedOneWithoutUpdatedProductsInput
+    user: UserCreateNestedOneWithoutOwnedProductsInput
+    productPurchases?: ProductPurchaseCreateNestedManyWithoutProductInput
+    productSales?: ProductSaleCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutCategoryInput = {
+    productId?: string
+    name: string
+    imageUrl?: string | null
+    description: string
+    expiryDate?: Date | string | null
+    productionDate?: Date | string | null
+    quantity: number
+    price: number
+    costPrice: number
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    userId: string
+    productPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutProductInput
+    productSales?: ProductSaleUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutCategoryInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ProductCreateManyCategoryInputEnvelope = {
+    data: ProductCreateManyCategoryInput | ProductCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutCreatedCategoryInput = {
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    isDeleted?: boolean
+    createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
+    deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
+    updatedRoles?: RoleCreateNestedManyWithoutUpdatedByUserInput
+    createdProducts?: ProductCreateNestedManyWithoutCreatedByUserInput
+    deletedProducts?: ProductCreateNestedManyWithoutDeletedByUserInput
+    updatedProducts?: ProductCreateNestedManyWithoutUpdatedByUserInput
+    createdSales?: SaleCreateNestedManyWithoutCreatedByUserInput
+    deletedSales?: SaleCreateNestedManyWithoutDeletedByUserInput
+    updatedSales?: SaleCreateNestedManyWithoutUpdatedByUserInput
+    createdPurchases?: PurchaseCreateNestedManyWithoutCreatedByUserInput
+    deletedPurchases?: PurchaseCreateNestedManyWithoutDeletedByUserInput
+    updatedPurchases?: PurchaseCreateNestedManyWithoutUpdatedByUserInput
+    createdProductPurchases?: ProductPurchaseCreateNestedManyWithoutCreatedByUserInput
+    deletedProductPurchases?: ProductPurchaseCreateNestedManyWithoutDeletedByUserInput
+    updatedProductPurchases?: ProductPurchaseCreateNestedManyWithoutUpdatedByUserInput
+    createdProductSales?: ProductSaleCreateNestedManyWithoutCreatedByUserInput
+    deletedProductSales?: ProductSaleCreateNestedManyWithoutDeletedByUserInput
+    updatedProductSales?: ProductSaleCreateNestedManyWithoutUpdatedByUserInput
+    createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
+    deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
+    updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
+    role: RoleCreateNestedOneWithoutUsersInput
+    ownedProducts?: ProductCreateNestedManyWithoutUserInput
+    customersInContact?: CustomerCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatedCategoryInput = {
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    isDeleted?: boolean
+    roleId: string
+    createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProducts?: ProductUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProducts?: ProductUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProducts?: ProductUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdSales?: SaleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedSales?: SaleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedSales?: SaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdPurchases?: PurchaseUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedPurchases?: PurchaseUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedPurchases?: PurchaseUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProductSales?: ProductSaleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
+    customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatedCategoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatedCategoryInput, UserUncheckedCreateWithoutCreatedCategoryInput>
+  }
+
+  export type UserCreateWithoutDeletedCategoryInput = {
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    isDeleted?: boolean
+    createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
+    deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
+    updatedRoles?: RoleCreateNestedManyWithoutUpdatedByUserInput
+    createdProducts?: ProductCreateNestedManyWithoutCreatedByUserInput
+    deletedProducts?: ProductCreateNestedManyWithoutDeletedByUserInput
+    updatedProducts?: ProductCreateNestedManyWithoutUpdatedByUserInput
+    createdSales?: SaleCreateNestedManyWithoutCreatedByUserInput
+    deletedSales?: SaleCreateNestedManyWithoutDeletedByUserInput
+    updatedSales?: SaleCreateNestedManyWithoutUpdatedByUserInput
+    createdPurchases?: PurchaseCreateNestedManyWithoutCreatedByUserInput
+    deletedPurchases?: PurchaseCreateNestedManyWithoutDeletedByUserInput
+    updatedPurchases?: PurchaseCreateNestedManyWithoutUpdatedByUserInput
+    createdProductPurchases?: ProductPurchaseCreateNestedManyWithoutCreatedByUserInput
+    deletedProductPurchases?: ProductPurchaseCreateNestedManyWithoutDeletedByUserInput
+    updatedProductPurchases?: ProductPurchaseCreateNestedManyWithoutUpdatedByUserInput
+    createdProductSales?: ProductSaleCreateNestedManyWithoutCreatedByUserInput
+    deletedProductSales?: ProductSaleCreateNestedManyWithoutDeletedByUserInput
+    updatedProductSales?: ProductSaleCreateNestedManyWithoutUpdatedByUserInput
+    createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
+    deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
+    updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    updatedCategory?: CategoryCreateNestedManyWithoutUpdatedByUserInput
+    role: RoleCreateNestedOneWithoutUsersInput
+    ownedProducts?: ProductCreateNestedManyWithoutUserInput
+    customersInContact?: CustomerCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDeletedCategoryInput = {
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    isDeleted?: boolean
+    roleId: string
+    createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProducts?: ProductUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProducts?: ProductUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProducts?: ProductUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdSales?: SaleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedSales?: SaleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedSales?: SaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdPurchases?: PurchaseUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedPurchases?: PurchaseUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedPurchases?: PurchaseUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProductSales?: ProductSaleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    updatedCategory?: CategoryUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
+    customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDeletedCategoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDeletedCategoryInput, UserUncheckedCreateWithoutDeletedCategoryInput>
+  }
+
+  export type UserCreateWithoutUpdatedCategoryInput = {
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    isDeleted?: boolean
+    createdRoles?: RoleCreateNestedManyWithoutCreatedByUserInput
+    deletedRoles?: RoleCreateNestedManyWithoutDeletedByUserInput
+    updatedRoles?: RoleCreateNestedManyWithoutUpdatedByUserInput
+    createdProducts?: ProductCreateNestedManyWithoutCreatedByUserInput
+    deletedProducts?: ProductCreateNestedManyWithoutDeletedByUserInput
+    updatedProducts?: ProductCreateNestedManyWithoutUpdatedByUserInput
+    createdSales?: SaleCreateNestedManyWithoutCreatedByUserInput
+    deletedSales?: SaleCreateNestedManyWithoutDeletedByUserInput
+    updatedSales?: SaleCreateNestedManyWithoutUpdatedByUserInput
+    createdPurchases?: PurchaseCreateNestedManyWithoutCreatedByUserInput
+    deletedPurchases?: PurchaseCreateNestedManyWithoutDeletedByUserInput
+    updatedPurchases?: PurchaseCreateNestedManyWithoutUpdatedByUserInput
+    createdProductPurchases?: ProductPurchaseCreateNestedManyWithoutCreatedByUserInput
+    deletedProductPurchases?: ProductPurchaseCreateNestedManyWithoutDeletedByUserInput
+    updatedProductPurchases?: ProductPurchaseCreateNestedManyWithoutUpdatedByUserInput
+    createdProductSales?: ProductSaleCreateNestedManyWithoutCreatedByUserInput
+    deletedProductSales?: ProductSaleCreateNestedManyWithoutDeletedByUserInput
+    updatedProductSales?: ProductSaleCreateNestedManyWithoutUpdatedByUserInput
+    createdCustomer?: CustomerCreateNestedManyWithoutCreatedByUserInput
+    deletedCustomer?: CustomerCreateNestedManyWithoutDeletedByUserInput
+    updatedCustomer?: CustomerCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryCreateNestedManyWithoutDeletedByUserInput
+    role: RoleCreateNestedOneWithoutUsersInput
+    ownedProducts?: ProductCreateNestedManyWithoutUserInput
+    customersInContact?: CustomerCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutUpdatedCategoryInput = {
+    userId?: string
+    firstName: string
+    surName?: string | null
+    lastName: string
+    profilePictureUrl?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    isDeleted?: boolean
+    roleId: string
+    createdRoles?: RoleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedRoles?: RoleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedRoles?: RoleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProducts?: ProductUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProducts?: ProductUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProducts?: ProductUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdSales?: SaleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedSales?: SaleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedSales?: SaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdPurchases?: PurchaseUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedPurchases?: PurchaseUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedPurchases?: PurchaseUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProductPurchases?: ProductPurchaseUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdProductSales?: ProductSaleUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedProductSales?: ProductSaleUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCustomer?: CustomerUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCustomer?: CustomerUncheckedCreateNestedManyWithoutDeletedByUserInput
+    updatedCustomer?: CustomerUncheckedCreateNestedManyWithoutUpdatedByUserInput
+    createdCategory?: CategoryUncheckedCreateNestedManyWithoutCreatedByUserInput
+    deletedCategory?: CategoryUncheckedCreateNestedManyWithoutDeletedByUserInput
+    ownedProducts?: ProductUncheckedCreateNestedManyWithoutUserInput
+    customersInContact?: CustomerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutUpdatedCategoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUpdatedCategoryInput, UserUncheckedCreateWithoutUpdatedCategoryInput>
+  }
+
+  export type ProductUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: ProductWhereUniqueInput
+    update: XOR<ProductUpdateWithoutCategoryInput, ProductUncheckedUpdateWithoutCategoryInput>
+    create: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ProductUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: ProductWhereUniqueInput
+    data: XOR<ProductUpdateWithoutCategoryInput, ProductUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type ProductUpdateManyWithWhereWithoutCategoryInput = {
+    where: ProductScalarWhereInput
+    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type UserUpsertWithoutCreatedCategoryInput = {
+    update: XOR<UserUpdateWithoutCreatedCategoryInput, UserUncheckedUpdateWithoutCreatedCategoryInput>
+    create: XOR<UserCreateWithoutCreatedCategoryInput, UserUncheckedCreateWithoutCreatedCategoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCreatedCategoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCreatedCategoryInput, UserUncheckedUpdateWithoutCreatedCategoryInput>
+  }
+
+  export type UserUpdateWithoutCreatedCategoryInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
+    deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
+    updatedRoles?: RoleUpdateManyWithoutUpdatedByUserNestedInput
+    createdProducts?: ProductUpdateManyWithoutCreatedByUserNestedInput
+    deletedProducts?: ProductUpdateManyWithoutDeletedByUserNestedInput
+    updatedProducts?: ProductUpdateManyWithoutUpdatedByUserNestedInput
+    createdSales?: SaleUpdateManyWithoutCreatedByUserNestedInput
+    deletedSales?: SaleUpdateManyWithoutDeletedByUserNestedInput
+    updatedSales?: SaleUpdateManyWithoutUpdatedByUserNestedInput
+    createdPurchases?: PurchaseUpdateManyWithoutCreatedByUserNestedInput
+    deletedPurchases?: PurchaseUpdateManyWithoutDeletedByUserNestedInput
+    updatedPurchases?: PurchaseUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductPurchases?: ProductPurchaseUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductPurchases?: ProductPurchaseUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductPurchases?: ProductPurchaseUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductSales?: ProductSaleUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductSales?: ProductSaleUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductSales?: ProductSaleUpdateManyWithoutUpdatedByUserNestedInput
+    createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
+    deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
+    updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    ownedProducts?: ProductUpdateManyWithoutUserNestedInput
+    customersInContact?: CustomerUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCreatedCategoryInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    roleId?: StringFieldUpdateOperationsInput | string
+    createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProducts?: ProductUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProducts?: ProductUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProducts?: ProductUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdSales?: SaleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedSales?: SaleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedSales?: SaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdPurchases?: PurchaseUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedPurchases?: PurchaseUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedPurchases?: PurchaseUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductSales?: ProductSaleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductSales?: ProductSaleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductSales?: ProductSaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithoutDeletedCategoryInput = {
+    update: XOR<UserUpdateWithoutDeletedCategoryInput, UserUncheckedUpdateWithoutDeletedCategoryInput>
+    create: XOR<UserCreateWithoutDeletedCategoryInput, UserUncheckedCreateWithoutDeletedCategoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDeletedCategoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDeletedCategoryInput, UserUncheckedUpdateWithoutDeletedCategoryInput>
+  }
+
+  export type UserUpdateWithoutDeletedCategoryInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
+    deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
+    updatedRoles?: RoleUpdateManyWithoutUpdatedByUserNestedInput
+    createdProducts?: ProductUpdateManyWithoutCreatedByUserNestedInput
+    deletedProducts?: ProductUpdateManyWithoutDeletedByUserNestedInput
+    updatedProducts?: ProductUpdateManyWithoutUpdatedByUserNestedInput
+    createdSales?: SaleUpdateManyWithoutCreatedByUserNestedInput
+    deletedSales?: SaleUpdateManyWithoutDeletedByUserNestedInput
+    updatedSales?: SaleUpdateManyWithoutUpdatedByUserNestedInput
+    createdPurchases?: PurchaseUpdateManyWithoutCreatedByUserNestedInput
+    deletedPurchases?: PurchaseUpdateManyWithoutDeletedByUserNestedInput
+    updatedPurchases?: PurchaseUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductPurchases?: ProductPurchaseUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductPurchases?: ProductPurchaseUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductPurchases?: ProductPurchaseUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductSales?: ProductSaleUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductSales?: ProductSaleUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductSales?: ProductSaleUpdateManyWithoutUpdatedByUserNestedInput
+    createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
+    deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
+    updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    ownedProducts?: ProductUpdateManyWithoutUserNestedInput
+    customersInContact?: CustomerUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDeletedCategoryInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    roleId?: StringFieldUpdateOperationsInput | string
+    createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProducts?: ProductUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProducts?: ProductUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProducts?: ProductUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdSales?: SaleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedSales?: SaleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedSales?: SaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdPurchases?: PurchaseUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedPurchases?: PurchaseUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedPurchases?: PurchaseUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductSales?: ProductSaleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductSales?: ProductSaleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductSales?: ProductSaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithoutUpdatedCategoryInput = {
+    update: XOR<UserUpdateWithoutUpdatedCategoryInput, UserUncheckedUpdateWithoutUpdatedCategoryInput>
+    create: XOR<UserCreateWithoutUpdatedCategoryInput, UserUncheckedCreateWithoutUpdatedCategoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUpdatedCategoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUpdatedCategoryInput, UserUncheckedUpdateWithoutUpdatedCategoryInput>
+  }
+
+  export type UserUpdateWithoutUpdatedCategoryInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdRoles?: RoleUpdateManyWithoutCreatedByUserNestedInput
+    deletedRoles?: RoleUpdateManyWithoutDeletedByUserNestedInput
+    updatedRoles?: RoleUpdateManyWithoutUpdatedByUserNestedInput
+    createdProducts?: ProductUpdateManyWithoutCreatedByUserNestedInput
+    deletedProducts?: ProductUpdateManyWithoutDeletedByUserNestedInput
+    updatedProducts?: ProductUpdateManyWithoutUpdatedByUserNestedInput
+    createdSales?: SaleUpdateManyWithoutCreatedByUserNestedInput
+    deletedSales?: SaleUpdateManyWithoutDeletedByUserNestedInput
+    updatedSales?: SaleUpdateManyWithoutUpdatedByUserNestedInput
+    createdPurchases?: PurchaseUpdateManyWithoutCreatedByUserNestedInput
+    deletedPurchases?: PurchaseUpdateManyWithoutDeletedByUserNestedInput
+    updatedPurchases?: PurchaseUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductPurchases?: ProductPurchaseUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductPurchases?: ProductPurchaseUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductPurchases?: ProductPurchaseUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductSales?: ProductSaleUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductSales?: ProductSaleUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductSales?: ProductSaleUpdateManyWithoutUpdatedByUserNestedInput
+    createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
+    deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
+    updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    ownedProducts?: ProductUpdateManyWithoutUserNestedInput
+    customersInContact?: CustomerUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUpdatedCategoryInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    surName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    roleId?: StringFieldUpdateOperationsInput | string
+    createdRoles?: RoleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedRoles?: RoleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedRoles?: RoleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProducts?: ProductUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProducts?: ProductUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProducts?: ProductUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdSales?: SaleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedSales?: SaleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedSales?: SaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdPurchases?: PurchaseUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedPurchases?: PurchaseUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedPurchases?: PurchaseUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductPurchases?: ProductPurchaseUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdProductSales?: ProductSaleUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedProductSales?: ProductSaleUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedProductSales?: ProductSaleUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type RoleCreateManyCreatedByUserInput = {
     roleId?: string
     roleType: string
@@ -24119,7 +27541,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -24139,7 +27561,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -24159,7 +27581,7 @@ export namespace Prisma {
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -24182,6 +27604,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
   }
 
   export type SaleCreateManyDeletedByUserInput = {
@@ -24192,6 +27615,7 @@ export namespace Prisma {
     updatedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
   }
 
   export type SaleCreateManyUpdatedByUserInput = {
@@ -24202,6 +27626,7 @@ export namespace Prisma {
     deletedBy?: string | null
     updatedAt?: Date | string | null
     isDeleted?: boolean
+    customerId: string
   }
 
   export type PurchaseCreateManyCreatedByUserInput = {
@@ -24378,12 +27803,48 @@ export namespace Prisma {
     userId: string
   }
 
+  export type CategoryCreateManyCreatedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+  }
+
+  export type CategoryCreateManyDeletedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    updatedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+  }
+
+  export type CategoryCreateManyUpdatedByUserInput = {
+    categoryId?: string
+    name: string
+    description?: string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+  }
+
   export type ProductCreateManyUserInput = {
     productId?: string
     name: string
     imageUrl?: string | null
     description: string
-    category: string
+    categoryId: string
     expiryDate?: Date | string | null
     productionDate?: Date | string | null
     quantity: number
@@ -24533,7 +27994,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24543,6 +28003,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
     user?: UserUpdateOneRequiredWithoutOwnedProductsNestedInput
@@ -24555,7 +28016,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24577,7 +28038,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24597,7 +28058,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24607,6 +28067,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
     user?: UserUpdateOneRequiredWithoutOwnedProductsNestedInput
@@ -24619,7 +28080,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24641,7 +28102,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24661,7 +28122,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24671,6 +28131,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
     user?: UserUpdateOneRequiredWithoutOwnedProductsNestedInput
@@ -24683,7 +28144,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24705,7 +28166,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -24729,6 +28190,7 @@ export namespace Prisma {
     deletedByUser?: UserUpdateOneWithoutDeletedSalesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedSalesNestedInput
     productSales?: ProductSaleUpdateManyWithoutSaleNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutSalesNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutCreatedByUserInput = {
@@ -24739,6 +28201,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
     productSales?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
@@ -24750,6 +28213,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleUpdateWithoutDeletedByUserInput = {
@@ -24761,6 +28225,7 @@ export namespace Prisma {
     createdByUser?: UserUpdateOneWithoutCreatedSalesNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedSalesNestedInput
     productSales?: ProductSaleUpdateManyWithoutSaleNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutSalesNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutDeletedByUserInput = {
@@ -24771,6 +28236,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
     productSales?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
@@ -24782,6 +28248,7 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SaleUpdateWithoutUpdatedByUserInput = {
@@ -24793,6 +28260,7 @@ export namespace Prisma {
     createdByUser?: UserUpdateOneWithoutCreatedSalesNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedSalesNestedInput
     productSales?: ProductSaleUpdateManyWithoutSaleNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutSalesNestedInput
   }
 
   export type SaleUncheckedUpdateWithoutUpdatedByUserInput = {
@@ -24803,6 +28271,7 @@ export namespace Prisma {
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
     productSales?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
   }
 
@@ -24814,6 +28283,7 @@ export namespace Prisma {
     deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    customerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type PurchaseUpdateWithoutCreatedByUserInput = {
@@ -25217,6 +28687,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutCreatedByUserInput = {
@@ -25236,6 +28707,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateManyWithoutCreatedByUserInput = {
@@ -25271,6 +28743,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutDeletedByUserInput = {
@@ -25290,6 +28763,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateManyWithoutDeletedByUserInput = {
@@ -25325,6 +28799,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutUpdatedByUserInput = {
@@ -25344,6 +28819,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateManyWithoutUpdatedByUserInput = {
@@ -25362,12 +28838,125 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type CategoryUpdateWithoutCreatedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUpdateManyWithoutCategoryNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedCategoryNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutCreatedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutCreatedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CategoryUpdateWithoutDeletedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUpdateManyWithoutCategoryNestedInput
+    createdByUser?: UserUpdateOneWithoutCreatedCategoryNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutDeletedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutDeletedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CategoryUpdateWithoutUpdatedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUpdateManyWithoutCategoryNestedInput
+    createdByUser?: UserUpdateOneWithoutCreatedCategoryNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutUpdatedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutUpdatedByUserInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type ProductUpdateWithoutUserInput = {
     productId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -25377,6 +28966,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
     deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
     updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
@@ -25389,7 +28979,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -25411,7 +29001,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     quantity?: IntFieldUpdateOperationsInput | number
@@ -25443,6 +29033,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateWithoutUserInput = {
@@ -25462,6 +29053,7 @@ export namespace Prisma {
     purchasesCreatedByCustomer?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
     purchasesAsSupplier?: PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
     Purchase?: PurchaseUncheckedUpdateManyWithoutCustomerNestedInput
+    sales?: SaleUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateManyWithoutUserInput = {
@@ -25529,6 +29121,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUpdateManyWithoutUserNestedInput
   }
@@ -25567,6 +29162,9 @@ export namespace Prisma {
     createdCustomer?: CustomerUncheckedUpdateManyWithoutCreatedByUserNestedInput
     deletedCustomer?: CustomerUncheckedUpdateManyWithoutDeletedByUserNestedInput
     updatedCustomer?: CustomerUncheckedUpdateManyWithoutUpdatedByUserNestedInput
+    createdCategory?: CategoryUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    deletedCategory?: CategoryUncheckedUpdateManyWithoutDeletedByUserNestedInput
+    updatedCategory?: CategoryUncheckedUpdateManyWithoutUpdatedByUserNestedInput
     ownedProducts?: ProductUncheckedUpdateManyWithoutUserNestedInput
     customersInContact?: CustomerUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -25838,6 +29436,17 @@ export namespace Prisma {
     customerCustomerId?: string | null
   }
 
+  export type SaleCreateManyCustomerInput = {
+    saleId?: string
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+  }
+
   export type PurchaseUpdateWithoutCustomerInput = {
     purchaseId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25968,6 +29577,125 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     supplierId?: StringFieldUpdateOperationsInput | string
     customerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SaleUpdateWithoutCustomerInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdByUser?: UserUpdateOneWithoutCreatedSalesNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedSalesNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedSalesNestedInput
+    productSales?: ProductSaleUpdateManyWithoutSaleNestedInput
+  }
+
+  export type SaleUncheckedUpdateWithoutCustomerInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    productSales?: ProductSaleUncheckedUpdateManyWithoutSaleNestedInput
+  }
+
+  export type SaleUncheckedUpdateManyWithoutCustomerInput = {
+    saleId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ProductCreateManyCategoryInput = {
+    productId?: string
+    name: string
+    imageUrl?: string | null
+    description: string
+    expiryDate?: Date | string | null
+    productionDate?: Date | string | null
+    quantity: number
+    price: number
+    costPrice: number
+    createdAt?: Date | string
+    deletedAt?: Date | string | null
+    createdBy?: string | null
+    deletedBy?: string | null
+    updatedBy?: string | null
+    updatedAt?: Date | string | null
+    isDeleted?: boolean
+    userId: string
+  }
+
+  export type ProductUpdateWithoutCategoryInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    costPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdByUser?: UserUpdateOneWithoutCreatedProductsNestedInput
+    deletedByUser?: UserUpdateOneWithoutDeletedProductsNestedInput
+    updatedByUser?: UserUpdateOneWithoutUpdatedProductsNestedInput
+    user?: UserUpdateOneRequiredWithoutOwnedProductsNestedInput
+    productPurchases?: ProductPurchaseUpdateManyWithoutProductNestedInput
+    productSales?: ProductSaleUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutCategoryInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    costPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    productPurchases?: ProductPurchaseUncheckedUpdateManyWithoutProductNestedInput
+    productSales?: ProductSaleUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateManyWithoutCategoryInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    productionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    costPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    deletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
 

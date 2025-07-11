@@ -10,7 +10,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 // Upload profile picture for a user (by id)
 router.post(
-	"/profile-picture/:id",
+	"/profile/:id",
 	authMiddleware,
 	upload.single("profilePicture"),
 	uploadProfilePictureUpdate
@@ -18,9 +18,9 @@ router.post(
 
 // Upload product picture for a product (by id)
 router.post(
-	"/product-picture/:id",
+	"/product/:id", 
 	authMiddleware,
-	upload.single("file"),
+	upload.single("image"), 
 	uploadProductPictureUpdate
 );
 

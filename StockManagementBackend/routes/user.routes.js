@@ -56,6 +56,12 @@ router.put(
 	"/:id",
 	authMiddleware,
 	userIdValidation,
+	upload.single("profilePicture"),
+	setImagePathMiddleware(
+		"profilePicture",
+		"public/images",
+		"profilePictureUrl"
+	),
 	updateUserValidation,
 	validationMiddleware,
 	updateUser

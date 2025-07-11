@@ -1,21 +1,12 @@
 const prisma = require("../prisma/client");
 
+// Get all products
 const getAllProductsService = async () => {
 	return await prisma.product.findMany({
 		where: { isDeleted: false },
 		include: {
 			user: true,
-			productPurchases: true,
-			productSales: true,
-		},
-	});
-};
-
-const getOneProductService = async (id) => {
-	return await prisma.product.findUnique({
-		where: { productId: id },
-		include: {
-			user: true,
+			category: true,
 			productPurchases: {
 				include: {
 					purchase: true,
@@ -30,10 +21,33 @@ const getOneProductService = async (id) => {
 	});
 };
 
+// Get single product by ID
+const getOneProductService = async (id) => {
+	return await prisma.product.findUnique({
+		where: { productId: id },
+		include: {
+			user: true,
+			category: true,
+			productPurchases: {
+				include: {
+					purchase: true,
+				},
+			},
+			productSales: {
+				include: {
+					sale: true,
+				},
+			},
+		},
+	});
+};
+
+// Create new product
 const createProductService = async (data) => {
 	return await prisma.product.create({ data });
 };
 
+// Update existing product
 const updateProductService = async (id, data) => {
 	return await prisma.product.update({
 		where: { productId: id },
@@ -41,6 +55,7 @@ const updateProductService = async (id, data) => {
 	});
 };
 
+// Soft delete a product
 const deleteProductService = async (id, userId) => {
 	return await prisma.product.update({
 		where: { productId: id },
@@ -52,6 +67,7 @@ const deleteProductService = async (id, userId) => {
 	});
 };
 
+// Paginated product listing
 const getPaginatedProductsService = async (page = 1, limit = 10) => {
 	const skip = (page - 1) * limit;
 	const [data, total] = await Promise.all([
@@ -59,6 +75,7 @@ const getPaginatedProductsService = async (page = 1, limit = 10) => {
 			where: { isDeleted: false },
 			include: {
 				user: true,
+				category: true,
 				productPurchases: true,
 				productSales: true,
 			},
@@ -67,6 +84,7 @@ const getPaginatedProductsService = async (page = 1, limit = 10) => {
 		}),
 		prisma.product.count({ where: { isDeleted: false } }),
 	]);
+
 	return {
 		data,
 		total,

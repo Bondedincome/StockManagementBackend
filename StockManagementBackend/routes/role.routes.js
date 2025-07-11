@@ -14,6 +14,7 @@ const { validationMiddleware } = require("../middleware/validationMiddleware");
 const adminMiddleware = require("../middleware/adminMiddleware");
 
 // Routes
+router.get("/register", roleController.getRegistrationRoles);
 router.get("/", authMiddleware, adminMiddleware, roleController.getAllRoles);
 router.get("/:id", authMiddleware, adminMiddleware, roleController.getOneRole);
 router.post(

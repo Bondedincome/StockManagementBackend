@@ -30,7 +30,7 @@ const createUserValidation = [
 	body("password")
 		.isLength({ min: 6, max: 20 })
 		.withMessage("Password must be 6-20 characters."),
-	body("roleId").isString().notEmpty().withMessage("Role ID is required."),
+	body("roleId").optional().isString().notEmpty().withMessage("Role ID is required."),
 ];
 
 const updateUserValidation = [

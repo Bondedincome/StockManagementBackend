@@ -15,7 +15,7 @@ const getAllPurchases = async (req, res) => {
 		res.json(purchases);
 		// console.log("Purchases fetched successfully");
 	} catch (error) {
-		// console.error("Error in getAllPurchases:", error);
+		console.error("Error in getAllPurchases:", error);
 		res.status(500).json({ error: "Failed to fetch purchases" });
 	}
 };
@@ -36,13 +36,13 @@ const getOnePurchase = async (req, res) => {
 
 // Create a new purchase
 const createPurchase = async (req, res) => {
-	const { productId, quantity, price } = req.body;
+	const { supplierId, customerId, productId, productPurchases } = req.body;
 	try {
 		const newPurchase = await createPurchaseService({
-			userId: req.authUser.userId,
+			supplierId,
+			customerId,
 			productId,
-			quantity,
-			price,
+			productPurchases,
 			createdBy: req.authUser?.userId || null,
 		});
 		res.status(201).json(newPurchase);
@@ -56,13 +56,13 @@ const createPurchase = async (req, res) => {
 // Update an existing purchase
 const updatePurchase = async (req, res) => {
 	const { id } = req.params;
-	const { productId, quantity, price } = req.body;
+	const { supplierId, customerId, productId, productPurchases } = req.body;
 	try {
 		const updatedPurchase = await updatePurchaseService(id, {
-			userId: req.authUser.userId,
+			supplierId,
+			customerId,
 			productId,
-			quantity,
-			price,
+			productPurchases,
 			updatedBy: req.authUser?.userId || null,
 		});
 		res.json(updatedPurchase);
@@ -96,6 +96,7 @@ const getPaginatedPurchases = async (req, res) => {
 		const result = await getPaginatedPurchasesService(page, limit);
 		res.json(result);
 	} catch (error) {
+		console.error("Error in getPaginatedPurchases:", error);
 		res.status(500).json({ error: "Failed to fetch paginated purchases" });
 	}
 };

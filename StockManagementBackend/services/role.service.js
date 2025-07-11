@@ -6,6 +6,11 @@ const getAllRolesService = async () => {
 		include: { users: true },
 	});
 };
+const getRegistrationRolesService = async () => {
+	return await prisma.role.findMany({
+		where: { isDeleted: false, isAdmin: false }
+	});
+};
 
 const getOneRoleService = async (id) => {
 	return await prisma.role.findUnique({
@@ -38,4 +43,5 @@ module.exports = {
 	createRoleService,
 	updateRoleService,
 	deleteRoleService,
+	getRegistrationRolesService
 };

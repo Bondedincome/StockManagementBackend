@@ -1,113 +1,88 @@
-const prisma = require("../prisma/client");
+// sale.controller.js
 const {
+	createSaleService,
 	getAllSalesService,
 	getOneSaleService,
-	createSaleService,
 	updateSaleService,
 	deleteSaleService,
 	getPaginatedSalesService,
 } = require("../services/sale.service");
 
-// Get all sales
+const createSale = async (req, res) => {
+	const { productSales, customerId } = req.body;
+	try {
+		const sale = await createSaleService({
+			productSales,
+			customerId,
+			createdBy: req.authUser.userId,
+		});
+		res.status(201).json(sale);
+	} catch (error) {
+		console.error("Error creating sale:", error);
+		res.status(400).json({ error: "Failed to create sale", detail: error.message });
+	}
+};
+
+const updateSale = async (req, res) => {
+	const { productSales, customerId } = req.body;
+	const saleId = req.params.id;
+	try {
+		const sale = await updateSaleService(saleId, {
+			productSales,
+			customerId,
+			updatedBy: req.authUser.userId,
+		});
+		res.status(200).json(sale);
+	} catch (error) {
+		console.error("Error updating sale:", error);
+		res.status(400).json({ error: "Failed to update sale", detail: error.message });
+	}
+};
+
+const deleteSale = async (req, res) => {
+	const saleId = req.params.id;
+	try {
+		const deleted = await deleteSaleService(saleId, req.authUser.userId);
+		res.status(200).json(deleted);
+	} catch (error) {
+		console.error("Error deleting sale:", error);
+		res.status(400).json({ error: "Failed to delete sale", detail: error.message });
+	}
+};
+
 const getAllSales = async (req, res) => {
 	try {
 		const sales = await getAllSalesService();
-		res.json(sales);
+		res.status(200).json(sales);
 	} catch (error) {
-		console.error("Error fetching sales:", error);
-		res.status(500).json({ error: "Failed to fetch sales" });
+		res.status(400).json({ error: "Failed to retrieve sales", detail: error.message });
 	}
 };
 
-// Get one sale by ID
 const getOneSale = async (req, res) => {
-	const id = req.params.id;
-	if (isNaN(id)) return res.status(400).json({ error: "Invalid ID format" });
-
 	try {
-		const sale = await getOneSaleService(id);
-
-		if (!sale || sale.isDeleted) {
-			return res.status(404).json({ error: "Sale not found" });
-		}
-
-		res.json(sale);
+		const sale = await getOneSaleService(req.params.id);
+		res.status(200).json(sale);
 	} catch (error) {
-		console.error("Error fetching sale:", error);
-		res.status(500).json({ error: "Failed to fetch sale" });
+		res.status(400).json({ error: "Failed to retrieve sale", detail: error.message });
 	}
 };
 
-// Create a new sale
-const createSale = async (req, res) => {
-	const { createdBy } = req.body;
-
-	try {
-		const newSale = await createSaleService({
-			createdBy: req.authUser?.userId || createdBy || null,
-		});
-		res.status(201).json(newSale);
-	} catch (error) {
-		console.error("Error creating sale:", error);
-		res
-			.status(400)
-			.json({ error: "Failed to create sale", detail: error.message });
-	}
-};
-
-// Soft-delete a sale
-const deleteSale = async (req, res) => {
-	const id = parseInt(req.params.id);
-	if (isNaN(id)) return res.status(400).json({ error: "Invalid ID format" });
-
-	try {
-		const deletedSale = await deleteSaleService(id);
-		res.json({ message: "Sale soft-deleted", deletedSale });
-	} catch (error) {
-		console.error("Error deleting sale:", error);
-		res
-			.status(400)
-			.json({ error: "Failed to delete sale", detail: error.message });
-	}
-};
-
-// Update a sale
-const updateSale = async (req, res) => {
-	const id = parseInt(req.params.id);
-	if (isNaN(id)) return res.status(400).json({ error: "Invalid ID format" });
-
-	const { createdBy } = req.body;
-
-	try {
-		const updatedSale = await updateSaleService(id, {
-			createdBy,
-		});
-		res.json(updatedSale);
-	} catch (error) {
-		console.error("Error updating sale:", error);
-		res
-			.status(400)
-			.json({ error: "Failed to update sale", detail: error.message });
-	}
-};
-
-// Get paginated sales
 const getPaginatedSales = async (req, res) => {
-	const page = parseInt(req.query.page) || 1;
-	const limit = parseInt(req.query.limit) || 10;
+	const { page = 1, limit = 10 } = req.query;
 	try {
-		const result = await getPaginatedSalesService(page, limit);
-		res.json(result);
+		const result = await getPaginatedSalesService(Number(page), Number(limit));
+		res.status(200).json(result);
 	} catch (error) {
-		res.status(500).json({ error: "Failed to fetch paginated sales" });
+		res.status(400).json({ error: "Failed to retrieve paginated sales", detail: error.message });
 	}
 };
 
 module.exports = {
-	getAllSales,
-	getPaginatedSales,
-	getOneSale,
-	updateSale,
 	createSale,
+	updateSale,
 	deleteSale,
+	getAllSales,
+	getOneSale,
+	getPaginatedSales,
 };

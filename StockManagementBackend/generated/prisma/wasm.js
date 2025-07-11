@@ -154,7 +154,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   name: 'name',
   imageUrl: 'imageUrl',
   description: 'description',
-  category: 'category',
+  categoryId: 'categoryId',
   expiryDate: 'expiryDate',
   productionDate: 'productionDate',
   quantity: 'quantity',
@@ -178,7 +178,8 @@ exports.Prisma.SaleScalarFieldEnum = {
   deletedBy: 'deletedBy',
   updatedBy: 'updatedBy',
   updatedAt: 'updatedAt',
-  isDeleted: 'isDeleted'
+  isDeleted: 'isDeleted',
+  customerId: 'customerId'
 };
 
 exports.Prisma.PurchaseScalarFieldEnum = {
@@ -243,6 +244,19 @@ exports.Prisma.CustomerScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.CategoryScalarFieldEnum = {
+  categoryId: 'categoryId',
+  name: 'name',
+  description: 'description',
+  createdBy: 'createdBy',
+  deletedBy: 'deletedBy',
+  updatedBy: 'updatedBy',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -267,7 +281,8 @@ exports.Prisma.ModelName = {
   Purchase: 'Purchase',
   ProductPurchase: 'ProductPurchase',
   ProductSale: 'ProductSale',
-  Customer: 'Customer'
+  Customer: 'Customer',
+  Category: 'Category'
 };
 
 /**

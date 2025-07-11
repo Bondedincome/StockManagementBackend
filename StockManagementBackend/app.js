@@ -18,7 +18,8 @@ const productRoutes = require("./routes/product.routes");
 const purchaseRoutes = require("./routes/purchase.routes");
 const uploadRoutes = require("./routes/upload.routes");
 const customerRoutes = require("./routes/customer.routes");
-const supplierRoutes = require("./routes/supplier.routes")
+const supplierRoutes = require("./routes/supplier.routes");
+const categoryRoutes = require("./routes/category.routes");
 
 var app = express();
 
@@ -30,7 +31,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Set up session middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -84,6 +86,7 @@ app.use("/api/purchase", purchaseRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/suppliers", supplierRoutes);
+app.use("/api/categories", categoryRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
